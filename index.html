@@ -5,30 +5,39 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Главная — Профессиональный фотограф</title>
 <style>
+/* Общие стили */
+* { box-sizing: border-box; margin: 0; padding: 0; }
 body {
-  margin: 0;
   font-family: "Helvetica Neue", sans-serif;
-  background: #f8f8f8;
   color: #333;
+  background: url("images/background.jpg") center/cover no-repeat fixed;
 }
 
 /* Шапка */
 header {
-  background: url("images/hero.jpg") center/cover no-repeat;
+  position: relative;
   height: 80vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  text-align: center;
   color: white;
   text-shadow: 0 2px 8px rgba(0,0,0,0.6);
-  text-align: center;
-  padding: 20px;
+}
+
+header::before {
+  content: "";
+  position: absolute;
+  top:0; left:0; right:0; bottom:0;
+  background: url("images/new-hero.jpg") center/cover no-repeat;
+  z-index: -1;
+  filter: brightness(0.6); /* затемнение фона */
 }
 
 header img {
   width: 160px;
-  max-width: 40vw; /* адаптивная ширина */
+  max-width: 40vw;
   height: auto;
   border-radius: 50%;
   border: 4px solid white;
@@ -37,21 +46,38 @@ header img {
 
 header h1 {
   font-size: 2.5rem;
-  margin: 0;
+  margin-bottom: 10px;
 }
 
 header p {
   font-size: 1.2rem;
-  margin-top: 10px;
-  opacity: 0.9;
   max-width: 500px;
+  opacity: 0.9;
+  margin-bottom: 20px;
+}
+
+/* Кнопка CTA */
+header a.cta {
+  text-decoration: none;
+  background: #ffb400;
+  color: #222;
+  padding: 12px 30px;
+  border-radius: 30px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+header a.cta:hover {
+  background: #ffa800;
 }
 
 /* Навигация */
 nav {
-  background: #333;
+  background: rgba(0,0,0,0.7);
   text-align: center;
   padding: 10px 0;
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
 
 nav a {
@@ -68,10 +94,12 @@ nav a:hover {
 /* Секции */
 section {
   max-width: 900px;
-  margin: 80px auto;
-  padding: 0 20px;
-  text-align: center;
+  margin: 40px auto;
+  padding: 40px 20px;
+  background: rgba(255,255,255,0.9);
+  border-radius: 10px;
   line-height: 1.7;
+  text-align: center;
 }
 
 section img {
@@ -86,7 +114,6 @@ footer {
   padding: 40px 20px;
   background: #222;
   color: #fff;
-  margin-top: 60px;
 }
 
 footer a {
@@ -98,45 +125,20 @@ footer a:hover {
   text-decoration: underline;
 }
 
-/* Медиа-запросы для мобильных устройств */
+/* Медиа-запросы */
 @media (max-width: 768px) {
-  header {
-    height: 60vh;
-    padding: 20px;
-  }
-
-  header h1 {
-    font-size: 2rem;
-  }
-
-  header p {
-    font-size: 1rem;
-    max-width: 90%;
-  }
-
-  nav a {
-    margin: 0 8px;
-    font-size: 1rem;
-  }
-
-  section {
-    margin: 40px 10px;
-  }
+  header h1 { font-size: 2rem; }
+  header p { font-size: 1rem; max-width: 90%; }
+  header img { max-width: 35vw; }
+  nav a { font-size: 1rem; margin: 0 8px; }
+  section { margin: 30px 10px; padding: 30px 15px; }
 }
 
 @media (max-width: 480px) {
-  header {
-    height: 50vh;
-    padding: 10px;
-  }
-
-  header h1 {
-    font-size: 1.6rem;
-  }
-
-  header p {
-    font-size: 0.95rem;
-  }
+  header h1 { font-size: 1.6rem; }
+  header p { font-size: 0.95rem; }
+  header img { max-width: 45vw; }
+  section { margin: 20px 10px; padding: 20px 10px; }
 }
 </style>
 </head>
@@ -146,6 +148,7 @@ footer a:hover {
   <img src="images/portrait.jpg" alt="Портрет">
   <h1>Профессиональный фотограф</h1>
   <p>Фотограф с более чем 10-летним опытом. Специализация: семейные фотосессии, события, выписки и коммерческие съемки.</p>
+  <a href="contacts.html" class="cta">Связаться со мной</a>
 </header>
 
 <nav>
