@@ -3,15 +3,33 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Контакты — Профессиональный фотограф</title>
+<title>Главная — Профессиональный фотограф</title>
 <style>
 body { margin:0; font-family:"Helvetica Neue", sans-serif; background:#f8f8f8; color:#333; }
-header { background:#222; color:white; text-align:center; padding:40px 20px; }
-header h1 { margin:0; font-size:2.5rem; }
+header { 
+  background: url("images/hero.jpg") center/cover no-repeat; 
+  height:80vh; 
+  display:flex; 
+  flex-direction:column; 
+  align-items:center; 
+  justify-content:center; 
+  color:white; 
+  text-shadow:0 2px 8px rgba(0,0,0,0.6); 
+}
+header img { 
+  width:160px; 
+  height:160px; 
+  border-radius:50%; 
+  object-fit:cover; 
+  border:4px solid white; 
+  margin-bottom:20px; 
+}
+header h1 { font-size:2.5rem; margin:0; }
+header p { font-size:1.2rem; margin-top:10px; opacity:0.9; text-align:center; max-width:500px; }
 nav { background:#333; text-align:center; padding:10px 0; }
 nav a { color:white; text-decoration:none; margin:0 15px; font-size:1.1rem; }
 nav a:hover { text-decoration:underline; }
-section { max-width:600px; margin:40px auto; padding:0 20px; line-height:1.7; text-align:center; }
+section { max-width:900px; margin:80px auto; padding:0 20px; text-align:center; line-height:1.7; }
 footer { text-align:center; padding:40px 20px; background:#222; color:#fff; margin-top:60px; }
 footer a { color:#ffb400; text-decoration:none; }
 footer a:hover { text-decoration:underline; }
@@ -20,7 +38,10 @@ footer a:hover { text-decoration:underline; }
 <body>
 
 <header>
-  <h1>Контакты</h1>
+  <img src="images/portrait.jpg" alt="Портрет">
+  <h1>Профессиональный фотограф</h1>
+  <p>Фотограф с более чем 10-летним опытом.  
+  Специализация: семейные фотосессии, события, выписки и коммерческие съемки.</p>
 </header>
 
 <nav>
@@ -31,9 +52,9 @@ footer a:hover { text-decoration:underline; }
 </nav>
 
 <section>
-  <p>Телефон: +7 925 709 10 83</p>
-  <p>WhatsApp: <a href="https://wa.me/79257091083" target="_blank">Написать</a></p>
-  <p>Telegram: <a href="https://t.me/Ludmila_Sorokina" target="_blank">@Ludmila_Sorokina</a></p>
+  <h2>Добро пожаловать!</h2>
+  <p>На этом сайте вы можете ознакомиться с моим портфолио, узнать обо мне и моем подходе к съемкам,  
+  а также связаться для заказа фотосессии. Я создаю живые, душевные кадры, которые сохранят ваши моменты навсегда.</p>
 </section>
 
 <footer>
