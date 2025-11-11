@@ -1,177 +1,49 @@
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Фотограф Людмила Сорокина</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: "Helvetica Neue", sans-serif;
-      background: #f8f8f8;
-      color: #333;
-    }
-
-    header {
-      background: url("images/hero.jpg") center/cover no-repeat;
-      height: 80vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      text-shadow: 0 2px 8px rgba(0,0,0,0.6);
-    }
-
-    header img {
-      width: 160px;
-      height: 160px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 4px solid white;
-      margin-bottom: 20px;
-    }
-
-    header h1 {
-      font-size: 2.5rem;
-      margin: 0;
-    }
-
-    header p {
-      font-size: 1.2rem;
-      margin-top: 10px;
-      opacity: 0.9;
-    }
-
-    section {
-      max-width: 1100px;
-      margin: 60px auto;
-      padding: 0 20px;
-    }
-
-    h2 {
-      font-size: 1.8rem;
-      margin-bottom: 20px;
-      text-align: center;
-    }
-
-    .about {
-      text-align: center;
-      line-height: 1.6;
-    }
-
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 15px;
-      margin-top: 30px;
-    }
-
-    .gallery img {
-      width: 100%;
-      border-radius: 12px;
-      object-fit: cover;
-      transition: transform 0.3s;
-    }
-
-    .gallery img:hover {
-      transform: scale(1.03);
-    }
-
-    footer {
-      text-align: center;
-      padding: 40px 20px;
-      background: #222;
-      color: #fff;
-      margin-top: 60px;
-    }
-
-    footer a {
-      color: #ffb400;
-      text-decoration: none;
-    }
-
-    footer a:hover {
-      text-decoration: underline;
-    }
-
-    footer h2 {
-      margin-bottom: 10px;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Главная — Профессиональный фотограф</title>
+<style>
+body { margin:0; font-family:"Helvetica Neue", sans-serif; background:#f8f8f8; color:#333; }
+header { background:url("images/hero.jpg") center/cover no-repeat; height:80vh; display:flex; flex-direction:column; align-items:center; justify-content:center; color:white; text-shadow:0 2px 8px rgba(0,0,0,0.6); }
+header img { width:160px; height:160px; border-radius:50%; object-fit:cover; border:4px solid white; margin-bottom:20px; }
+header h1 { font-size:2.5rem; margin:0; }
+header p { font-size:1.2rem; margin-top:10px; opacity:0.9; text-align:center; max-width:500px; }
+nav { background:#333; text-align:center; padding:10px 0; }
+nav a { color:white; text-decoration:none; margin:0 15px; font-size:1.1rem; }
+nav a:hover { text-decoration:underline; }
+section { max-width:900px; margin:60px auto; padding:0 20px; text-align:center; line-height:1.7; }
+footer { text-align:center; padding:40px 20px; background:#222; color:#fff; margin-top:60px; }
+footer a { color:#ffb400; text-decoration:none; }
+footer a:hover { text-decoration:underline; }
+</style>
 </head>
 <body>
 
-  <header>
-    <img src="images/portrait.jpg" alt="Людмила Сорокина">
-    <h1>Людмила Сорокина</h1>
-    <p>Фотограф — Семейные, События, Коммерческие съёмки</p>
-  </header>
+<header>
+  <img src="images/portrait.jpg" alt="Портрет">
+  <h1>Профессиональный фотограф</h1>
+  <p>Фотограф с более чем 10-летним опытом.  
+  Специализация: семейные фотосессии, события, выписки и коммерческие съемки.</p>
+</header>
 
-  <section id="about">
-    <h2>Обо мне</h2>
-    <p class="about">
-      Привет! Я — Людмила Сорокина, фотограф с опытом более 10 лет.  
-      Специализируюсь на семейных фотосессиях, выписках и коммерческих съёмках.  
-      Люблю ловить эмоции и создавать живые, душевные кадры.
-    </p>
-  </section>
+<nav>
+  <a href="index.html">Главная</a>
+  <a href="about.html">Обо мне</a>
+  <a href="portfolio.html">Портфолио</a>
+  <a href="contacts.html">Контакты</a>
+</nav>
 
-  <section id="family">
-    <h2>Семейные фото</h2>
-    <div class="gallery">
-      <img src="images/family1.jpg" alt="">
-      <img src="images/family2.jpg" alt="">
-      <img src="images/family3.jpg" alt="">
-      <img src="images/family4.jpg" alt="">
-      <img src="images/family5.jpg" alt="">
-      <img src="images/family6.jpg" alt="">
-      <img src="images/family7.jpg" alt="">
-      <img src="images/family8.jpg" alt="">
-      <img src="images/family9.jpg" alt="">
-    </div>
-  </section>
+<section>
+  <h2>Добро пожаловать!</h2>
+  <p>На этом сайте вы можете ознакомиться с моим портфолио, узнать обо мне и моем подходе к съемкам,  
+  а также связаться для заказа фотосессии. Я создаю живые, душевные кадры, которые сохранят ваши моменты навсегда.</p>
+</section>
 
-  <section id="events">
-    <h2>Выписки и события</h2>
-    <div class="gallery">
-      <img src="images/events1.jpg" alt="">
-      <img src="images/events2.jpg" alt="">
-      <img src="images/events3.jpg" alt="">
-      <img src="images/events4.jpg" alt="">
-      <img src="images/events5.jpg" alt="">
-      <img src="images/events6.jpg" alt="">
-    </div>
-  </section>
-
-  <section id="commercial">
-    <h2>Коммерческие съёмки</h2>
-    <div class="gallery">
-      <img src="images/commercial1.jpg" alt="">
-      <img src="images/commercial2.jpg" alt="">
-      <img src="images/commercial3.jpg" alt="">
-      <img src="images/commercial4.jpg" alt="">
-      <img src="images/commercial5.jpg" alt="">
-      <img src="images/commercial6.jpg" alt="">
-      <img src="images/commercial7.jpg" alt="">
-      <img src="images/commercial8.jpg" alt="">
-      <img src="images/commercial9.jpg" alt="">
-      <img src="images/commercial10.jpg" alt="">
-      <img src="images/commercial11.jpg" alt="">
-      <img src="images/commercial12.jpg" alt="">
-    </div>
-  </section>
-
-Ludmila, [11.11.2025 15:31]
 <footer>
-    <h2>Контакты</h2>
-    <p>Телефон: <a href="tel:+79257091083">+7 925 709-10-83</a></p>
-    <p>WhatsApp: <a href="https://wa.me/79257091083" target="_blank">Написать в WhatsApp</a></p>
-    <p>Telegram: <a href="https://t.me/Ludmila_Sorokina" target="_blank">@Ludmila_Sorokina</a></p>
-    <p>© 2025 Людмила Сорокина</p>
-  </footer>
+  <p>© 2025</p>
+</footer>
 
 </body>
 </html>
-
