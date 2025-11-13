@@ -36,19 +36,14 @@ header a {
   color:#1f2937;
   transition:0.3s;
 }
+header a.active {
+  color:#1f2937;
+  font-weight:900;
+  border-bottom:2px solid #1f2937;
+  padding-bottom:2px;
+}
 header a:hover {
   color:#374151;
-}
-
-/* Заголовок */
-h1 {
-  font-family:'Playfair Display', serif;
-  font-weight:900;
-  font-size: clamp(2rem,6vw,3rem);
-  color:#1f2937;
-  text-align:center;
-  margin:2rem 0 1rem 0;
-  word-break: normal;
 }
 
 /* Вкладки портфолио */
@@ -124,12 +119,10 @@ h1 {
 
 <header>
   <a href="index.html">Главная</a>
-  <a href="portfolio.html">Портфолио</a>
+  <a href="portfolio.html" class="active">Портфолио</a>
   <a href="about.html">Обо мне</a>
   <a href="contacts.html">Контакты</a>
 </header>
-
-<h1>Портфолио</h1>
 
 <div class="nav">
   <button class="active" data-category="commercial">Коммерция</button>
@@ -140,7 +133,7 @@ h1 {
 
 <div class="grid-container" id="gallery"></div>
 
-<!-- Модальное окно для просмотра фото -->
+<!-- Модальное окно -->
 <div id="modal">
   <img src="" alt="Фото">
 </div>
@@ -165,9 +158,7 @@ function showImages(category){
   let imgs = [];
   if(category === "all"){
     imgs = [...allImages].sort(()=>Math.random()-0.5); // перемешка
-
-Ludmila, [13.11.2025 13:18]
-} else {
+  } else {
     imgs = images[category];
   }
   imgs.forEach(src=>{
@@ -181,6 +172,7 @@ Ludmila, [13.11.2025 13:18]
     gallery.appendChild(img);
   });
 }
+
 
 // Закрытие модального окна
 modal.addEventListener('click', ()=>{
