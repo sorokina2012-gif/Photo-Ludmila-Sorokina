@@ -1,134 +1,171 @@
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Портфолио — Людмила Сорокина</title>
+
 <script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+
 <style>
-body { background: linear-gradient(135deg, #f8fafc, #e8f0f8); font-family: 'Inter', sans-serif; margin:0;}
-.glass { background: rgba(255,255,255,0.45); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.25); }
-.gallery-item { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; position: relative; overflow:hidden; border-radius:1rem; }
-.gallery-item img { width: 100%; height:auto; transition: transform 0.5s ease; }
-.gallery-item img:hover { transform: scale(1.1); }
-.gallery-item.show { opacity: 1; transform: translateY(0); }
-.gallery-item.hidden { opacity: 0 !important; transform: scale(0.95); pointer-events: none; position: absolute; }
-.fade-in { animation: fadeIn 1.2s ease-in-out; }
-@keyframes fadeIn { from {opacity:0; transform:translateY(20px);} to {opacity:1; transform:translateY(0);} }
+body {
+  font-family: 'Inter', sans-serif;
+  background:#f5f5f5;
+  margin:0;
+  padding:0;
+}
+h1 {
+  font-family:'Playfair Display', serif;
+  font-weight:900;
+  font-size: clamp(2rem,6vw,3rem);
+  color:#1f2937;
+  text-align:center;
+  margin-top:2rem;
+  margin-bottom:1rem;
+}
+
+.nav {
+  display:flex;
+  justify-content:center;
+  gap:1.5rem;
+  margin-bottom:2rem;
+  flex-wrap:wrap;
+}
+.nav button {
+  font-family:'Inter', sans-serif;
+  font-weight:600;
+  background:#fff;
+  padding:0.5rem 1.5rem;
+  border-radius:1rem;
+  border:1px solid #1f2937;
+  cursor:pointer;
+  transition:0.3s;
+}
+.nav button.active,
+.nav button:hover {
+  background:#1f2937;
+  color:white;
+}
+
+.grid-container {
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+  gap:1rem;
+  padding:0 2rem 2rem 2rem;
+}
+
+.grid-container img {
+  width:100%;
+  height:auto;
+  border-radius:1rem;
+  cursor:pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.grid-container img:hover {
+  transform: scale(1.05);
+  box-shadow:0 10px 20px rgba(0,0,0,0.2);
+}
+
+/* Модальное окно */
+#modal {
+  display:none;
+  position:fixed;
+  top:0; left:0;
+  width:100%; height:100%;
+  background: rgba(0,0,0,0.8);
+  justify-content:center;
+  align-items:center;
+  z-index:50;
+}
+#modal img {
+  max-width:90%;
+  max-height:90%;
+  object-fit:contain;
+  border-radius:0.5rem;
+}
+
+/* Адаптив */
+@media (max-width:768px){
+  .grid-container { padding:0 1rem 1rem 1rem; }
+}
 </style>
 </head>
-<body class="text-gray-800">
+<body>
 
-<header class="fixed top-0 w-full glass z-50 shadow-sm">
-  <div class="max-w-6xl mx-auto flex items-center justify-between p-4">
-    <h1 class="text-2xl font-bold tracking-wide uppercase text-gray-700">
-      Людмила Сорокина <span class="text-gray-500">Фотограф</span>
-    </h1>
-    <nav class="space-x-6 text-sm font-medium">
-      <a href="index.html" class="hover:text-gray-500">Главная</a>
-      <a href="portfolio.html" class="text-gray-900 font-semibold">Портфолио</a>
-      <a href="about.html" class="hover:text-gray-500">Обо мне</a>
-      <a href="contacts.html" class="hover:text-gray-500">Контакты</a>
-    </nav>
-  </div>
-</header>
+<h1>Портфолио</h1>
 
-<section class="pt-32 pb-20 fade-in max-w-6xl mx-auto px-4 text-center">
-<h2 class="text-4xl font-semibold mb-6">Портфолио</h2>
-<p class="text-gray-600 mb-10 max-w-2xl mx-auto">Каждая съёмка — история через свет, тень и эмоции. Выберите категорию:</p>
-
-<div class="flex justify-center gap-4 mb-12">
-  <button class="filter-btn bg-gray-800 text-white px-4 py-2 rounded-xl hover:bg-gray-700" data-category="all">Все</button>
-  <button class="filter-btn bg-gray-200 text-gray-800 px-4 py-2 rounded-xl hover:bg-gray-300" data-category="family">Семья</button>
-  <button class="filter-btn bg-gray-200 text-gray-800 px-4 py-2 rounded-xl hover:bg-gray-300" data-category="commercial">Коммерция</button>
-  <button class="filter-btn bg-gray-200 text-gray-800 px-4 py-2 rounded-xl hover:bg-gray-300" data-category="events">События</button>
+<div class="nav">
+  <button class="active" data-category="commercial">Коммерция</button>
+  <button data-category="events">События</button>
+  <button data-category="family">Семья</button>
+  <button data-category="portrait">Портрет</button>
+  <button data-category="all">Все фото</button>
 </div>
 
-<div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 relative">
-
-<!-- Семья 9 фото -->
-<div class="gallery-item family"><img src="images/family1.jpg" alt="family1"></div>
-<div class="gallery-item family"><img src="images/family2.jpg" alt="family2"></div>
-<div class="gallery-item family"><img src="images/family3.jpg" alt="family3"></div>
-<div class="gallery-item family"><img src="images/family4.jpg" alt="family4"></div>
-<div class="gallery-item family"><img src="images/family5.jpg" alt="family5"></div>
-<div class="gallery-item family"><img src="images/family6.jpg" alt="family6"></div>
-<div class="gallery-item family"><img src="images/family7.jpg" alt="family7"></div>
-<div class="gallery-item family"><img src="images/family8.jpg" alt="family8"></div>
-<div class="gallery-item family"><img src="images/family9.jpg" alt="family9"></div>
-
-<!-- Коммерция 12 фото -->
-<div class="gallery-item commercial"><img src="images/commercial1.jpg" alt="commercial1"></div>
-<div class="gallery-item commercial"><img src="images/commercial2.jpg" alt="commercial2"></div>
-<div class="gallery-item commercial"><img src="images/commercial3.jpg" alt="commercial3"></div>
-<div class="gallery-item commercial"><img src="images/commercial4.jpg" alt="commercial4"></div>
-
-
-<div class="gallery-item commercial"><img src="images/commercial5.jpg" alt="commercial5"></div>
-<div class="gallery-item commercial"><img src="images/commercial6.jpg" alt="commercial6"></div>
-<div class="gallery-item commercial"><img src="images/commercial7.jpg" alt="commercial7"></div>
-<div class="gallery-item commercial"><img src="images/commercial8.jpg" alt="commercial8"></div>
-<div class="gallery-item commercial"><img src="images/commercial9.jpg" alt="commercial9"></div>
-<div class="gallery-item commercial"><img src="images/commercial10.jpg" alt="commercial10"></div>
-<div class="gallery-item commercial"><img src="images/commercial11.jpg" alt="commercial11"></div>
-<div class="gallery-item commercial"><img src="images/commercial12.jpg" alt="commercial12"></div>
-
-<!-- События 6 фото -->
-<div class="gallery-item events"><img src="images/events1.jpg" alt="events1"></div>
-<div class="gallery-item events"><img src="images/events2.jpg" alt="events2"></div>
-<div class="gallery-item events"><img src="images/events3.jpg" alt="events3"></div>
-<div class="gallery-item events"><img src="images/events4.jpg" alt="events4"></div>
-<div class="gallery-item events"><img src="images/events5.jpg" alt="events5"></div>
-<div class="gallery-item events"><img src="images/events6.jpg" alt="events6"></div>
-
+<div class="grid-container" id="gallery">
+  <!-- Фото через JS -->
 </div>
-</section>
 
-<footer class="bg-white border-t border-gray-200 py-8 text-center text-sm text-gray-500">
-<p>© 2025 Людмила Сорокина. Все права защищены.</p>
-</footer>
+<!-- Модальное окно -->
+<div id="modal">
+  <img src="" alt="Фото">
+</div>
 
 <script>
-const filterBtns = document.querySelectorAll('.filter-btn');
-const items = document.querySelectorAll('.gallery-item');
+// Названия файлов
+const images = {
+  commercial: ["commercial1.jpg","commercial2.jpg","commercial3.jpg","commercial4.jpg","commercial5.jpg","commercial6.jpg","commercial7.jpg","commercial8.jpg","commercial9.jpg","commercial10.jpg","commercial11.jpg","commercial12.jpg"],
+  events: ["events1.jpg","events2.jpg","events3.jpg","events4.jpg","events5.jpg","events6.jpg"],
+  family: ["family1.jpg","family2.jpg","family3.jpg","family4.jpg","family5.jpg","family6.jpg","family7.jpg","family8.jpg","family9.jpg"],
+  portrait: ["portrait.jpg"]
+};
 
-filterBtns.forEach(btn => {
-  btn.addEventListener('click', () => {
-    const category = btn.getAttribute('data-category');
-    filterBtns.forEach(b => b.classList.replace('bg-gray-800','bg-gray-200'));
-    filterBtns.forEach(b => b.classList.replace('text-white','text-gray-800'));
-    btn.classList.add('bg-gray-800');
-    btn.classList.add('text-white');
+// Все фото для вкладки "Все фото"
+const allImages = [...images.commercial, ...images.events, ...images.family, ...images.portrait];
 
-    items.forEach(item => {
-      if(category==='all' || item.classList.contains(category)){
-        item.classList.remove('hidden');
-      } else {
-        item.classList.add('hidden');
-      }
+const gallery = document.getElementById('gallery');
+const modal = document.getElementById('modal');
+const modalImg = modal.querySelector('img');
+
+function showImages(category){
+  gallery.innerHTML = "";
+  let imgs = [];
+  if(category === "all"){
+    imgs = [...allImages].sort(()=>Math.random()-0.5); // перемешка
+  } else {
+    imgs = images[category];
+  }
+  imgs.forEach(src=>{
+    const img = document.createElement("img");
+    img.src = "images/"+src;
+    img.alt = src;
+    img.addEventListener('click', ()=>{
+      modal.style.display = "flex";
+      modalImg.src = img.src;
     });
-
-    setTimeout(() => { animateVisible(); }, 50);
-  });
-});
-
-function animateVisible(){
-  const windowBottom = window.innerHeight + window.scrollY;
-  items.forEach(item => {
-    if(!item.classList.contains('hidden')){
-      const itemTop = item.offsetTop;
-      if(windowBottom > itemTop + 100){
-        item.classList.add('show');
-      } else {
-        item.classList.remove('show');
-      }
-    }
+    gallery.appendChild(img);
   });
 }
 
-window.addEventListener('scroll', animateVisible);
-window.addEventListener('load', animateVisible);
+// Закрытие модального окна
+modal.addEventListener('click', ()=>{
+  modal.style.display = "none";
+  modalImg.src = "";
+});
+
+// Навигация
+const buttons = document.querySelectorAll(".nav button");
+buttons.forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    buttons.forEach(b=>b.classList.remove("active"));
+    btn.classList.add("active");
+    showImages(btn.dataset.category);
+  });
+});
+
+// Показать по умолчанию коммерция
+showImages("commercial");
 </script>
 
 </body>
