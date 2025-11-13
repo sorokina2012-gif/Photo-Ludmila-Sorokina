@@ -17,12 +17,12 @@ body {
   padding:0;
 }
 
-/* Верхнее меню */
+/* Верхнее меню смещено вправо */
 header {
   display:flex;
-  justify-content:center;
+  justify-content:flex-end;
   gap:2rem;
-  padding:1rem;
+  padding:1rem 3rem 1rem 1rem;
   background:#ffffff;
   box-shadow:0 2px 8px rgba(0,0,0,0.05);
   position:sticky;
@@ -82,7 +82,7 @@ header a:hover {
 }
 .gallery-wrapper img.focus {
   position: relative;
-  z-index:10;
+  z-index:20; /* выше фона */
   max-width:80%;
   max-height:70vh;
   border-radius:1rem;
@@ -100,8 +100,8 @@ header a:hover {
   width:110%;
   height:auto;
   transform:translate(-50%, -50%);
-  filter: blur(20px) brightness(0.6);
-  z-index:1;
+  filter: blur(15px) brightness(0.6);
+  z-index:10;
   transition: opacity 0.5s;
 }
 
@@ -116,7 +116,7 @@ header a:hover {
   padding:0.5rem 1rem;
   border-radius:50%;
   cursor:pointer;
-  z-index:20;
+  z-index:30;
   user-select:none;
   transition:0.3s;
 }
@@ -147,7 +147,7 @@ header a:hover {
 /* Адаптив */
 @media (max-width:768px){
   .gallery-wrapper img.focus { max-width:90%; max-height:50vh; }
-  header { gap:1rem; flex-wrap:wrap; }
+  header { gap:1rem; flex-wrap:wrap; padding:1rem 1rem 1rem 1rem; }
   .arrow { font-size:1.5rem; padding:0.3rem 0.6rem; }
 }
 </style>
@@ -182,7 +182,7 @@ header a:hover {
 const images = {
   commercial: ["commercial1.jpg","commercial2.jpg","commercial3.jpg","commercial4.jpg","commercial5.jpg","commercial6.jpg","commercial7.jpg","commercial8.jpg","commercial9.jpg","commercial10.jpg","commercial11.jpg","commercial12.jpg"],
 
-Ludmila, [13.11.2025 14:00]
+Ludmila, [13.11.2025 14:04]
 eventsFamily: ["events-family1.jpg","events-family2.jpg","events-family3.jpg","events-family4.jpg","events-family5.jpg","events-family6.jpg","events-family7.jpg","events-family8.jpg","events-family9.jpg","events-family10.jpg","events-family11.jpg","events-family12.jpg","events-family13.jpg","events-family14.jpg","events-family15.jpg"]
 };
 const allImages = [...images.commercial, ...images.eventsFamily];
@@ -199,27 +199,32 @@ const leftArrow = document.querySelector('.arrow.left');
 const rightArrow = document.querySelector('.arrow.right');
 
 function updateGallery() {
+  // удаляем старые фото
   gallery.querySelectorAll('img').forEach(img=>img.remove());
   if(currentImgs.length===0) return;
+
   const mainSrc = currentImgs[currentIndex];
+
+  // Главная фотка
   const mainImg = document.createElement('img');
   mainImg.src = "images/"+mainSrc;
   mainImg.alt = mainSrc;
   mainImg.classList.add('focus');
   mainImg.addEventListener('click', ()=>{ modal.style.display='flex'; modalImg.src=mainImg.src; });
   gallery.appendChild(mainImg);
+
   // Размытый фон
-  for(let i=0;i<currentImgs.length;i++){
-    if(i===currentIndex) continue;
+  currentImgs.forEach((imgSrc,i)=>{
+    if(i===currentIndex) return;
     const bgImg = document.createElement('img');
-    bgImg.src = "images/"+currentImgs[i];
-    bgImg.alt = currentImgs[i];
+    bgImg.src = "images/"+imgSrc;
+    bgImg.alt = imgSrc;
     bgImg.classList.add('bg-blur');
     gallery.appendChild(bgImg);
-  }
+  });
 }
 
-// Навигация стрелками
+// Стрелки
 leftArrow.addEventListener('click', ()=>{
   currentIndex = (currentIndex-1+currentImgs.length)%currentImgs.length;
   updateGallery();
@@ -229,13 +234,13 @@ rightArrow.addEventListener('click', ()=>{
   updateGallery();
 });
 
-// Закрытие модального окна
+// Модальное окно
 modal.addEventListener('click', ()=>{
   modal.style.display = "none";
   modalImg.src = "";
 });
 
-// Вкладки навигации
+// Вкладки
 const buttons = document.querySelectorAll(".nav button");
 buttons.forEach(btn=>{
   btn.addEventListener('click', ()=>{
