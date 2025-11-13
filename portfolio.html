@@ -1,264 +1,4 @@
-
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Портфолио — Людмила Сорокина фотограф </title>
-<script src="https://cdn.tailwindcss.com"></script>
-<style>
-body { background: linear-gradient(135deg, #f8fafc, #e8f0f8); font-family: 'Inter', sans-serif; }
-.glass { background: rgba(255,255,255,0.45); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.25); }
-.fade-in { animation: fadeIn 1.2s ease-in-out; }
-@keyframes fadeIn { from {opacity:0; transform:translateY(20px);} to {opacity:1; transform:translateY(0);} }
-
-.gallery-item {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-  position: relative;
-}
-.gallery-item.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.gallery-item.hidden {
-  opacity: 0 !important;
-  transform: scale(0.95);
-  pointer-events: none;
-  position: absolute;
-}
-</style>
-</head>
-<body class="text-gray-800">
-
-<!-- Шапка -->
-<header class="fixed top-0 w-full glass z-50 shadow-sm">
-  <div class="max-w-6xl mx-auto flex items-center justify-between p-4">
-    <h1 class="text-2xl font-bold tracking-wide uppercase text-gray-700">
-      Ludmila Sorokina <span class="text-gray-500">Photography</span>
-    </h1>
-    <nav class="space-x-6 text-sm font-medium">
-      <a href="index.html" class="hover:text-gray-500">Главная</a>
-      <a href="portfolio.html" class="text-gray-900 font-semibold">Портфолио</a>
-      <a href="about.html" class="hover:text-gray-500">Обо мне</a>
-      <a href="contacts.html" class="hover:text-gray-500">Контакты</a>
-    </nav>
-  </div>
-</header>
-
-<section class="pt-32 pb-20 fade-in max-w-6xl mx-auto px-4 text-center">
-<h2 class="text-4xl font-semibold mb-6">Портфолио</h2>
-<p class="text-gray-600 mb-10 max-w-2xl mx-auto">Каждая съёмка — история через свет, тень и эмоции. Выберите категорию:</p>
-
-<!-- Фильтры -->
-<div class="flex justify-center gap-4 mb-12">
-  <button class="filter-btn bg-gray-800 text-white px-4 py-2 rounded-xl hover:bg-gray-700" data-category="all">Все</button>
-  <button class="filter-btn bg-gray-200 text-gray-800 px-4 py-2 rounded-xl hover:bg-gray-300" data-category="commercial">Коммерция</button>
-  <button class="filter-btn bg-gray-200 text-gray-800 px-4 py-2 rounded-xl hover:bg-gray-300" data-category="events">События</button>
-  <button class="filter-btn bg-gray-200 text-gray-800 px-4 py-2 rounded-xl hover:bg-gray-300" data-category="family">Семья</button>
-  <button class="filter-btn bg-gray-200 text-gray-800 px-4 py-2 rounded-xl hover:bg-gray-300" data-category="portrait">Портрет</button>
-</div>
-
-<!-- Галерея -->
-<div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 relative">
-
-<!-- Коммерция -->
-${Array.from({length:12}, (_,i) => 
-  <div class="gallery-item commercial relative overflow-hidden rounded-2xl shadow-lg group">
-    <img src="/images/commercial${i+1}.jpg" alt="Коммерция ${i+1}" class="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-110">
-  </div>
-).join('')}
-
-<!-- События -->
-${Array.from({length:6}, (_,i) => 
-  <div class="gallery-item events relative overflow-hidden rounded-2xl shadow-lg group">
-    <img src="/images/events${i+1}.jpg" alt="Событие ${i+1}" class="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-110">
-  </div>
-).join('')}
-
-<!-- Семья -->
-${Array.from({length:9}, (_,i) => 
-  <div class="gallery-item family relative overflow-hidden rounded-2xl shadow-lg group">
-    <img src="/images/family${i+1}.jpg" alt="Семья ${i+1}" class="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-110">
-  </div>
-).join('')}
-
-<!-- Портрет -->
-<div class="gallery-item portrait relative overflow-hidden rounded-2xl shadow-lg group">
-  <img src="/images/portrait.jpg" alt="Портрет" class="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-110">
-</div>
-
-</div>
-</section>
-
-
-<!-- Футер -->
-<footer class="bg-white border-t border-gray-200 py-8 text-center text-sm text-gray-500">
-<p>© 2025 Ludmila Sorokina Photography. Все права защищены.</p>
-</footer>
-
-<script>
-// Фильтрация галереи
-const filterBtns = document.querySelectorAll('.filter-btn');
-const items = document.querySelectorAll('.gallery-item');
-
-filterBtns.forEach(btn => {
-  btn.addEventListener('click', () => {
-    const category = btn.getAttribute('data-category');
-
-    // Смена активной кнопки
-    filterBtns.forEach(b => b.classList.replace('bg-gray-800','bg-gray-200'));
-    filterBtns.forEach(b => b.classList.replace('text-white','text-gray-800'));
-    btn.classList.add('bg-gray-800');
-    btn.classList.add('text-white');
-
-    items.forEach(item => {
-      if(category === 'all' || item.classList.contains(category)){
-        item.classList.remove('hidden');
-      } else {
-        item.classList.add('hidden');
-      }
-    });
-
-    // Появление видимых элементов
-    setTimeout(() => { animateVisible(); }, 50);
-  });
-});
-
-// Анимация появления при скролле
-function animateVisible(){
-  const windowBottom = window.innerHeight + window.scrollY;
-  items.forEach(item => {
-    if(!item.classList.contains('hidden')){
-      const itemTop = item.offsetTop;
-      if(windowBottom > itemTop + 100){
-        item.classList.add('show');
-      } else {
-        item.classList.remove('show');
-      }
-    }
-  });
-}
-
-window.addEventListener('scroll', animateVisible);
-window.addEventListener('load', animateVisible);
-</script>
-
-</body>
-</html>
-
-
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ludmila Sorokina Photography</title>
-<script src="https://cdn.tailwindcss.com"></script>
-<style>
-body { background: linear-gradient(135deg, #f8fafc, #e8f0f8); font-family: 'Inter', sans-serif; }
-.glass { background: rgba(255,255,255,0.45); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.25); }
-.hero { height: 100vh; background: url('/images/new-hero.jpg') center/cover no-repeat; display:flex; align-items:center; justify-content:center; }
-.hero-text { background: rgba(255,255,255,0.45); padding:2rem; border-radius:1rem; backdrop-filter: blur(12px); text-align:center; }
-.hero-text h1 { font-size:3rem; font-weight:bold; color:#333; }
-.hero-text p { font-size:1.2rem; color:#555; margin-top:1rem; }
-</style>
-</head>
-<body>
-
-<!-- Шапка -->
-<header class="fixed top-0 w-full glass z-50 shadow-sm">
-  <div class="max-w-6xl mx-auto flex items-center justify-between p-4">
-    <h1 class="text-2xl font-bold tracking-wide uppercase text-gray-700">
-      Ludmila Sorokina <span class="text-gray-500">Photography</span>
-    </h1>
-    <nav class="space-x-6 text-sm font-medium">
-      <a href="index.html" class="text-gray-900 font-semibold">Главная</a>
-      <a href="portfolio.html" class="hover:text-gray-500">Портфолио</a>
-      <a href="about.html" class="hover:text-gray-500">Обо мне</a>
-      <a href="contacts.html" class="hover:text-gray-500">Контакты</a>
-    </nav>
-  </div>
-</header>
-
-<!-- Герой-секция -->
-<section class="hero">
-  <div class="hero-text">
-    <h1>Ludmila Sorokina</h1>
-    <p>Профессиональная фотосъёмка: коммерция, события, семья, портрет</p>
-  </div>
-</section>
-
-<!-- Футер -->
-<footer class="bg-white border-t border-gray-200 py-8 text-center text-sm text-gray-500">
-<p>© 2025 Ludmila Sorokina Photography. Все права защищены.</p>
-</footer>
-
-</body>
-</html>
-
-Ludmila, [13.11.2025 11:34]
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Обо мне — Ludmila Sorokina Photography</title>
-<script src="https://cdn.tailwindcss.com"></script>
-<style>
-body { background: linear-gradient(135deg, #f8fafc, #e8f0f8); font-family: 'Inter', sans-serif; }
-.glass { background: rgba(255,255,255,0.45); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.25); }
-.hero-about { height: 40vh; background: url('/images/background.jpg') center/cover no-repeat; display:flex; align-items:center; justify-content:center; }
-.hero-text { background: rgba(255,255,255,0.45); padding:2rem; border-radius:1rem; backdrop-filter: blur(12px); text-align:center; }
-.hero-text h1 { font-size:2.5rem; font-weight:bold; color:#333; }
-.hero-text p { font-size:1.1rem; color:#555; margin-top:1rem; }
-.section { max-width:6xl; margin:3rem auto; padding:0 1rem; }
-.section h2 { font-size:2rem; font-weight-semibold; margin-bottom:1rem; }
-.section p { font-size:1rem; color:#555; line-height:1.7; }
-</style>
-</head>
-<body>
-
-<!-- Шапка -->
-<header class="fixed top-0 w-full glass z-50 shadow-sm">
-  <div class="max-w-6xl mx-auto flex items-center justify-between p-4">
-    <h1 class="text-2xl font-bold tracking-wide uppercase text-gray-700">
-      Ludmila Sorokina <span class="text-gray-500">Photography</span>
-    </h1>
-    <nav class="space-x-6 text-sm font-medium">
-      <a href="index.html" class="hover:text-gray-500">Главная</a>
-      <a href="portfolio.html" class="hover:text-gray-500">Портфолио</a>
-      <a href="about.html" class="text-gray-900 font-semibold">Обо мне</a>
-      <a href="contacts.html" class="hover:text-gray-500">Контакты</a>
-    </nav>
-  </div>
-</header>
-
-<!-- Герой-секция -->
-<section class="hero-about">
-  <div class="hero-text">
-    <h1>Обо мне</h1>
-  </div>
-</section>
-
-<!-- Контент -->
-<section class="section fade-in">
-  <h2>Привет! Я Людмила</h2>
-  <p>Я профессиональный фотограф с более чем 10-летним опытом работы в коммерческой и семейной фотосъемке, событиях и портретах. Моя цель — через фотографии передать эмоции, атмосферу и уникальность каждого момента.</p>
-  <p>Каждая съемка для меня — это маленькая история, которую я рассказываю через свет, композицию и настроение. Люблю естественный стиль, мягкие цвета и атмосферные кадры, которые живут в памяти и сердце.</p>
-  <p>Работаю как с коммерческими проектами, так и с индивидуальными клиентами, создавая фотографии, которые вдохновляют и запоминаются навсегда.</p>
-</section>
-
-<footer class="bg-white border-t border-gray-200 py-8 text-center text-sm text-gray-500">
-<p>© 2025 Ludmila Sorokina Photography. Все права защищены.</p>
-</footer>
-
-</body>
-</html>
-
-
+Ludmila, [13.11.2025 12:03]
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -267,20 +7,17 @@ body { background: linear-gradient(135deg, #f8fafc, #e8f0f8); font-family: 'Inte
 <title>Портфолио — Ludmila Sorokina Photography</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <style>
-body { background: linear-gradient(135deg, #f8fafc, #e8f0f8); font-family: 'Inter', sans-serif; }
+body { background: linear-gradient(135deg, #f8fafc, #e8f0f8); font-family: 'Inter', sans-serif; margin:0;}
 .glass { background: rgba(255,255,255,0.45); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.25); }
-
 .gallery-item { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; position: relative; }
 .gallery-item.show { opacity: 1; transform: translateY(0); }
 .gallery-item.hidden { opacity: 0 !important; transform: scale(0.95); pointer-events: none; position: absolute; }
-
 .fade-in { animation: fadeIn 1.2s ease-in-out; }
 @keyframes fadeIn { from {opacity:0; transform:translateY(20px);} to {opacity:1; transform:translateY(0);} }
 </style>
 </head>
 <body class="text-gray-800">
 
-<!-- Шапка -->
 <header class="fixed top-0 w-full glass z-50 shadow-sm">
   <div class="max-w-6xl mx-auto flex items-center justify-between p-4">
     <h1 class="text-2xl font-bold tracking-wide uppercase text-gray-700">
@@ -299,7 +36,6 @@ body { background: linear-gradient(135deg, #f8fafc, #e8f0f8); font-family: 'Inte
 <h2 class="text-4xl font-semibold mb-6">Портфолио</h2>
 <p class="text-gray-600 mb-10 max-w-2xl mx-auto">Каждая съёмка — история через свет, тень и эмоции. Выберите категорию:</p>
 
-<!-- Фильтры -->
 <div class="flex justify-center gap-4 mb-12">
   <button class="filter-btn bg-gray-800 text-white px-4 py-2 rounded-xl hover:bg-gray-700" data-category="all">Все</button>
   <button class="filter-btn bg-gray-200 text-gray-800 px-4 py-2 rounded-xl hover:bg-gray-300" data-category="commercial">Коммерция</button>
@@ -308,46 +44,45 @@ body { background: linear-gradient(135deg, #f8fafc, #e8f0f8); font-family: 'Inte
   <button class="filter-btn bg-gray-200 text-gray-800 px-4 py-2 rounded-xl hover:bg-gray-300" data-category="portrait">Портрет</button>
 </div>
 
-<!-- Галерея -->
 <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 relative">
 
 <!-- Коммерция 12 фото -->
-<div class="gallery-item commercial"><img src="/images/commercial1.jpg" alt="Коммерция 1" class="w-full h-80 object-cover rounded-2xl shadow-lg"></div>
-<div class="gallery-item commercial"><img src="/images/commercial2.jpg" alt="Коммерция 2" class="w-full h-80 object-cover rounded-2xl shadow-lg"></div>
-<div class="gallery-item commercial"><img src="/images/commercial3.jpg" alt="Коммерция 3" class="w-full h-80 object-cover rounded-2xl shadow-lg"></div>
-<div class="gallery-item commercial"><img src="/images/commercial4.jpg" alt="Коммерция 4" class="w-full h-80 object-cover rounded-2xl shadow-lg"></div>
-<div class="gallery-item commercial"><img src="/images/commercial5.jpg" alt="Коммерция 5" class="w-full h-80 object-cover rounded-2xl shadow-lg"></div>
-<div class="gallery-item commercial"><img src="/images/commercial6.jpg" alt="Коммерция 6" class="w-full h-80 object-cover rounded-2xl shadow-lg"></div>
-<div class="gallery-item commercial"><img src="/images/commercial7.jpg" alt="Коммерция 7" class="w-full h-80 object-cover rounded-2xl shadow-lg"></div>
+<div class="gallery-item commercial"><img src="images/commercial1.jpg" alt="Коммерция 1" class="w-full h-80 object-cover rounded-2xl shadow-lg"></div>
+<div class="gallery-item commercial"><img src="images/commercial2.jpg" alt="Коммерция 2" class="w-full h-80 object-cover rounded-2xl shadow-lg"></div>
+<div class="gallery-item commercial"><img src="images/commercial3.jpg" alt="Коммерция 3" class="w-full h-80 object-cover rounded-2xl shadow-lg"></div>
+<div class="gallery-item commercial"><img src="images/commercial4.jpg" alt="Коммерция 4" class="w-full h-80 object-cover rounded-2xl shadow-lg"></div>
+<div class="gallery-item commercial"><img src="images/commercial5.jpg" alt="Коммерция 5" class="w-full h-80 object-cover rounded-2xl shadow-lg"></div>
+<div class="gallery-item commercial"><img src="images/commercial6.jpg" alt="Коммерция 6" class="w-full h-80 object-cover rounded-2xl shadow-lg"></div>
+<div class="gallery-item commercial"><img src="images/commercial7.jpg" alt="Коммерция 7" class="w-full h-80 object-cover rounded-2xl shadow-lg"></div>
+<div class="gallery-item commercial"><img src="images/commercial8.jpg" alt="Коммерция 8" class="w-full h-80 object-cover rounded-2xl shadow-lg"></div>
 
-Ludmila, [13.11.2025 11:36]
-<div class="gallery-item commercial"><img src="/images/commercial8.jpg" alt="Коммерция 8" class="w-full h-80 object-cover rounded-2xl shadow-lg"></div>
-<div class="gallery-item commercial"><img src="/images/commercial9.jpg" alt="Коммерция 9" class="w-full h-80 object-cover rounded-2xl shadow-lg"></div>
-<div class="gallery-item commercial"><img src="/images/commercial10.jpg" alt="Коммерция 10" class="w-full h-80 object-cover rounded-2xl shadow-lg"></div>
-<div class="gallery-item commercial"><img src="/images/commercial11.jpg" alt="Коммерция 11" class="w-full h-80 object-cover rounded-2xl shadow-lg"></div>
-<div class="gallery-item commercial"><img src="/images/commercial12.jpg" alt="Коммерция 12" class="w-full h-80 object-cover rounded-2xl shadow-lg"></div>
+Ludmila, [13.11.2025 12:03]
+<div class="gallery-item commercial"><img src="images/commercial9.jpg" alt="Коммерция 9" class="w-full h-80 object-cover rounded-2xl shadow-lg"></div>
+<div class="gallery-item commercial"><img src="images/commercial10.jpg" alt="Коммерция 10" class="w-full h-80 object-cover rounded-2xl shadow-lg"></div>
+<div class="gallery-item commercial"><img src="images/commercial11.jpg" alt="Коммерция 11" class="w-full h-80 object-cover rounded-2xl shadow-lg"></div>
+<div class="gallery-item commercial"><img src="images/commercial12.jpg" alt="Коммерция 12" class="w-full h-80 object-cover rounded-2xl shadow-lg"></div>
 
 <!-- События 6 фото -->
-<div class="gallery-item events"><img src="/images/events1.jpg" alt="Событие 1" class="w-full h-80 object-cover rounded-2xl shadow-lg"></div>
-<div class="gallery-item events"><img src="/images/events2.jpg" alt="Событие 2" class="w-full h-80 object-cover rounded-2xl shadow-lg"></div>
-<div class="gallery-item events"><img src="/images/events3.jpg" alt="Событие 3" class="w-full h-80 object-cover rounded-2xl shadow-lg"></div>
-<div class="gallery-item events"><img src="/images/events4.jpg" alt="Событие 4" class="w-full h-80 object-cover rounded-2xl shadow-lg"></div>
-<div class="gallery-item events"><img src="/images/events5.jpg" alt="Событие 5" class="w-full h-80 object-cover rounded-2xl shadow-lg"></div>
-<div class="gallery-item events"><img src="/images/events6.jpg" alt="Событие 6" class="w-full h-80 object-cover rounded-2xl shadow-lg"></div>
+<div class="gallery-item events"><img src="images/events1.jpg" alt="Событие 1" class="w-full h-80 object-cover rounded-2xl shadow-lg"></div>
+<div class="gallery-item events"><img src="images/events2.jpg" alt="Событие 2" class="w-full h-80 object-cover rounded-2xl shadow-lg"></div>
+<div class="gallery-item events"><img src="images/events3.jpg" alt="Событие 3" class="w-full h-80 object-cover rounded-2xl shadow-lg"></div>
+<div class="gallery-item events"><img src="images/events4.jpg" alt="Событие 4" class="w-full h-80 object-cover rounded-2xl shadow-lg"></div>
+<div class="gallery-item events"><img src="images/events5.jpg" alt="Событие 5" class="w-full h-80 object-cover rounded-2xl shadow-lg"></div>
+<div class="gallery-item events"><img src="images/events6.jpg" alt="Событие 6" class="w-full h-80 object-cover rounded-2xl shadow-lg"></div>
 
 <!-- Семья 9 фото -->
-<div class="gallery-item family"><img src="/images/family1.jpg" alt="Семья 1" class="w-full h-80 object-cover rounded-2xl shadow-lg"></div>
-<div class="gallery-item family"><img src="/images/family2.jpg" alt="Семья 2" class="w-full h-80 object-cover rounded-2xl shadow-lg"></div>
-<div class="gallery-item family"><img src="/images/family3.jpg" alt="Семья 3" class="w-full h-80 object-cover rounded-2xl shadow-lg"></div>
-<div class="gallery-item family"><img src="/images/family4.jpg" alt="Семья 4" class="w-full h-80 object-cover rounded-2xl shadow-lg"></div>
-<div class="gallery-item family"><img src="/images/family5.jpg" alt="Семья 5" class="w-full h-80 object-cover rounded-2xl shadow-lg"></div>
-<div class="gallery-item family"><img src="/images/family6.jpg" alt="Семья 6" class="w-full h-80 object-cover rounded-2xl shadow-lg"></div>
-<div class="gallery-item family"><img src="/images/family7.jpg" alt="Семья 7" class="w-full h-80 object-cover rounded-2xl shadow-lg"></div>
-<div class="gallery-item family"><img src="/images/family8.jpg" alt="Семья 8" class="w-full h-80 object-cover rounded-2xl shadow-lg"></div>
-<div class="gallery-item family"><img src="/images/family9.jpg" alt="Семья 9" class="w-full h-80 object-cover rounded-2xl shadow-lg"></div>
+<div class="gallery-item family"><img src="images/family1.jpg" alt="Семья 1" class="w-full h-80 object-cover rounded-2xl shadow-lg"></div>
+<div class="gallery-item family"><img src="images/family2.jpg" alt="Семья 2" class="w-full h-80 object-cover rounded-2xl shadow-lg"></div>
+<div class="gallery-item family"><img src="images/family3.jpg" alt="Семья 3" class="w-full h-80 object-cover rounded-2xl shadow-lg"></div>
+<div class="gallery-item family"><img src="images/family4.jpg" alt="Семья 4" class="w-full h-80 object-cover rounded-2xl shadow-lg"></div>
+<div class="gallery-item family"><img src="images/family5.jpg" alt="Семья 5" class="w-full h-80 object-cover rounded-2xl shadow-lg"></div>
+<div class="gallery-item family"><img src="images/family6.jpg" alt="Семья 6" class="w-full h-80 object-cover rounded-2xl shadow-lg"></div>
+<div class="gallery-item family"><img src="images/family7.jpg" alt="Семья 7" class="w-full h-80 object-cover rounded-2xl shadow-lg"></div>
+<div class="gallery-item family"><img src="images/family8.jpg" alt="Семья 8" class="w-full h-80 object-cover rounded-2xl shadow-lg"></div>
+<div class="gallery-item family"><img src="images/family9.jpg" alt="Семья 9" class="w-full h-80 object-cover rounded-2xl shadow-lg"></div>
 
 <!-- Портрет -->
-<div class="gallery-item portrait"><img src="/images/portrait.jpg" alt="Портрет" class="w-full h-80 object-cover rounded-2xl shadow-lg"></div>
+<div class="gallery-item portrait"><img src="images/portrait.jpg" alt="Портрет" class="w-full h-80 object-cover rounded-2xl shadow-lg"></div>
 
 </div>
 </section>
@@ -380,7 +115,7 @@ filterBtns.forEach(btn => {
   });
 });
 
-Ludmila, [13.11.2025 11:36]
+Ludmila, [13.11.2025 12:03]
 function animateVisible(){
   const windowBottom = window.innerHeight + window.scrollY;
   items.forEach(item => {
@@ -401,4 +136,3 @@ window.addEventListener('load', animateVisible);
 
 </body>
 </html>
-
