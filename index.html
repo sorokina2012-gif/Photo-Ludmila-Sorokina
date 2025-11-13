@@ -5,107 +5,84 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Людмила Сорокина — Фотограф</title>
 
+<!-- Tailwind CSS -->
 <script src="https://cdn.tailwindcss.com"></script>
+
+<!-- Шрифты премиальные -->
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+
+<!-- Three.js -->
+<script src="https://cdn.jsdelivr.net/npm/three@0.158.0/build/three.min.js"></script>
 
 <style>
 body, html {
   margin:0; padding:0;
+  height:100%;
   font-family:'Inter', sans-serif;
-  min-height:100%;
-  overflow-x:hidden;
-  background: linear-gradient(135deg, #fdf6f0, #f0f4f8);
-  position: relative;
+  overflow:hidden;
+  background:#fdf6f0;
 }
 
-/* Геометрическая анимация */
-.shape {
-  position: absolute;
-  border-radius: 50%;
-  opacity: 0.15;
-  animation: float 20s linear infinite;
-  pointer-events:none;
-}
-.shape1 { width:120px; height:120px; background:#fbbf24; top:10%; left:5%; animation-delay:0s;}
-.shape2 { width:80px; height:80px; background:#3b82f6; top:30%; left:80%; animation-delay:5s;}
-.shape3 { width:150px; height:150px; background:#10b981; top:60%; left:20%; animation-delay:10s;}
-.shape4 { width:100px; height:100px; background:#f472b6; top:75%; left:70%; animation-delay:15s;}
-
-@keyframes float {
-  0% { transform: translateY(0) rotate(0deg);}
-  50% { transform: translateY(-30px) rotate(180deg);}
-  100% { transform: translateY(0) rotate(360deg);}
+/* Canvas 3D */
+#bgCanvas {
+  position:fixed;
+  top:0; left:0;
+  width:100%; height:100%;
+  z-index:-1;
 }
 
 /* Hero */
 .hero {
+  position:relative;
+  height:100vh;
   display:flex;
-  align-items:center;
-  justify-content:center;
   flex-direction:column;
+  justify-content:center;
+  align-items:center;
   text-align:center;
-  min-height:100vh;
   padding:2rem;
-  gap:2rem;
-  position: relative;
   z-index:10;
 }
-
 .hero h1 {
   font-family:'Playfair Display', serif;
   font-weight:900;
-  font-size: clamp(2.5rem,8vw,4rem);
-  margin-bottom:0.5rem;
+  font-size: clamp(3rem,8vw,5rem);
   color:#1f2937;
-  opacity:0;
-  transform:translateY(40px);
-  animation: fadeUp 1s ease forwards;
+  text-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  margin-bottom:1rem;
 }
 .hero p {
   font-size: clamp(1.2rem,2.5vw,1.8rem);
-  margin-bottom:2rem;
-  color:#374151;
   font-weight:600;
-  opacity:0;
-  transform:translateY(40px);
-  animation: fadeUp 1s ease 0.3s forwards;
+  color:#374151;
+  margin-bottom:2rem;
 }
 .btn {
   display:inline-block;
   padding:0.75rem 2rem;
   border-radius:1rem;
   font-weight:600;
+  margin:0.5rem;
   transition:0.4s;
   box-shadow:0 5px 15px rgba(0,0,0,0.15);
-  opacity:0;
-  transform:translateY(40px);
-  animation: fadeUp 1s ease 0.6s forwards;
 }
 .btn-primary { background:#1f2937; color:white; }
 .btn-primary:hover { background:#374151; transform:translateY(-3px); }
 .btn-secondary { background:white; color:#1f2937; border:1px solid #1f2937; }
 .btn-secondary:hover { background:#f3f4f6; transform:translateY(-3px); }
 
-@keyframes fadeUp {
-  0% { opacity:0; transform:translateY(40px);}
-  100% { opacity:1; transform:translateY(0);}
-}
-
 /* Адаптив */
 @media (max-width:768px){
   .hero h1 { font-size:2.2rem; }
   .hero p { font-size:1.2rem; }
-  .btn { margin-bottom:1rem; width:70%; }
+  .btn { width:70%; margin-bottom:1rem; }
 }
 </style>
 </head>
 <body>
 
-<!-- Геометрические фигуры на фоне -->
-<div class="shape shape1"></div>
-<div class="shape shape2"></div>
-<div class="shape shape3"></div>
-<div class="shape shape4"></div>
+<!-- Canvas для 3D фона -->
+<canvas id="bgCanvas"></canvas>
 
 <section class="hero">
   <h1>Людмила Сорокина</h1>
@@ -113,6 +90,68 @@ body, html {
   <a href="portfolio.html" class="btn btn-primary">Смотреть портфолио</a>
   <a href="contacts.html" class="btn btn-secondary">Связаться</a>
 </section>
+
+<script>
+// Инициализация Three.js
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('bgCanvas'), alpha:true });
+renderer.setSize(window.innerWidth, window.innerHeight);
+
+// Создание объектов
+const geometry = new THREE.SphereGeometry(0.5, 32, 32);
+const material = new THREE.MeshStandardMaterial({ color: 0xf0ebe3, roughness:0.5 });
+const spheres = [];
+
+for(let i=0;i<50;i++){
+  const sphere = new THREE.Mesh(geometry, material.clone());
+  sphere.position.set(
+    (Math.random()-0.5)*20,
+    (Math.random()-0.5)*20,
+    (Math.random()-0.5)*20
+  );
+  sphere.scale.setScalar(Math.random()*0.5 + 0.5);
+  scene.add(sphere);
+  spheres.push(sphere);
+}
+
+// Свет
+const ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
+scene.add(ambientLight);
+const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
+directionalLight.position.set(10,10,10);
+scene.add(directionalLight);
+
+// Камера
+camera.position.z = 10;
+
+// Анимация
+let mouseX=0, mouseY=0;
+document.addEventListener('mousemove', e=>{
+  mouseX = (e.clientX/window.innerWidth - 0.5)*2;
+  mouseY = (e.clientY/window.innerHeight - 0.5)*2;
+});
+
+function animate(){
+  requestAnimationFrame(animate);
+  spheres.forEach(s=>{
+    s.rotation.x += 0.002;
+    s.rotation.y += 0.002;
+    s.position.x += Math.sin(Date.now()*0.001)*0.001;
+  });
+  camera.position.x += (mouseX*5 - camera.position.x)*0.05;
+  camera.position.y += (-mouseY*5 - camera.position.y)*0.05;
+  renderer.render(scene,camera);
+}
+animate();
+
+// Адаптив
+window.addEventListener('resize', ()=>{
+  camera.aspect = window.innerWidth/window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+});
+</script>
 
 </body>
 </html>
