@@ -70,24 +70,39 @@ header a:hover {
   color:white;
 }
 
-/* Галерея */
-.grid-container {
-  display:grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
-  gap:1rem;
-  padding:0 2rem 2rem 2rem;
+/* Галерея с размытым фоном */
+.gallery-wrapper {
+  position: relative;
+  width: 100%;
+  min-height: 60vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  overflow:hidden;
 }
-
-.grid-container img {
-  width:100%;
-  height:auto;
+.gallery-wrapper img.focus {
+  position: relative;
+  z-index:10;
+  max-width:80%;
+  max-height:70vh;
   border-radius:1rem;
   cursor:pointer;
   transition: transform 0.3s, box-shadow 0.3s;
 }
-.grid-container img:hover {
+.gallery-wrapper img.focus:hover {
   transform: scale(1.05);
   box-shadow:0 10px 20px rgba(0,0,0,0.2);
+}
+.gallery-wrapper img.bg-blur {
+  position:absolute;
+  top:50%;
+  left:50%;
+  width:110%;
+  height:auto;
+  transform:translate(-50%, -50%);
+  filter: blur(20px) brightness(0.6);
+  z-index:1;
+  transition: opacity 0.5s;
 }
 
 /* Модальное окно */
@@ -110,7 +125,7 @@ header a:hover {
 
 /* Адаптив */
 @media (max-width:768px){
-  .grid-container { padding:0 1rem 1rem 1rem; }
+  .gallery-wrapper img.focus { max-width:90%; max-height:50vh; }
   header { gap:1rem; flex-wrap:wrap; }
 }
 </style>
@@ -126,12 +141,11 @@ header a:hover {
 
 <div class="nav">
   <button class="active" data-category="commercial">Коммерция</button>
-  <button data-category="events">События</button>
-  <button data-category="family">Семья</button>
+  <button data-category="eventsFamily">События+Семья</button>
   <button data-category="all">Все фото</button>
 </div>
 
-<div class="grid-container" id="gallery"></div>
+<div class="gallery-wrapper" id="gallery"></div>
 
 <!-- Модальное окно -->
 <div id="modal">
@@ -142,37 +156,45 @@ header a:hover {
 // Названия файлов
 const images = {
   commercial: ["commercial1.jpg","commercial2.jpg","commercial3.jpg","commercial4.jpg","commercial5.jpg","commercial6.jpg","commercial7.jpg","commercial8.jpg","commercial9.jpg","commercial10.jpg","commercial11.jpg","commercial12.jpg"],
-  events: ["events1.jpg","events2.jpg","events3.jpg","events4.jpg","events5.jpg","events6.jpg"],
-  family: ["family1.jpg","family2.jpg","family3.jpg","family4.jpg","family5.jpg","family6.jpg","family7.jpg","family8.jpg","family9.jpg"]
+  eventsFamily: ["events-family1.jpg","events-family2.jpg","events-family3.jpg","events-family4.jpg","events-family5.jpg","events-family6.jpg","events-family7.jpg","events-family8.jpg","events-family9.jpg","events-family10.jpg","events-family11.jpg","events-family12.jpg","events-family13.jpg","events-family14.jpg","events-family15.jpg"]
 };
 
 // Все фото для вкладки "Все фото"
-const allImages = [...images.commercial, ...images.events, ...images.family];
+const allImages = [...images.commercial, ...images.eventsFamily];
 
 const gallery = document.getElementById('gallery');
 const modal = document.getElementById('modal');
 const modalImg = modal.querySelector('img');
 
-function showImages(category){
+
+function showGallery(category){
   gallery.innerHTML = "";
   let imgs = [];
-  if(category === "all"){
-    imgs = [...allImages].sort(()=>Math.random()-0.5); // перемешка
+  if(category==="all"){
+    imgs = [...allImages].sort(()=>Math.random()-0.5);
   } else {
     imgs = images[category];
   }
-  imgs.forEach(src=>{
-    const img = document.createElement("img");
-    img.src = "images/"+src;
-    img.alt = src;
-    img.addEventListener('click', ()=>{
-      modal.style.display = "flex";
-      modalImg.src = img.src;
-    });
-    gallery.appendChild(img);
-  });
-}
+  if(imgs.length===0) return;
 
+  // Первая фотка — в фокусе
+  const mainSrc = imgs[0];
+  const mainImg = document.createElement('img');
+  mainImg.src = "images/"+mainSrc;
+  mainImg.alt = mainSrc;
+  mainImg.classList.add('focus');
+  mainImg.addEventListener('click', ()=>{ modal.style.display='flex'; modalImg.src=mainImg.src; });
+  gallery.appendChild(mainImg);
+
+  // Остальные — размытый фон
+  for(let i=1;i<imgs.length;i++){
+    const bgImg = document.createElement('img');
+    bgImg.src = "images/"+imgs[i];
+    bgImg.alt = imgs[i];
+    bgImg.classList.add('bg-blur');
+    gallery.appendChild(bgImg);
+  }
+}
 
 // Закрытие модального окна
 modal.addEventListener('click', ()=>{
@@ -180,18 +202,18 @@ modal.addEventListener('click', ()=>{
   modalImg.src = "";
 });
 
-// Навигация по вкладкам
+// Вкладки навигации
 const buttons = document.querySelectorAll(".nav button");
 buttons.forEach(btn=>{
   btn.addEventListener('click', ()=>{
     buttons.forEach(b=>b.classList.remove("active"));
     btn.classList.add("active");
-    showImages(btn.dataset.category);
+    showGallery(btn.dataset.category);
   });
 });
 
 // Показать по умолчанию коммерция
-showImages("commercial");
+showGallery("commercial");
 </script>
 
 </body>
