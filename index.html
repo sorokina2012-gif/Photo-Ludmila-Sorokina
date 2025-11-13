@@ -3,43 +3,62 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ludmila Sorokina Photography</title>
+<title>Людмила Сорокина — Фотограф</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <style>
-body { font-family: 'Inter', sans-serif; margin:0; background: linear-gradient(135deg,#f8fafc,#e8f0f8);}
-.glass { background: rgba(255,255,255,0.45); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.25);}
-.hero { height: 100vh; background: url('images/new-hero.jpg') center/cover no-repeat; display:flex; align-items:center; justify-content:center; }
-.hero-text { background: rgba(255,255,255,0.45); padding:2rem; border-radius:1rem; backdrop-filter: blur(12px); text-align:center; }
-.hero-text h1 { font-size:3rem; font-weight:bold; color:#333; }
-.hero-text p { font-size:1.2rem; color:#555; margin-top:1rem; }
+body, html { margin:0; padding:0; height:100%; font-family:'Inter', sans-serif; }
+.hero {
+  height: 100vh;
+  background: url('images/portrait.jpg') center/cover no-repeat;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hero::after {
+  content:'';
+  position:absolute;
+  inset:0;
+  background: rgba(255,255,255,0.2);
+  backdrop-filter: blur(3px);
+}
+.hero-content {
+  position: relative;
+  text-align: center;
+  color: #1f2937;
+}
+.hero h1 { font-size: 3rem; font-weight: 700; margin-bottom: 0.5rem; }
+.hero p { font-size: 1.5rem; margin-bottom: 2rem; }
+.btn { display:inline-block; padding: 0.75rem 2rem; border-radius: 1rem; font-weight:500; transition:0.3s; }
+.btn-primary { background:#1f2937; color:white; }
+.btn-primary:hover { background:#374151; }
+.btn-secondary { background:white; color:#1f2937; border:1px solid #1f2937; }
+.btn-secondary:hover { background:#f3f4f6; }
+nav a { margin-left: 1.5rem; font-weight:500; transition:0.3s; }
+nav a:hover { color:#6b7280; }
+header { position:fixed; top:0; width:100%; z-index:50; background: rgba(255,255,255,0.6); backdrop-filter: blur(8px); padding:1rem 2rem; display:flex; justify-content:space-between; align-items:center; }
 </style>
 </head>
 <body>
 
-<header class="fixed top-0 w-full glass z-50 shadow-sm">
-  <div class="max-w-6xl mx-auto flex items-center justify-between p-4">
-    <h1 class="text-2xl font-bold tracking-wide uppercase text-gray-700">
-      Ludmila Sorokina <span class="text-gray-500">Photography</span>
-    </h1>
-    <nav class="space-x-6 text-sm font-medium">
-      <a href="index.html" class="text-gray-900 font-semibold">Главная</a>
-      <a href="portfolio.html" class="hover:text-gray-500">Портфолио</a>
-      <a href="about.html" class="hover:text-gray-500">Обо мне</a>
-      <a href="contacts.html" class="hover:text-gray-500">Контакты</a>
-    </nav>
-  </div>
+<header>
+  <div class="logo font-bold text-xl">Людмила Сорокина</div>
+  <nav>
+    <a href="index.html">Главная</a>
+    <a href="portfolio.html">Портфолио</a>
+    <a href="about.html">Обо мне</a>
+    <a href="contacts.html">Контакты</a>
+  </nav>
 </header>
 
 <section class="hero">
-  <div class="hero-text">
-    <h1>Ludmila Sorokina</h1>
-    <p>Профессиональная фотосъёмка: коммерция, события, семья, портрет</p>
+  <div class="hero-content">
+    <h1>Людмила Сорокина</h1>
+    <p>Фотограф</p>
+    <a href="portfolio.html" class="btn btn-primary mr-4">Смотреть портфолио</a>
+    <a href="contacts.html" class="btn btn-secondary">Связаться</a>
   </div>
 </section>
-
-<footer class="bg-white border-t border-gray-200 py-8 text-center text-sm text-gray-500">
-<p>© 2025 Ludmila Sorokina Photography. Все права защищены.</p>
-</footer>
 
 </body>
 </html>
