@@ -4,71 +4,112 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Людмила Сорокина — Фотограф</title>
-<script src="https://cdn.tailwindcss.com"></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-<style>
-body, html { margin:0; padding:0; height:100%; font-family:'Inter', sans-serif; }
-.hero {
-  height: 100vh;
-  background: url('images/portrait.jpg') center/cover no-repeat;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
-.hero::before {
-  content:'';
-  position:absolute;
-  inset:0;
-  background: linear-gradient(180deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.6) 100%);
-  backdrop-filter: blur(3px);
-}
-.hero-content {
-  position: relative;
-  text-align: center;
-  color: #1f2937;
-  max-width: 90%;
-  animation: fadeUp 1s ease forwards;
-  opacity: 0;
-  transform: translateY(40px);
-}
-.hero h1 {
-  font-size: clamp(2rem, 8vw, 4rem);
-  font-weight: 800;
-  margin-bottom: 0.5rem;
-  text-shadow: 0 5px 15px rgba(0,0,0,0.2);
-}
-.hero p {
-  font-size: clamp(1.2rem, 3vw, 1.8rem);
-  margin-bottom: 2rem;
-  font-weight: 600;
-}
-.btn { display:inline-block; padding: 0.75rem 2rem; border-radius: 1rem; font-weight:600; transition:0.4s; box-shadow:0 5px 15px rgba(0,0,0,0.15); }
-.btn-primary { background:#1f2937; color:white; }
-.btn-primary:hover { background:#374151; transform:translateY(-3px); }
-.btn-secondary { background:white; color:#1f2937; border:1px solid #1f2937; }
-.btn-secondary:hover { background:#f3f4f6; transform:translateY(-3px); }
 
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<!-- Шрифты премиальные -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+
+<style>
+body, html {
+  margin:0;
+  padding:0;
+  font-family: 'Inter', sans-serif;
+  height:100%;
+  background: linear-gradient(135deg, #fdf6f0, #f0f4f8);
+  overflow-x:hidden;
+}
+
+/* Header */
 header {
-  position:fixed; top:0; width:100%; z-index:50;
+  position: fixed;
+  top:0; left:0;
+  width:100%;
+  z-index:50;
   display:flex; justify-content:space-between; align-items:center;
   padding:1rem 2rem;
   background: rgba(255,255,255,0.5);
   backdrop-filter: blur(10px);
   transition: background 0.3s ease;
 }
-header.scrolled { background: rgba(255,255,255,0.9); }
-
+header.scrolled { background: rgba(255,255,255,0.85); }
 nav a {
-  margin-left: 1.5rem; font-weight:500;
-  transition: color 0.3s ease, transform 0.3s ease;
+  margin-left: 1.5rem;
+  font-weight:600;
+  color:#1f2937;
+  transition: color 0.3s ease;
 }
-nav a:hover { color:#6b7280; transform:translateY(-2px); }
+nav a:hover { color:#6b7280; }
 
+/* Hero */
+.hero {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  min-height:90vh;
+  padding: 0 2rem;
+  gap:2rem;
+}
+.hero-text {
+  max-width:600px;
+  animation: fadeUp 1s ease forwards;
+  opacity:0;
+  transform: translateY(40px);
+}
+.hero-text h1 {
+  font-family:'Playfair Display', serif;
+  font-weight:900;
+  font-size: clamp(2.5rem,6vw,4rem);
+  margin-bottom:0.5rem;
+  color:#1f2937;
+}
+.hero-text p {
+  font-size: clamp(1.2rem,2.5vw,1.8rem);
+  margin-bottom:2rem;
+  color:#374151;
+  font-weight:600;
+}
+.btn {
+  display:inline-block;
+  padding:0.75rem 2rem;
+  border-radius:1rem;
+  font-weight:600;
+  transition:0.4s;
+  box-shadow:0 5px 15px rgba(0,0,0,0.15);
+}
+.btn-primary {
+  background:#1f2937; color:white;
+}
+.btn-primary:hover { background:#374151; transform:translateY(-3px); }
+.btn-secondary {
+  background:white; color:#1f2937; border:1px solid #1f2937;
+}
+.btn-secondary:hover { background:#f3f4f6; transform:translateY(-3px); }
+
+/* Портрет */
+.hero-image {
+  flex-shrink:0;
+  width:350px;
+  max-width:40%;
+  border-radius:1rem;
+  overflow:hidden;
+  box-shadow:0 10px 30px rgba(0,0,0,0.15);
+  animation: fadeUp 1s ease 0.3s forwards;
+  opacity:0;
+  transform: translateY(40px);
+}
+
+/* Анимация */
 @keyframes fadeUp {
-  0% { opacity:0; transform:translateY(40px); }
-  100% { opacity:1; transform:translateY(0); }
+  0% { opacity:0; transform:translateY(40px);}
+  100% { opacity:1; transform:translateY(0);}
+}
+
+/* Адаптив */
+@media (max-width: 1024px) {
+  .hero { flex-direction: column-reverse; text-align:center; gap:2rem; }
+  .hero-image { max-width:70%; }
 }
 </style>
 </head>
@@ -85,11 +126,14 @@ nav a:hover { color:#6b7280; transform:translateY(-2px); }
 </header>
 
 <section class="hero">
-  <div class="hero-content">
+  <div class="hero-text">
     <h1>Людмила Сорокина</h1>
     <p>Фотограф</p>
     <a href="portfolio.html" class="btn btn-primary mr-4">Смотреть портфолио</a>
     <a href="contacts.html" class="btn btn-secondary">Связаться</a>
+  </div>
+  <div class="hero-image">
+    <img src="images/portrait.jpg" alt="Людмила Сорокина" class="w-full h-auto">
   </div>
 </section>
 
