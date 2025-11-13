@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -5,10 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Людмила Сорокина — Фотограф</title>
 
-<!-- Tailwind CSS -->
 <script src="https://cdn.tailwindcss.com"></script>
-
-<!-- Шрифты премиальные -->
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
 
 <!-- Three.js -->
@@ -20,10 +18,10 @@ body, html {
   height:100%;
   font-family:'Inter', sans-serif;
   overflow:hidden;
-  background:#fdf6f0;
+  background:#f5f5f5; /* цвет как у портфолио */
 }
 
-/* Canvas 3D */
+/* Canvas для 3D фона */
 #bgCanvas {
   position:fixed;
   top:0; left:0;
@@ -48,7 +46,7 @@ body, html {
   font-weight:900;
   font-size: clamp(3rem,8vw,5rem);
   color:#1f2937;
-  text-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  text-shadow: 0 4px 20px rgba(0,0,0,0.1);
   margin-bottom:1rem;
 }
 .hero p {
@@ -81,7 +79,6 @@ body, html {
 </head>
 <body>
 
-<!-- Canvas для 3D фона -->
 <canvas id="bgCanvas"></canvas>
 
 <section class="hero">
@@ -92,52 +89,57 @@ body, html {
 </section>
 
 <script>
-// Инициализация Three.js
+// Three.js scene
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
 const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('bgCanvas'), alpha:true });
 renderer.setSize(window.innerWidth, window.innerHeight);
 
-// Создание объектов
-const geometry = new THREE.SphereGeometry(0.5, 32, 32);
-const material = new THREE.MeshStandardMaterial({ color: 0xf0ebe3, roughness:0.5 });
+// Создаем объекты
 const spheres = [];
+const lines = [];
+const sphereMat = new THREE.MeshStandardMaterial({ color:0xd9d9d9, roughness:0.5, transparent:true, opacity:0.15 });
+const lineMat = new THREE.LineBasicMaterial({ color:0xd9d9d9, transparent:true, opacity:0.1 });
 
-for(let i=0;i<50;i++){
-  const sphere = new THREE.Mesh(geometry, material.clone());
-  sphere.position.set(
-    (Math.random()-0.5)*20,
-    (Math.random()-0.5)*20,
-    (Math.random()-0.5)*20
-  );
-  sphere.scale.setScalar(Math.random()*0.5 + 0.5);
+for(let i=0;i<40;i++){
+  const sphere = new THREE.Mesh(new THREE.SphereGeometry(Math.random()*0.5+0.2,16,16), sphereMat.clone());
+  sphere.position.set((Math.random()-0.5)*20, (Math.random()-0.5)*20, (Math.random()-0.5)*20);
   scene.add(sphere);
   spheres.push(sphere);
+
+  // линии между сферами
+  if(i>0){
+    const points = [spheres[i-1].position, sphere.position];
+    const geo = new THREE.BufferGeometry().setFromPoints(points);
+    const line = new THREE.Line(geo, lineMat.clone());
+    scene.add(line);
+    lines.push(line);
+  }
 }
 
 // Свет
-const ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
+const ambientLight = new THREE.AmbientLight(0xffffff,0.7);
 scene.add(ambientLight);
-const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
+const directionalLight = new THREE.DirectionalLight(0xffffff,0.5);
 directionalLight.position.set(10,10,10);
 scene.add(directionalLight);
 
 // Камера
 camera.position.z = 10;
 
-// Анимация
+// Параллакс по мыши
 let mouseX=0, mouseY=0;
 document.addEventListener('mousemove', e=>{
   mouseX = (e.clientX/window.innerWidth - 0.5)*2;
   mouseY = (e.clientY/window.innerHeight - 0.5)*2;
 });
 
+// Анимация
 function animate(){
   requestAnimationFrame(animate);
   spheres.forEach(s=>{
     s.rotation.x += 0.002;
     s.rotation.y += 0.002;
-    s.position.x += Math.sin(Date.now()*0.001)*0.001;
   });
   camera.position.x += (mouseX*5 - camera.position.x)*0.05;
   camera.position.y += (-mouseY*5 - camera.position.y)*0.05;
@@ -145,6 +147,7 @@ function animate(){
 }
 animate();
 
+Ludmila, [13.11.2025 12:51]
 // Адаптив
 window.addEventListener('resize', ()=>{
   camera.aspect = window.innerWidth/window.innerHeight;
