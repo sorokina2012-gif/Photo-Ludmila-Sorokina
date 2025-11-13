@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -15,16 +16,41 @@ body {
   margin:0;
   padding:0;
 }
+
+/* Верхнее меню */
+header {
+  display:flex;
+  justify-content:center;
+  gap:2rem;
+  padding:1rem;
+  background:#ffffff;
+  box-shadow:0 2px 8px rgba(0,0,0,0.05);
+  position:sticky;
+  top:0;
+  z-index:100;
+}
+header a {
+  font-family:'Inter', sans-serif;
+  font-weight:600;
+  text-decoration:none;
+  color:#1f2937;
+  transition:0.3s;
+}
+header a:hover {
+  color:#374151;
+}
+
+/* Заголовок */
 h1 {
   font-family:'Playfair Display', serif;
   font-weight:900;
   font-size: clamp(2rem,6vw,3rem);
   color:#1f2937;
   text-align:center;
-  margin-top:2rem;
-  margin-bottom:1rem;
+  margin:2rem 0 1rem 0;
 }
 
+/* Вкладки портфолио */
 .nav {
   display:flex;
   justify-content:center;
@@ -48,6 +74,7 @@ h1 {
   color:white;
 }
 
+/* Галерея */
 .grid-container {
   display:grid;
   grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
@@ -73,7 +100,7 @@ h1 {
   position:fixed;
   top:0; left:0;
   width:100%; height:100%;
-  background: rgba(0,0,0,0.8);
+  background: rgba(0,0,0,0.85);
   justify-content:center;
   align-items:center;
   z-index:50;
@@ -88,10 +115,18 @@ h1 {
 /* Адаптив */
 @media (max-width:768px){
   .grid-container { padding:0 1rem 1rem 1rem; }
+  header { gap:1rem; flex-wrap:wrap; }
 }
 </style>
 </head>
 <body>
+
+<header>
+  <a href="index.html">Главная</a>
+  <a href="portfolio.html">Портфолио</a>
+  <a href="about.html">Обо мне</a>
+  <a href="contacts.html">Контакты</a>
+</header>
 
 <h1>Портфолио</h1>
 
@@ -103,11 +138,9 @@ h1 {
   <button data-category="all">Все фото</button>
 </div>
 
-<div class="grid-container" id="gallery">
-  <!-- Фото через JS -->
-</div>
+<div class="grid-container" id="gallery"></div>
 
-<!-- Модальное окно -->
+<!-- Модальное окно для просмотра фото -->
 <div id="modal">
   <img src="" alt="Фото">
 </div>
@@ -130,7 +163,9 @@ const modalImg = modal.querySelector('img');
 
 function showImages(category){
   gallery.innerHTML = "";
-  let imgs = [];
+
+Ludmila, [13.11.2025 13:13]
+let imgs = [];
   if(category === "all"){
     imgs = [...allImages].sort(()=>Math.random()-0.5); // перемешка
   } else {
@@ -154,7 +189,7 @@ modal.addEventListener('click', ()=>{
   modalImg.src = "";
 });
 
-// Навигация
+// Навигация по вкладкам
 const buttons = document.querySelectorAll(".nav button");
 buttons.forEach(btn=>{
   btn.addEventListener('click', ()=>{
