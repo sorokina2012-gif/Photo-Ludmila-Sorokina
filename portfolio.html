@@ -82,7 +82,7 @@ header a:hover {
 }
 .gallery-wrapper img.focus {
   position: relative;
-  z-index:20; /* выше фона */
+  z-index:20;
   max-width:80%;
   max-height:70vh;
   border-radius:1rem;
@@ -182,8 +182,8 @@ header a:hover {
 const images = {
   commercial: ["commercial1.jpg","commercial2.jpg","commercial3.jpg","commercial4.jpg","commercial5.jpg","commercial6.jpg","commercial7.jpg","commercial8.jpg","commercial9.jpg","commercial10.jpg","commercial11.jpg","commercial12.jpg"],
 
-Ludmila, [13.11.2025 14:04]
-eventsFamily: ["events-family1.jpg","events-family2.jpg","events-family3.jpg","events-family4.jpg","events-family5.jpg","events-family6.jpg","events-family7.jpg","events-family8.jpg","events-family9.jpg","events-family10.jpg","events-family11.jpg","events-family12.jpg","events-family13.jpg","events-family14.jpg","events-family15.jpg"]
+Ludmila, [13.11.2025 14:08]
+eventsFamily: ["events1.jpg","events2.jpg","events3.jpg","events4.jpg","events5.jpg","events6.jpg","family1.jpg","family2.jpg","family3.jpg","family4.jpg","family5.jpg","family6.jpg","family7.jpg","family8.jpg","family9.jpg"]
 };
 const allImages = [...images.commercial, ...images.eventsFamily];
 
@@ -199,13 +199,12 @@ const leftArrow = document.querySelector('.arrow.left');
 const rightArrow = document.querySelector('.arrow.right');
 
 function updateGallery() {
-  // удаляем старые фото
   gallery.querySelectorAll('img').forEach(img=>img.remove());
   if(currentImgs.length===0) return;
 
   const mainSrc = currentImgs[currentIndex];
 
-  // Главная фотка
+  // Главная фотография
   const mainImg = document.createElement('img');
   mainImg.src = "images/"+mainSrc;
   mainImg.alt = mainSrc;
