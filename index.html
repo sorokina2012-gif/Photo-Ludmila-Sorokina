@@ -1,109 +1,48 @@
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ludmila Sorokina Photography</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="icon" href="/images/favicon.png">
-  <style>
-    body {
-      background: linear-gradient(135deg, #f8fafc, #e8f0f8);
-      font-family: 'Inter', sans-serif;
-    }
-    .glass {
-      background: rgba(255, 255, 255, 0.45);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.25);
-    }
-    .fade-in {
-      animation: fadeIn 1.4s ease-in-out;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ludmila Sorokina Photography</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+body { background: linear-gradient(135deg, #f8fafc, #e8f0f8); font-family: 'Inter', sans-serif; }
+.glass { background: rgba(255,255,255,0.45); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.25); }
+.hero { height: 100vh; background: url('/images/new-hero.jpg') center/cover no-repeat; display:flex; align-items:center; justify-content:center; }
+.hero-text { background: rgba(255,255,255,0.45); padding:2rem; border-radius:1rem; backdrop-filter: blur(12px); text-align:center; }
+.hero-text h1 { font-size:3rem; font-weight:bold; color:#333; }
+.hero-text p { font-size:1.2rem; color:#555; margin-top:1rem; }
+</style>
 </head>
-<body class="text-gray-800">
+<body>
 
-  <!-- Шапка -->
-  <header class="fixed top-0 w-full glass z-50 shadow-sm">
-    <div class="max-w-6xl mx-auto flex items-center justify-between p-4">
-      <h1 class="text-2xl font-bold tracking-wide uppercase text-gray-700">
-        Ludmila Sorokina <span class="text-gray-500">Photography</span>
-      </h1>
-      <nav class="space-x-6 text-sm font-medium">
-        <a href="index.html" class="hover:text-gray-500">Главная</a>
-        <a href="portfolio.html" class="hover:text-gray-500">Портфолио</a>
-        <a href="about.html" class="hover:text-gray-500">Обо мне</a>
-        <a href="contacts.html" class="hover:text-gray-500">Контакты</a>
-      </nav>
-    </div>
-  </header>
+<!-- Шапка -->
+<header class="fixed top-0 w-full glass z-50 shadow-sm">
+  <div class="max-w-6xl mx-auto flex items-center justify-between p-4">
+    <h1 class="text-2xl font-bold tracking-wide uppercase text-gray-700">
+      Ludmila Sorokina <span class="text-gray-500">Photography</span>
+    </h1>
+    <nav class="space-x-6 text-sm font-medium">
+      <a href="index.html" class="text-gray-900 font-semibold">Главная</a>
+      <a href="portfolio.html" class="hover:text-gray-500">Портфолио</a>
+      <a href="about.html" class="hover:text-gray-500">Обо мне</a>
+      <a href="contacts.html" class="hover:text-gray-500">Контакты</a>
+    </nav>
+  </div>
+</header>
 
-  <!-- Герой-секция -->
-  <section class="relative h-[90vh] flex items-center justify-center bg-cover bg-center fade-in" style="background-image: url('/images/hero.jpg');">
-    <div class="glass p-10 rounded-3xl text-center max-w-2xl">
-      <h2 class="text-4xl md:text-5xl font-bold mb-4 text-gray-800">Фотография, которая передаёт эмоции</h2>
-      <p class="text-gray-700 text-lg mb-6">Я создаю снимки, которые рассказывают истории, сохраняют моменты и показывают красоту в каждом кадре.</p>
-      <a href="portfolio.html" class="bg-gray-800 text-white px-6 py-3 rounded-xl hover:bg-gray-700 transition">Смотреть портфолио</a>
-    </div>
-  </section>
+<!-- Герой-секция -->
+<section class="hero">
+  <div class="hero-text">
+    <h1>Ludmila Sorokina</h1>
+    <p>Профессиональная фотосъёмка: коммерция, события, семья, портрет</p>
+  </div>
+</section>
 
-  <!-- Обо мне -->
-  <section class="py-20 fade-in">
-    <div class="max-w-5xl mx-auto px-4 text-center">
-      <h3 class="text-3xl font-semibold mb-6">Обо мне</h3>
-      <p class="text-gray-600 text-lg leading-relaxed max-w-3xl mx-auto">
-        Меня зовут Людмила Сорокина. Я профессиональный фотограф с опытом более 10 лет.  
-        Люблю живые эмоции, естественный свет и искренние истории людей.  
-        Снимаю портреты, путешествия, атмосферные репортажи и семейные фото.
-      </p>
-    </div>
-  </section>
-
-  <!-- Отзывы -->
-  <section class="py-20 bg-gray-50 fade-in">
-    <div class="max-w-6xl mx-auto px-4">
-      <h3 class="text-3xl font-semibold text-center mb-10">Отзывы клиентов</h3>
-      <div class="grid md:grid-cols-3 gap-8">
-        <div class="glass p-6 rounded-2xl shadow-md">
-          <p class="italic text-gray-700 mb-4">“Людмила прекрасно передала атмосферу нашей свадьбы. Каждая фотография — как кадр из фильма.”</p>
-          <p class="font-semibold text-gray-800">— Анна и Михаил</p>
-        </div>
-        <div class="glass p-6 rounded-2xl shadow-md">
-          <p class="italic text-gray-700 mb-4">“Фотосессия прошла легко и весело, а результат превзошёл все ожидания!”</p>
-          <p class="font-semibold text-gray-800">— Дарья К.</p>
-        </div>
-        <div class="glass p-6 rounded-2xl shadow-md">
-          <p class="italic text-gray-700 mb-4">“Портреты получились невероятно живыми. Свет, настроение — всё идеально.”</p>
-          <p class="font-semibold text-gray-800">— Сергей Иванов</p>
-        </div>
-        <div class="glass p-6 rounded-2xl shadow-md md:col-span-2">
-          <p class="italic text-gray-700 mb-4">“Профессионал с большой буквы! Фото очень естественные, яркие и настоящие.”</p>
-
-Ludmila, [13.11.2025 11:01]
-<p class="font-semibold text-gray-800">— Елена М.</p>
-        </div>
-        <div class="glass p-6 rounded-2xl shadow-md">
-          <p class="italic text-gray-700 mb-4">“Работали над съёмкой в путешествии — каждый снимок рассказывает историю. Рекомендую!”</p>
-          <p class="font-semibold text-gray-800">— Павел С.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Футер -->
-  <footer class="bg-white border-t border-gray-200 py-8 text-center text-sm text-gray-500">
-    <p>© 2025 Ludmila Sorokina Photography. Все права защищены.</p>
-    <div class="space-x-4 mt-2">
-      <a href="https://www.instagram.com/" class="hover:text-gray-700">Instagram</a>
-      <a href="https://www.facebook.com/" class="hover:text-gray-700">Facebook</a>
-      <a href="contacts.html" class="hover:text-gray-700">Контакты</a>
-    </div>
-  </footer>
+<!-- Футер -->
+<footer class="bg-white border-t border-gray-200 py-8 text-center text-sm text-gray-500">
+<p>© 2025 Ludmila Sorokina Photography. Все права защищены.</p>
+</footer>
 
 </body>
 </html>
