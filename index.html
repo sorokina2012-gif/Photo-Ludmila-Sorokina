@@ -1,3 +1,154 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Портфолио — фотограф Людмила Сорокина </title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+body { background: linear-gradient(135deg, #f8fafc, #e8f0f8); font-family: 'Inter', sans-serif; }
+.glass { background: rgba(255,255,255,0.45); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.25); }
+.fade-in { animation: fadeIn 1.2s ease-in-out; }
+@keyframes fadeIn { from {opacity:0; transform:translateY(20px);} to {opacity:1; transform:translateY(0);} }
+
+.gallery-item {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  position: relative;
+}
+.gallery-item.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.gallery-item.hidden {
+  opacity: 0 !important;
+  transform: scale(0.95);
+  pointer-events: none;
+  position: absolute;
+}
+</style>
+</head>
+<body class="text-gray-800">
+
+<!-- Шапка -->
+<header class="fixed top-0 w-full glass z-50 shadow-sm">
+  <div class="max-w-6xl mx-auto flex items-center justify-between p-4">
+    <h1 class="text-2xl font-bold tracking-wide uppercase text-gray-700">
+      Ludmila Sorokina <span class="text-gray-500">Photography</span>
+    </h1>
+    <nav class="space-x-6 text-sm font-medium">
+      <a href="index.html" class="hover:text-gray-500">Главная</a>
+      <a href="portfolio.html" class="text-gray-900 font-semibold">Портфолио</a>
+      <a href="about.html" class="hover:text-gray-500">Обо мне</a>
+      <a href="contacts.html" class="hover:text-gray-500">Контакты</a>
+    </nav>
+  </div>
+</header>
+
+<section class="pt-32 pb-20 fade-in max-w-6xl mx-auto px-4 text-center">
+<h2 class="text-4xl font-semibold mb-6">Портфолио</h2>
+<p class="text-gray-600 mb-10 max-w-2xl mx-auto">Каждая съёмка — история через свет, тень и эмоции. Выберите категорию:</p>
+
+<!-- Фильтры -->
+<div class="flex justify-center gap-4 mb-12">
+  <button class="filter-btn bg-gray-800 text-white px-4 py-2 rounded-xl hover:bg-gray-700" data-category="all">Все</button>
+  <button class="filter-btn bg-gray-200 text-gray-800 px-4 py-2 rounded-xl hover:bg-gray-300" data-category="commercial">Коммерция</button>
+  <button class="filter-btn bg-gray-200 text-gray-800 px-4 py-2 rounded-xl hover:bg-gray-300" data-category="events">События</button>
+  <button class="filter-btn bg-gray-200 text-gray-800 px-4 py-2 rounded-xl hover:bg-gray-300" data-category="family">Семья</button>
+  <button class="filter-btn bg-gray-200 text-gray-800 px-4 py-2 rounded-xl hover:bg-gray-300" data-category="portrait">Портрет</button>
+</div>
+
+<!-- Галерея -->
+<div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 relative">
+
+<!-- Коммерция -->
+${Array.from({length:12}, (_,i) => 
+  <div class="gallery-item commercial relative overflow-hidden rounded-2xl shadow-lg group">
+    <img src="/images/commercial${i+1}.jpg" alt="Коммерция ${i+1}" class="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-110">
+  </div>
+).join('')}
+
+<!-- События -->
+${Array.from({length:6}, (_,i) => 
+  <div class="gallery-item events relative overflow-hidden rounded-2xl shadow-lg group">
+    <img src="/images/events${i+1}.jpg" alt="Событие ${i+1}" class="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-110">
+  </div>
+).join('')}
+
+<!-- Семья -->
+${Array.from({length:9}, (_,i) => 
+  <div class="gallery-item family relative overflow-hidden rounded-2xl shadow-lg group">
+    <img src="/images/family${i+1}.jpg" alt="Семья ${i+1}" class="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-110">
+  </div>
+).join('')}
+
+<!-- Портрет -->
+<div class="gallery-item portrait relative overflow-hidden rounded-2xl shadow-lg group">
+  <img src="/images/portrait.jpg" alt="Портрет" class="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-110">
+</div>
+
+</div>
+</section>
+
+<!-- Футер -->
+<footer class="bg-white border-t border-gray-200 py-8 text-center text-sm text-gray-500">
+<p>© 2025 Ludmila Sorokina Photography. Все права защищены.</p>
+</footer>
+
+<script>
+// Фильтрация галереи
+const filterBtns = document.querySelectorAll('.filter-btn');
+const items = document.querySelectorAll('.gallery-item');
+
+filterBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const category = btn.getAttribute('data-category');
+
+    // Смена активной кнопки
+    filterBtns.forEach(b => b.classList.replace('bg-gray-800','bg-gray-200'));
+    filterBtns.forEach(b => b.classList.replace('text-white','text-gray-800'));
+    btn.classList.add('bg-gray-800');
+    btn.classList.add('text-white');
+
+    items.forEach(item => {
+      if(category === 'all' || item.classList.contains(category)){
+        item.classList.remove('hidden');
+      } else {
+        item.classList.add('hidden');
+      }
+    });
+
+    // Появление видимых элементов
+    setTimeout(() => { animateVisible(); }, 50);
+  });
+});
+
+// Анимация появления при скролле
+function animateVisible(){
+  const windowBottom = window.innerHeight + window.scrollY;
+  items.forEach(item => {
+    if(!item.classList.contains('hidden')){
+      const itemTop = item.offsetTop;
+      if(windowBottom > itemTop + 100){
+        item.classList.add('show');
+      } else {
+        item.classList.remove('show');
+      }
+    }
+  });
+}
+
+window.addEventListener('scroll', animateVisible);
+window.addEventListener('load', animateVisible);
+</script>
+
+</body>
+</html>
+
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -35,7 +186,7 @@ body { background: linear-gradient(135deg, #f8fafc, #e8f0f8); font-family: 'Inte
 <section class="hero">
   <div class="hero-text">
     <h1>Ludmila Sorokina</h1>
-    <p>Профессиональная фотосъёмка: коммерция, события, семья, портрет</p>
+    <p>Профессиональная фотосъёмка: коммерция, события, семья </p>
   </div>
 </section>
 
