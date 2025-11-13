@@ -4,12 +4,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Портфолио — Ludmila Sorokina Photography</title>
+<title>Портфолио — Людмила Сорокина</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <style>
 body { background: linear-gradient(135deg, #f8fafc, #e8f0f8); font-family: 'Inter', sans-serif; margin:0;}
 .glass { background: rgba(255,255,255,0.45); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.25); }
-.gallery-item { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; position: relative; }
+.gallery-item { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; position: relative; overflow:hidden; border-radius:1rem; }
+.gallery-item img { width: 100%; height:auto; transition: transform 0.5s ease; }
+.gallery-item img:hover { transform: scale(1.1); }
 .gallery-item.show { opacity: 1; transform: translateY(0); }
 .gallery-item.hidden { opacity: 0 !important; transform: scale(0.95); pointer-events: none; position: absolute; }
 .fade-in { animation: fadeIn 1.2s ease-in-out; }
@@ -21,7 +23,7 @@ body { background: linear-gradient(135deg, #f8fafc, #e8f0f8); font-family: 'Inte
 <header class="fixed top-0 w-full glass z-50 shadow-sm">
   <div class="max-w-6xl mx-auto flex items-center justify-between p-4">
     <h1 class="text-2xl font-bold tracking-wide uppercase text-gray-700">
-      Ludmila Sorokina <span class="text-gray-500">Photography</span>
+      Людмила Сорокина <span class="text-gray-500">Фотограф</span>
     </h1>
     <nav class="space-x-6 text-sm font-medium">
       <a href="index.html" class="hover:text-gray-500">Главная</a>
@@ -38,57 +40,53 @@ body { background: linear-gradient(135deg, #f8fafc, #e8f0f8); font-family: 'Inte
 
 <div class="flex justify-center gap-4 mb-12">
   <button class="filter-btn bg-gray-800 text-white px-4 py-2 rounded-xl hover:bg-gray-700" data-category="all">Все</button>
+  <button class="filter-btn bg-gray-200 text-gray-800 px-4 py-2 rounded-xl hover:bg-gray-300" data-category="family">Семья</button>
   <button class="filter-btn bg-gray-200 text-gray-800 px-4 py-2 rounded-xl hover:bg-gray-300" data-category="commercial">Коммерция</button>
   <button class="filter-btn bg-gray-200 text-gray-800 px-4 py-2 rounded-xl hover:bg-gray-300" data-category="events">События</button>
-  <button class="filter-btn bg-gray-200 text-gray-800 px-4 py-2 rounded-xl hover:bg-gray-300" data-category="family">Семья</button>
-  <button class="filter-btn bg-gray-200 text-gray-800 px-4 py-2 rounded-xl hover:bg-gray-300" data-category="portrait">Портрет</button>
 </div>
 
 <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 relative">
 
+<!-- Семья 9 фото -->
+<div class="gallery-item family"><img src="images/family1.jpg" alt="family1"></div>
+<div class="gallery-item family"><img src="images/family2.jpg" alt="family2"></div>
+<div class="gallery-item family"><img src="images/family3.jpg" alt="family3"></div>
+<div class="gallery-item family"><img src="images/family4.jpg" alt="family4"></div>
+<div class="gallery-item family"><img src="images/family5.jpg" alt="family5"></div>
+<div class="gallery-item family"><img src="images/family6.jpg" alt="family6"></div>
+<div class="gallery-item family"><img src="images/family7.jpg" alt="family7"></div>
+<div class="gallery-item family"><img src="images/family8.jpg" alt="family8"></div>
+<div class="gallery-item family"><img src="images/family9.jpg" alt="family9"></div>
+
 <!-- Коммерция 12 фото -->
-<div class="gallery-item commercial"><img src="images/commercial1.jpg" alt="commercial1" class="w-full h-80 object-cover rounded-2xl shadow-lg"></div>
-<div class="gallery-item commercial"><img src="images/commercial2.jpg" alt="commercial2" class="w-full h-80 object-cover rounded-2xl shadow-lg"></div>
-<div class="gallery-item commercial"><img src="images/commercial3.jpg" alt="commercial3" class="w-full h-80 object-cover rounded-2xl shadow-lg"></div>
-<div class="gallery-item commercial"><img src="images/commercial4.jpg" alt="commercial4" class="w-full h-80 object-cover rounded-2xl shadow-lg"></div>
-<div class="gallery-item commercial"><img src="images/commercial5.jpg" alt="commercial5" class="w-full h-80 object-cover rounded-2xl shadow-lg"></div>
-<div class="gallery-item commercial"><img src="images/commercial6.jpg" alt="commercial6" class="w-full h-80 object-cover rounded-2xl shadow-lg"></div>
-<div class="gallery-item commercial"><img src="images/commercial7.jpg" alt="commercial7" class="w-full h-80 object-cover rounded-2xl shadow-lg"></div>
-<div class="gallery-item commercial"><img src="images/commercial8.jpg" alt="commercial8" class="w-full h-80 object-cover rounded-2xl shadow-lg"></div>
+<div class="gallery-item commercial"><img src="images/commercial1.jpg" alt="commercial1"></div>
+<div class="gallery-item commercial"><img src="images/commercial2.jpg" alt="commercial2"></div>
+<div class="gallery-item commercial"><img src="images/commercial3.jpg" alt="commercial3"></div>
+<div class="gallery-item commercial"><img src="images/commercial4.jpg" alt="commercial4"></div>
 
 
-<div class="gallery-item commercial"><img src="images/commercial9.jpg" alt="commercial9" class="w-full h-80 object-cover rounded-2xl shadow-lg"></div>
-<div class="gallery-item commercial"><img src="images/commercial10.jpg" alt="commercial10" class="w-full h-80 object-cover rounded-2xl shadow-lg"></div>
-<div class="gallery-item commercial"><img src="images/commercial11.jpg" alt="commercial11" class="w-full h-80 object-cover rounded-2xl shadow-lg"></div>
-<div class="gallery-item commercial"><img src="images/commercial12.jpg" alt="commercial12" class="w-full h-80 object-cover rounded-2xl shadow-lg"></div>
+<div class="gallery-item commercial"><img src="images/commercial5.jpg" alt="commercial5"></div>
+<div class="gallery-item commercial"><img src="images/commercial6.jpg" alt="commercial6"></div>
+<div class="gallery-item commercial"><img src="images/commercial7.jpg" alt="commercial7"></div>
+<div class="gallery-item commercial"><img src="images/commercial8.jpg" alt="commercial8"></div>
+<div class="gallery-item commercial"><img src="images/commercial9.jpg" alt="commercial9"></div>
+<div class="gallery-item commercial"><img src="images/commercial10.jpg" alt="commercial10"></div>
+<div class="gallery-item commercial"><img src="images/commercial11.jpg" alt="commercial11"></div>
+<div class="gallery-item commercial"><img src="images/commercial12.jpg" alt="commercial12"></div>
 
 <!-- События 6 фото -->
-<div class="gallery-item events"><img src="images/events1.jpg" alt="events1" class="w-full h-80 object-cover rounded-2xl shadow-lg"></div>
-<div class="gallery-item events"><img src="images/events2.jpg" alt="events2" class="w-full h-80 object-cover rounded-2xl shadow-lg"></div>
-<div class="gallery-item events"><img src="images/events3.jpg" alt="events3" class="w-full h-80 object-cover rounded-2xl shadow-lg"></div>
-<div class="gallery-item events"><img src="images/events4.jpg" alt="events4" class="w-full h-80 object-cover rounded-2xl shadow-lg"></div>
-<div class="gallery-item events"><img src="images/events5.jpg" alt="events5" class="w-full h-80 object-cover rounded-2xl shadow-lg"></div>
-<div class="gallery-item events"><img src="images/events6.jpg" alt="events6" class="w-full h-80 object-cover rounded-2xl shadow-lg"></div>
-
-<!-- Семья 9 фото -->
-<div class="gallery-item family"><img src="images/family1.jpg" alt="family1" class="w-full h-80 object-cover rounded-2xl shadow-lg"></div>
-<div class="gallery-item family"><img src="images/family2.jpg" alt="family2" class="w-full h-80 object-cover rounded-2xl shadow-lg"></div>
-<div class="gallery-item family"><img src="images/family3.jpg" alt="family3" class="w-full h-80 object-cover rounded-2xl shadow-lg"></div>
-<div class="gallery-item family"><img src="images/family4.jpg" alt="family4" class="w-full h-80 object-cover rounded-2xl shadow-lg"></div>
-<div class="gallery-item family"><img src="images/family5.jpg" alt="family5" class="w-full h-80 object-cover rounded-2xl shadow-lg"></div>
-<div class="gallery-item family"><img src="images/family6.jpg" alt="family6" class="w-full h-80 object-cover rounded-2xl shadow-lg"></div>
-<div class="gallery-item family"><img src="images/family7.jpg" alt="family7" class="w-full h-80 object-cover rounded-2xl shadow-lg"></div>
-<div class="gallery-item family"><img src="images/family8.jpg" alt="family8" class="w-full h-80 object-cover rounded-2xl shadow-lg"></div>
-<div class="gallery-item family"><img src="images/family9.jpg" alt="family9" class="w-full h-80 object-cover rounded-2xl shadow-lg"></div>
-
-<!-- Портрет -->
-<div class="gallery-item portrait"><img src="images/portrait.jpg" alt="portrait" class="w-full h-80 object-cover rounded-2xl shadow-lg"></div>
+<div class="gallery-item events"><img src="images/events1.jpg" alt="events1"></div>
+<div class="gallery-item events"><img src="images/events2.jpg" alt="events2"></div>
+<div class="gallery-item events"><img src="images/events3.jpg" alt="events3"></div>
+<div class="gallery-item events"><img src="images/events4.jpg" alt="events4"></div>
+<div class="gallery-item events"><img src="images/events5.jpg" alt="events5"></div>
+<div class="gallery-item events"><img src="images/events6.jpg" alt="events6"></div>
 
 </div>
 </section>
 
 <footer class="bg-white border-t border-gray-200 py-8 text-center text-sm text-gray-500">
-<p>© 2025 Ludmila Sorokina Photography. Все права защищены.</p>
+<p>© 2025 Людмила Сорокина. Все права защищены.</p>
 </footer>
 
 <script>
@@ -114,7 +112,6 @@ filterBtns.forEach(btn => {
     setTimeout(() => { animateVisible(); }, 50);
   });
 });
-
 
 function animateVisible(){
   const windowBottom = window.innerHeight + window.scrollY;
