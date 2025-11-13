@@ -1,85 +1,83 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Людмила Сорокина — Портфолио</title>
-<style>
-body { margin:0; font-family: "Helvetica Neue", sans-serif; background:#f8f8f8; color:#333; }
-header { background:#222; color:white; text-align:center; padding:40px 20px; }
-header h1 { margin:0; font-size:2.5rem; }
-nav { background:#333; text-align:center; padding:10px 0; }
-nav a { color:white; text-decoration:none; margin:0 15px; font-size:1.1rem; }
-nav a:hover { text-decoration:underline; }
-section { max-width:1100px; margin:40px auto; padding:0 20px; }
-h2 { text-align:center; margin-bottom:20px; }
-.gallery { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:15px; }
-.gallery img { width:100%; border-radius:12px; object-fit:cover; transition: transform 0.3s; }
-.gallery img:hover { transform: scale(1.03); }
-footer { text-align:center; padding:40px 20px; background:#222; color:#fff; margin-top:60px; }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Портфолио — Ludmila Sorokina Photography</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background: linear-gradient(135deg, #f8fafc, #e8f0f8);
+      font-family: 'Inter', sans-serif;
+    }
+    .glass {
+      background: rgba(255, 255, 255, 0.45);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+    }
+    .fade-in {
+      animation: fadeIn 1.2s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
 </head>
-<body>
+<body class="text-gray-800">
 
-<header>
-  <h1>Портфолио</h1>
-</header>
+  <!-- Шапка -->
+  <header class="fixed top-0 w-full glass z-50 shadow-sm">
+    <div class="max-w-6xl mx-auto flex items-center justify-between p-4">
+      <h1 class="text-2xl font-bold tracking-wide uppercase text-gray-700">
+        Ludmila Sorokina <span class="text-gray-500">Photography</span>
+      </h1>
+      <nav class="space-x-6 text-sm font-medium">
+        <a href="index.html" class="hover:text-gray-500">Главная</a>
+        <a href="portfolio.html" class="text-gray-900 font-semibold">Портфолио</a>
+        <a href="about.html" class="hover:text-gray-500">Обо мне</a>
+        <a href="contacts.html" class="hover:text-gray-500">Контакты</a>
+      </nav>
+    </div>
+  </header>
 
-<nav>
-  <a href="index.html">Главная</a>
-  <a href="about.html">Обо мне</a>
-  <a href="portfolio.html">Портфолио</a>
-  <a href="contacts.html">Контакты</a>
-</nav>
+  <!-- Галерея -->
+  <section class="pt-32 pb-20 fade-in">
+    <div class="max-w-6xl mx-auto px-4 text-center">
+      <h2 class="text-4xl font-semibold mb-10">Портфолио</h2>
+      <p class="text-gray-600 mb-12 max-w-2xl mx-auto">Каждая съёмка — это история, рассказанная через свет, тень и эмоции. Здесь — мои любимые кадры.</p>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="relative overflow-hidden rounded-2xl shadow-lg group">
+          <img src="/images/photo1.jpg" alt="Фото 1" class="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-110">
+        </div>
+        <div class="relative overflow-hidden rounded-2xl shadow-lg group">
+          <img src="/images/photo2.jpg" alt="Фото 2" class="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-110">
+        </div>
+        <div class="relative overflow-hidden rounded-2xl shadow-lg group">
+          <img src="/images/photo3.jpg" alt="Фото 3" class="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-110">
+        </div>
+        <div class="relative overflow-hidden rounded-2xl shadow-lg group">
+          <img src="/images/photo4.jpg" alt="Фото 4" class="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-110">
+        </div>
+        <div class="relative overflow-hidden rounded-2xl shadow-lg group">
+          <img src="/images/photo5.jpg" alt="Фото 5" class="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-110">
+        </div>
+        <div class="relative overflow-hidden rounded-2xl shadow-lg group">
+          <img src="/images/photo6.jpg" alt="Фото 6" class="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-110">
+        </div>
+      </div>
+    </div>
+  </section>
 
-<section id="family">
-  <h2>Семейные фото</h2>
-  <div class="gallery">
-    <img src="images/family1.jpg" alt="">
-    <img src="images/family2.jpg" alt="">
-    <img src="images/family3.jpg" alt="">
-    <img src="images/family4.jpg" alt="">
-    <img src="images/family5.jpg" alt="">
-    <img src="images/family6.jpg" alt="">
-    <img src="images/family7.jpg" alt="">
-    <img src="images/family8.jpg" alt="">
-    <img src="images/family9.jpg" alt="">
-  </div>
-</section>
-
-<section id="events">
-  <h2>Выписки и события</h2>
-  <div class="gallery">
-    <img src="images/events1.jpg" alt="">
-    <img src="images/events2.jpg" alt="">
-    <img src="images/events3.jpg" alt="">
-    <img src="images/events4.jpg" alt="">
-    <img src="images/events5.jpg" alt="">
-    <img src="images/events6.jpg" alt="">
-  </div>
-</section>
-
-<section id="commercial">
-  <h2>Коммерческие съёмки</h2>
-  <div class="gallery">
-    <img src="images/commercial1.jpg" alt="">
-    <img src="images/commercial2.jpg" alt="">
-    <img src="images/commercial3.jpg" alt="">
-    <img src="images/commercial4.jpg" alt="">
-    <img src="images/commercial5.jpg" alt="">
-    <img src="images/commercial6.jpg" alt="">
-    <img src="images/commercial7.jpg" alt="">
-    <img src="images/commercial8.jpg" alt="">
-    <img src="images/commercial9.jpg" alt="">
-    <img src="images/commercial10.jpg" alt="">
-    <img src="images/commercial11.jpg" alt="">
-    <img src="images/commercial12.jpg" alt="">
-  </div>
-</section>
-
-<footer>
-  <p>© 2025 Людмила Сорокина</p>
-</footer>
+  <!-- Футер -->
+  <footer class="bg-white border-t border-gray-200 py-8 text-center text-sm text-gray-500">
+    <p>© 2025 Ludmila Sorokina Photography. Все права защищены.</p>
+    <div class="space-x-4 mt-2">
+      <a href="https://www.instagram.com/" class="hover:text-gray-700">Instagram</a>
+      <a href="https://www.facebook.com/" class="hover:text-gray-700">Facebook</a>
+      <a href="contacts.html" class="hover:text-gray-700">Контакты</a>
+    </div>
+  </footer>
 
 </body>
 </html>
