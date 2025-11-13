@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -6,11 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Людмила Сорокина — Фотограф</title>
 
+<!-- Tailwind CSS -->
 <script src="https://cdn.tailwindcss.com"></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
 
-<!-- Three.js -->
-<script src="https://cdn.jsdelivr.net/npm/three@0.158.0/build/three.min.js"></script>
+<!-- Шрифты премиальные -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
 
 <style>
 body, html {
@@ -18,15 +17,7 @@ body, html {
   height:100%;
   font-family:'Inter', sans-serif;
   overflow:hidden;
-  background:#f5f5f5; /* цвет как у портфолио */
-}
-
-/* Canvas для 3D фона */
-#bgCanvas {
-  position:fixed;
-  top:0; left:0;
-  width:100%; height:100%;
-  z-index:-1;
+  background:#f5f5f5; /* Цвет как у портфолио */
 }
 
 /* Hero */
@@ -41,20 +32,26 @@ body, html {
   padding:2rem;
   z-index:10;
 }
+
 .hero h1 {
   font-family:'Playfair Display', serif;
   font-weight:900;
   font-size: clamp(3rem,8vw,5rem);
   color:#1f2937;
-  text-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  text-shadow: 3px 3px 10px rgba(0,0,0,0.2);
   margin-bottom:1rem;
+  animation: floatText 4s ease-in-out infinite alternate;
 }
+
 .hero p {
   font-size: clamp(1.2rem,2.5vw,1.8rem);
   font-weight:600;
   color:#374151;
   margin-bottom:2rem;
+  opacity:0;
+  animation: fadeIn 1.5s forwards 0.5s;
 }
+
 .btn {
   display:inline-block;
   padding:0.75rem 2rem;
@@ -69,17 +66,29 @@ body, html {
 .btn-secondary { background:white; color:#1f2937; border:1px solid #1f2937; }
 .btn-secondary:hover { background:#f3f4f6; transform:translateY(-3px); }
 
-/* Адаптив */
-@media (max-width:768px){
-  .hero h1 { font-size:2.2rem; }
-  .hero p { font-size:1.2rem; }
-  .btn { width:70%; margin-bottom:1rem; }
+/* Анимация текста */
+@keyframes floatText {
+  0% { transform: translateY(0px); }
+  100% { transform: translateY(-10px); }
+}
+
+@keyframes fadeIn {
+  to { opacity:1; }
+}
+
+/* Canvas линии */
+#linesCanvas {
+  position:fixed;
+  top:0; left:0;
+  width:100%;
+  height:100%;
+  z-index:-1;
 }
 </style>
 </head>
 <body>
 
-<canvas id="bgCanvas"></canvas>
+<canvas id="linesCanvas"></canvas>
 
 <section class="hero">
   <h1>Людмила Сорокина</h1>
@@ -89,70 +98,59 @@ body, html {
 </section>
 
 <script>
-// Three.js scene
-const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
-const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('bgCanvas'), alpha:true });
-renderer.setSize(window.innerWidth, window.innerHeight);
+const canvas = document.getElementById('linesCanvas');
+const ctx = canvas.getContext('2d');
+let width = canvas.width = window.innerWidth;
+let height = canvas.height = window.innerHeight;
 
-// Создаем объекты
-const spheres = [];
+// Создаем линии
 const lines = [];
-const sphereMat = new THREE.MeshStandardMaterial({ color:0xd9d9d9, roughness:0.5, transparent:true, opacity:0.15 });
-const lineMat = new THREE.LineBasicMaterial({ color:0xd9d9d9, transparent:true, opacity:0.1 });
-
-for(let i=0;i<40;i++){
-  const sphere = new THREE.Mesh(new THREE.SphereGeometry(Math.random()*0.5+0.2,16,16), sphereMat.clone());
-  sphere.position.set((Math.random()-0.5)*20, (Math.random()-0.5)*20, (Math.random()-0.5)*20);
-  scene.add(sphere);
-  spheres.push(sphere);
-
-  // линии между сферами
-  if(i>0){
-    const points = [spheres[i-1].position, sphere.position];
-    const geo = new THREE.BufferGeometry().setFromPoints(points);
-    const line = new THREE.Line(geo, lineMat.clone());
-    scene.add(line);
-    lines.push(line);
-  }
-}
-
-// Свет
-const ambientLight = new THREE.AmbientLight(0xffffff,0.7);
-scene.add(ambientLight);
-const directionalLight = new THREE.DirectionalLight(0xffffff,0.5);
-directionalLight.position.set(10,10,10);
-scene.add(directionalLight);
-
-// Камера
-camera.position.z = 10;
-
-// Параллакс по мыши
-let mouseX=0, mouseY=0;
-document.addEventListener('mousemove', e=>{
-  mouseX = (e.clientX/window.innerWidth - 0.5)*2;
-  mouseY = (e.clientY/window.innerHeight - 0.5)*2;
-});
-
-// Анимация
-function animate(){
-  requestAnimationFrame(animate);
-  spheres.forEach(s=>{
-    s.rotation.x += 0.002;
-    s.rotation.y += 0.002;
+const numLines = 25;
+for(let i=0;i<numLines;i++){
+  lines.push({
+    x: Math.random()*width,
+    y: Math.random()*height,
+    dx: (Math.random()-0.5)*0.3,
+    dy: (Math.random()-0.5)*0.3,
+    length: 100 + Math.random()*200,
+    angle: Math.random()*Math.PI*2,
   });
-  camera.position.x += (mouseX*5 - camera.position.x)*0.05;
-  camera.position.y += (-mouseY*5 - camera.position.y)*0.05;
-  renderer.render(scene,camera);
 }
+
+function animate() {
+  ctx.clearRect(0,0,width,height);
+  
+  ctx.strokeStyle = "rgba(50,50,50,0.1)";
+  ctx.lineWidth = 1;
+  
+  lines.forEach(line => {
+    // вычисляем концы линии
+    const x2 = line.x + line.length * Math.cos(line.angle);
+    const y2 = line.y + line.length * Math.sin(line.angle);
+    
+    ctx.beginPath();
+    ctx.moveTo(line.x,line.y);
+    ctx.lineTo(x2,y2);
+    ctx.stroke();
+    
+    // двигаем линии
+    line.x += line.dx;
+    line.y += line.dy;
+    
+    // отражение от границ
+    if(line.x<0 || line.x>width) line.dx *= -1;
+    if(line.y<0 || line.y>height) line.dy *= -1;
+  });
+  
+  requestAnimationFrame(animate);
+}
+
 animate();
 
-Ludmila, [13.11.2025 12:51]
-// Адаптив
+// адаптив
 window.addEventListener('resize', ()=>{
-  camera.aspect = window.innerWidth/window.innerHeight;
-  camera.updateProjectionMatrix();
-  renderer.setSize(window.innerWidth, window.innerHeight);
+  width = canvas.width = window.innerWidth;
+  height = canvas.height = window.innerHeight;
 });
 </script>
 
