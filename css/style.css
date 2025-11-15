@@ -1808,3 +1808,51 @@ footer {
 #product .portfolio-grid .portfolio-item {
     display: block !important;
 }
+/* Делаем полосу прокрутки ВИДИМОЙ и добавляем градиенты */
+.folder-content.active .portfolio-grid {
+    max-height: 400px;
+    overflow-y: auto;
+    padding: 15px;
+    
+    /* Градиентные края */
+    mask-image: linear-gradient(
+        to bottom,
+        transparent 0%,
+        black 30px,
+        black calc(100% - 30px),
+        transparent 100%
+    );
+    -webkit-mask-image: linear-gradient(
+        to bottom,
+        transparent 0%,
+        black 30px,
+        black calc(100% - 30px),
+        transparent 100%
+    );
+}
+
+/* Красивая полоса прокрутки */
+.folder-content.active .portfolio-grid::-webkit-scrollbar {
+    width: 8px;
+}
+
+.folder-content.active .portfolio-grid::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+    margin: 5px;
+}
+
+.folder-content.active .portfolio-grid::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+    border: 2px solid #f1f1f1;
+}
+
+.folder-content.active .portfolio-grid::-webkit-scrollbar-thumb:hover {
+    background: #666;
+}
+
+/* Для Product добавляем больше фото */
+#product .portfolio-grid {
+    max-height: 500px;
+}
