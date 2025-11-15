@@ -1856,3 +1856,30 @@ footer {
 #product .portfolio-grid {
     max-height: 500px;
 }
+/* Полоса прокрутки для Product */
+#product .folder-content.active .portfolio-grid {
+    max-height: 400px;
+    overflow-y: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 0.8rem;
+}
+
+/* Красивая полоса прокрутки */
+#product .folder-content.active .portfolio-grid::-webkit-scrollbar {
+    width: 8px;
+}
+
+#product .folder-content.active .portfolio-grid::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+#product .folder-content.active .portfolio-grid::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+}
+
+#product .folder-content.active .portfolio-grid::-webkit-scrollbar-thumb:hover {
+    background: #666;
+}
