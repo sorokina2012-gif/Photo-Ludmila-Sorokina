@@ -1,111 +1,305 @@
-<script>
-    // Мобильное меню
-    document.querySelector('.nav-toggle').addEventListener('click', function() {
-        const navMenu = document.querySelector('.nav-menu');
-        navMenu.classList.toggle('active');
-        
-        // Закрываем меню после клика по ссылке
-        const navLinks = document.querySelectorAll('.nav-menu a');
-        navLinks.forEach(link => {
-            link.addEventListener('click', function() {
-                navMenu.classList.remove('active');
-            });
-        });
-    });
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Портфолио - Людмила Сорокина</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <nav>
+                <div class="logo">L.Sorokina</div>
+                <div class="nav-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="portfolio.html" class="active">Портфолио</a></li>
+                </ul>
+            </nav>
+        </header>
 
-    // Папки портфолио
-    function toggleFolder(folderId) {
-        const folder = document.getElementById(folderId);
-        const content = folder.querySelector('.folder-content');
-        const arrow = folder.querySelector('.folder-arrow');
-        
-        // Закрываем все другие папки
-        document.querySelectorAll('.folder-content').forEach(item => {
-            if (item !== content) {
-                item.classList.remove('active');
+        <main>
+            <section class="portfolio-categories">
+                <h2>Портфолио</h2>
+                
+                <!-- Семейные истории -->
+                <div class="portfolio-folder" id="family">
+                    <div class="folder-header" onclick="toggleFolder('family')">
+                        <div class="folder-preview" style="background-image: url('images/family/family-1.jpg')"></div>
+                        <div class="folder-info">
+                            <h3>Семейные истории</h3>
+                            <span class="folder-count">33 фотографии</span>
+                            <i class="folder-arrow"></i>
+                        </div>
+                    </div>
+                    <div class="folder-content">
+                        <div class="portfolio-grid">
+                            <!-- 33 фото family -->
+                            <div class="portfolio-item" onclick="openLightbox('family', 1)">
+                                <img src="images/family/family-1.jpg" alt="Family фото 1" loading="lazy">
+                            </div>
+                            <div class="portfolio-item" onclick="openLightbox('family', 2)">
+                                <img src="images/family/family-2.jpg" alt="Family фото 2" loading="lazy">
+                            </div>
+                            <!-- ... остальные 31 фото -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Предметная съемка -->
+                <div class="portfolio-folder" id="product">
+                    <div class="folder-header" onclick="toggleFolder('product')">
+                        <div class="folder-preview" style="background-image: url('images/product/product-1.jpg')"></div>
+                        <div class="folder-info">
+                            <h3>Предметная съемка</h3>
+                            <span class="folder-count">99 работ</span>
+                            <i class="folder-arrow"></i>
+                        </div>
+                    </div>
+                    <div class="folder-content">
+                        <div class="portfolio-grid">
+                            <!-- 99 фото product -->
+                            <div class="portfolio-item" onclick="openLightbox('product', 1)">
+                                <img src="images/product/product-1.jpg" alt="Product фото 1" loading="lazy">
+                            </div>
+                            <div class="portfolio-item" onclick="openLightbox('product', 2)">
+                                <img src="images/product/product-2.jpg" alt="Product фото 2" loading="lazy">
+                            </div>
+                            <!-- ... остальные 97 фото -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Макромир -->
+                <div class="portfolio-folder" id="macro">
+                    <div class="folder-header" onclick="toggleFolder('macro')">
+                        <div class="folder-preview" style="background-image: url('images/macro/macro-1.jpg')"></div>
+                        <div class="folder-info">
+                            <h3>Макромир</h3>
+                            <span class="folder-count">18 деталей</span>
+                            <i class="folder-arrow"></i>
+                        </div>
+                    </div>
+                    <div class="folder-content">
+                        <div class="portfolio-grid">
+                            <!-- 18 фото macro -->
+                            <div class="portfolio-item" onclick="openLightbox('macro', 1)">
+                                <img src="images/macro/macro-1.jpg" alt="Macro фото 1" loading="lazy">
+                            </div>
+                            <div class="portfolio-item" onclick="openLightbox('macro', 2)">
+                                <img src="images/macro/macro-2.jpg" alt="Macro фото 2" loading="lazy">
+                            </div>
+                            <!-- ... остальные 16 фото -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Первые мгновения -->
+                <div class="portfolio-folder" id="newborn">
+                    <div class="folder-header" onclick="toggleFolder('newborn')">
+                        <div class="folder-preview" style="background-image: url('images/newborn/newborn-1.jpg')"></div>
+                        <div class="folder-info">
+                            <h3>New born - первые мгновения</h3>
+                            <span class="folder-count">12 историй</span>
+                            <i class="folder-arrow"></i>
+                        </div>
+                    </div>
+                    <div class="folder-content">
+                        <div class="portfolio-grid">
+                            <!-- 12 фото newborn -->
+                            <div class="portfolio-item" onclick="openLightbox('newborn', 1)">
+                                <img src="images/newborn/newborn-1.jpg" alt="Newborn фото 1" loading="lazy">
+                            </div>
+                            <div class="portfolio-item" onclick="openLightbox('newborn', 2)">
+                                <img src="images/newborn/newborn-2.jpg" alt="Newborn фото 2" loading="lazy">
+                            </div>
+                            <!-- ... остальные 10 фото -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Визуальные нарративы -->
+                <div class="portfolio-folder" id="story">
+                    <div class="folder-header" onclick="toggleFolder('story')">
+                        <div class="folder-preview" style="background-image: url('images/story/story-1.jpg')"></div>
+                        <div class="folder-info">
+                            <h3>Репортаж</h3>
+                            <span class="folder-count">13 проектов</span>
+                            <i class="folder-arrow"></i>
+                        </div>
+                    </div>
+                    <div class="folder-content">
+                        <div class="portfolio-grid">
+                            <!-- 13 фото story -->
+                            <div class="portfolio-item" onclick="openLightbox('story', 1)">
+                                <img src="images/story/story-1.jpg" alt="Story фото 1" loading="lazy">
+                            </div>
+                            <div class="portfolio-item" onclick="openLightbox('story', 2)">
+                                <img src="images/story/story-2.jpg" alt="Story фото 2" loading="lazy">
+                            </div>
+                            <!-- ... остальные 11 фото -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Движение в кадре -->
+                <div class="portfolio-folder" id="video">
+                    <div class="folder-header" onclick="toggleFolder('video')">
+                        <div class="folder-preview" style="background-image: url('images/video/1-poster.jpg')"></div>
+                        <div class="folder-info">
+                            <h3>Движение в кадре</h3>
+                            <span class="folder-count">5 видео</span>
+                            <i class="folder-arrow"></i>
+                        </div>
+                    </div>
+                    <div class="folder-content">
+                        <div class="portfolio-grid video-grid">
+                            <div class="video-item">
+                                <video controls poster="images/video/1-poster.jpg">
+                                    <source src="images/video/1.mp4" type="video/mp4">
+                                    Ваш браузер не поддерживает видео.
+                                </video>
+                            </div>
+                            <div class="video-item">
+                                <video controls poster="images/video/2-poster.jpg">
+                                    <source src="images/video/2.mp4" type="video/mp4">
+                                    Ваш браузер не поддерживает видео.
+                                </video>
+                            </div>
+                            <div class="video-item">
+                                <video controls poster="images/video/3-poster.jpg">
+                                    <source src="images/video/3.mp4" type="video/mp4">
+                                    Ваш браузер не поддерживает видео.
+                                </video>
+                            </div>
+                            <div class="video-item">
+                                <video controls poster="images/video/4-poster.jpg">
+                                    <source src="images/video/4.mp4" type="video/mp4">
+                                    Ваш браузер не поддерживает видео.
+                                </video>
+                            </div>
+                            <div class="video-item">
+                                <video controls poster="images/video/5-poster.jpg">
+                                    <source src="images/video/5.mp4" type="video/mp4">
+                                    Ваш браузер не поддерживает видео.
+                                </video>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Lightbox -->
+        <div id="lightbox" class="lightbox">
+            <span class="close-btn" onclick="closeLightbox()">&times;</span>
+            <span class="nav-btn prev-btn" onclick="changeImage(-1)">&#10094;</span>
+            <span class="nav-btn next-btn" onclick="changeImage(1)">&#10095;</span>
+            <div class="lightbox-content">
+                <img id="lightbox-image" src="" alt="">
+            </div>
+        </div>
+
+        <footer>
+            <div class="contact-section">
+                <h3>Для сотрудничества</h3>
+                <div class="contact-info">
+                    <p class="phone">+7 (925) 709-10-83</p>
+                    <div class="social-links">
+                        <a href="https://t.me/Ludmila_Sorokina" class="social-link">
+                            <i class="fab fa-telegram-plane"></i>
+                        </a>
+                        <a href="https://wa.me/79257091083" class="social-link">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <p class="copyright">&copy; 2025  Все права защищены.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Мобильное меню
+        document.querySelector('.nav-toggle').addEventListener('click', function() {
+            document.querySelector('.nav-menu').classList.toggle('active');
+        });
+
+        // Папки портфолио
+        function toggleFolder(folderId) {
+            const folder = document.getElementById(folderId);
+            const content = folder.querySelector('.folder-content');
+            const arrow = folder.querySelector('.folder-arrow');
+            
+            content.classList.toggle('active');
+            arrow.classList.toggle('active');
+        }
+
+        // Lightbox
+        let currentCategory = '';
+        let currentIndex = 0;
+
+        const maxImages = {
+            'family': 33,
+            'product': 99,
+            'macro': 18,
+            'newborn': 12,
+            'story': 13
+        };
+
+        function openLightbox(category, index) {
+            currentCategory = category;
+            currentIndex = index;
+            document.getElementById('lightbox-image').src = `images/${category}/${category}-${index}.jpg`;
+            document.getElementById('lightbox').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        function changeImage(direction) {
+            currentIndex += direction;
+            
+            if (currentIndex < 1) currentIndex = maxImages[currentCategory];
+            if (currentIndex > maxImages[currentCategory]) currentIndex = 1;
+            
+            document.getElementById('lightbox-image').src = `images/${currentCategory}/${currentCategory}-${currentIndex}.jpg`;
+        }
+
+        // Закрытие lightbox по клику вне изображения
+        document.getElementById('lightbox').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeLightbox();
             }
         });
-        document.querySelectorAll('.folder-arrow').forEach(item => {
-            if (item !== arrow) {
-                item.classList.remove('active');
+
+        // Управление клавиатурой
+        document.addEventListener('keydown', function(e) {
+            if (document.getElementById('lightbox').style.display === 'flex') {
+                if (e.key === 'Escape') closeLightbox();
+                if (e.key === 'ArrowLeft') changeImage(-1);
+                if (e.key === 'ArrowRight') changeImage(1);
             }
         });
-        
-        // Переключаем текущую папку
-        content.classList.toggle('active');
-        arrow.classList.toggle('active');
-    }
 
-    // Lightbox
-    let currentCategory = '';
-    let currentIndex = 0;
-
-    const maxImages = {
-        'family': 33,
-        'product': 99,
-        'macro': 18,
-        'newborn': 12,
-        'story': 13
-    };
-
-    function openLightbox(category, index) {
-        currentCategory = category;
-        currentIndex = index;
-        document.getElementById('lightbox-image').src = `images/${category}/${category}-${index}.jpg`;
-        document.getElementById('lightbox').style.display = 'flex';
-        document.body.style.overflow = 'hidden';
-    }
-
-    function closeLightbox() {
-        document.getElementById('lightbox').style.display = 'none';
-        document.body.style.overflow = 'auto';
-    }
-
-    function changeImage(direction) {
-        currentIndex += direction;
-        
-        if (currentIndex < 1) currentIndex = maxImages[currentCategory];
-        if (currentIndex > maxImages[currentCategory]) currentIndex = 1;
-        
-        document.getElementById('lightbox-image').src = `images/${currentCategory}/${currentCategory}-${currentIndex}.jpg`;
-    }
-
-    // Закрытие lightbox по клику вне изображения
-    document.getElementById('lightbox').addEventListener('click', function(e) {
-        if (e.target === this) {
-            closeLightbox();
-        }
-    });
-
-    // Управление клавиатурой
-    document.addEventListener('keydown', function(e) {
-        if (document.getElementById('lightbox').style.display === 'flex') {
-            if (e.key === 'Escape') closeLightbox();
-            if (e.key === 'ArrowLeft') changeImage(-1);
-            if (e.key === 'ArrowRight') changeImage(1);
-        }
-    });
-
-    // Открываем папку из хеша URL
-    window.addEventListener('load', function() {
-        const hash = window.location.hash.substring(1);
-        if (hash && document.getElementById(hash)) {
-            toggleFolder(hash);
-            setTimeout(() => {
+        // Открываем папку из хеша URL
+        window.addEventListener('load', function() {
+            const hash = window.location.hash.substring(1);
+            if (hash && document.getElementById(hash)) {
+                toggleFolder(hash);
                 document.getElementById(hash).scrollIntoView({ behavior: 'smooth' });
-            }, 100);
-        }
-    });
-
-    // Закрытие мобильного меню при клике вне его
-    document.addEventListener('click', function(e) {
-        const navMenu = document.querySelector('.nav-menu');
-        const navToggle = document.querySelector('.nav-toggle');
-        
-        if (navMenu.classList.contains('active') && 
-            !navMenu.contains(e.target) && 
-            !navToggle.contains(e.target)) {
-            navMenu.classList.remove('active');
-        }
-    });
-</script>
+            }
+        });
+    </script>
+</body>
+</html>
