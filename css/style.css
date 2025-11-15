@@ -1,4 +1,4 @@
-/* Портфолио - папки (ИСПРАВЛЕННЫЙ РАЗМЕР) */
+/* Портфолио - папки с плавными анимациями */
 .portfolio-categories {
     padding: 4rem 3rem;
     background: #ffffff;
@@ -11,19 +11,30 @@
     text-align: center;
     margin-bottom: 4rem;
     letter-spacing: 2px;
+    animation: fadeInUp 0.8s ease-out;
 }
 
 .portfolio-folder {
     margin-bottom: 3rem;
     border: 1px solid #eaeaea;
-    border-radius: 12px;
+    border-radius: 16px;
     overflow: hidden;
-    transition: all 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out forwards;
 }
+
+.portfolio-folder:nth-child(1) { animation-delay: 0.1s; }
+.portfolio-folder:nth-child(2) { animation-delay: 0.2s; }
+.portfolio-folder:nth-child(3) { animation-delay: 0.3s; }
+.portfolio-folder:nth-child(4) { animation-delay: 0.4s; }
+.portfolio-folder:nth-child(5) { animation-delay: 0.5s; }
+.portfolio-folder:nth-child(6) { animation-delay: 0.6s; }
 
 .portfolio-folder:hover {
     border-color: #d0d0d0;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+    transform: translateY(-2px);
 }
 
 .folder-header {
@@ -32,23 +43,65 @@
     padding: 2.5rem;
     background: #f8f9fa;
     cursor: pointer;
-    transition: background 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     gap: 2.5rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.folder-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    transition: left 0.6s ease;
+}
+
+.folder-header:hover::before {
+    left: 100%;
 }
 
 .folder-header:hover {
-    background: #f0f0f0;
+    background: #f5f5f5;
+    padding-left: 3rem;
 }
 
-/* УВЕЛИЧИВАЕМ ПРЕВЬЮШКИ */
+/* Превьюшки с плавным увеличением */
 .folder-preview {
-    width: 200px; /* Было 120px */
-    height: 150px; /* Было 120px - делаем прямоугольными */
+    width: 200px;
+    height: 150px;
     background-size: cover;
     background-position: center;
-    border-radius: 8px;
+    border-radius: 12px;
     flex-shrink: 0;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
+    overflow: hidden;
+}
+
+.folder-preview::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.folder-header:hover .folder-preview {
+    transform: scale(1.05) rotate(1deg);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+}
+
+.folder-header:hover .folder-preview::after {
+    opacity: 1;
 }
 
 .folder-info {
@@ -56,50 +109,242 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    transition: all 0.4s ease;
+}
+
+.folder-header:hover .folder-info {
+    transform: translateX(10px);
 }
 
 .folder-info h3 {
-    font-size: 1.8rem; /* Увеличил шрифт */
+    font-size: 1.8rem;
     font-weight: 500;
     color: #2c2c2c;
     font-family: 'Playfair Display', serif;
     margin: 0;
+    transition: all 0.3s ease;
+}
+
+.folder-header:hover .folder-info h3 {
+    color: #000;
 }
 
 .folder-count {
-    font-size: 1.1rem; /* Увеличил шрифт */
+    font-size: 1.1rem;
     color: #666;
     font-weight: 400;
     background: #ffffff;
     padding: 0.5rem 1rem;
     border-radius: 20px;
     border: 1px solid #eaeaea;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.folder-header:hover .folder-count {
+    background: #2c2c2c;
+    color: #ffffff;
+    border-color: #2c2c2c;
+    transform: scale(1.05);
 }
 
 .folder-arrow {
-    width: 24px; /* Увеличил стрелку */
+    width: 24px;
     height: 24px;
     border-right: 3px solid #2c2c2c;
     border-bottom: 3px solid #2c2c2c;
     transform: rotate(45deg);
-    transition: transform 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
     margin-left: 2rem;
+    position: relative;
+}
+
+.folder-arrow::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: #2c2c2c;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.3s ease;
+}
+
+.folder-header:hover .folder-arrow::before {
+    width: 40px;
+    height: 40px;
 }
 
 .folder-arrow.active {
-    transform: rotate(-135deg);
+    transform: rotate(-135deg) scale(1.1);
+}
+
+.folder-header:hover .folder-arrow {
+    transform: rotate(45deg) scale(1.1);
 }
 
 .folder-content {
     display: none;
-    padding: 3rem; /* Увеличил отступы */
+    padding: 0;
     background: #ffffff;
-    border-top: 1px solid #eaeaea;
+    border-top: 1px solid #f0f0f0;
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .folder-content.active {
     display: block;
-    animation: fadeIn 0.3s ease;
+    max-height: 2000px;
+    padding: 3rem;
+    animation: contentReveal 0.8s ease-out;
+}
+
+@keyframes contentReveal {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    opacity: 0;
+    animation: gridReveal 0.6s ease-out 0.3s forwards;
+}
+
+@keyframes gridReveal {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.portfolio-item {
+    background: #f8f9fa;
+    border: 1px solid #eaeaea;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    overflow: hidden;
+    aspect-ratio: 4/3;
+    border-radius: 12px;
+    position: relative;
+    opacity: 0;
+    animation: itemReveal 0.5s ease-out forwards;
+}
+
+.portfolio-item:nth-child(1) { animation-delay: 0.1s; }
+.portfolio-item:nth-child(2) { animation-delay: 0.15s; }
+.portfolio-item:nth-child(3) { animation-delay: 0.2s; }
+.portfolio-item:nth-child(4) { animation-delay: 0.25s; }
+.portfolio-item:nth-child(5) { animation-delay: 0.3s; }
+.portfolio-item:nth-child(6) { animation-delay: 0.35s; }
+
+@keyframes itemReveal {
+    from {
+        opacity: 0;
+        transform: scale(0.8) translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.portfolio-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(44,44,44,0.1) 0%, rgba(44,44,44,0) 100%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 1;
+}
+
+.portfolio-item:hover {
+    transform: translateY(-8px) scale(1.02);
+    border-color: #d0d0d0;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+.portfolio-item:hover::before {
+    opacity: 1;
+}
+
+.portfolio-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.portfolio-item:hover img {
+    transform: scale(1.1);
+}
+
+/* Video Grid с анимациями */
+.video-grid {
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+}
+
+.video-item {
+    background: #f8f9fa;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    opacity: 0;
+    animation: itemReveal 0.5s ease-out forwards;
+}
+
+.video-item:nth-child(1) { animation-delay: 0.1s; }
+.video-item:nth-child(2) { animation-delay: 0.15s; }
+.video-item:nth-child(3) { animation-delay: 0.2s; }
+.video-item:nth-child(4) { animation-delay: 0.25s; }
+.video-item:nth-child(5) { animation-delay: 0.3s; }
+
+.video-item:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+}
+
+.video-item video {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.video-item:hover video {
+    transform: scale(1.05);
+}
+
+/* Анимации */
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 @keyframes fadeIn {
@@ -107,59 +352,103 @@
     to { opacity: 1; }
 }
 
-.portfolio-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Увеличил минимальный размер */
-    gap: 1.5rem; /* Увеличил отступы */
-}
-
-.portfolio-item {
-    background: #f8f9fa;
-    border: 1px solid #eaeaea;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    overflow: hidden;
-    aspect-ratio: 4/3; /* Соотношение сторон как у превьюшек */
-    border-radius: 8px;
-}
-
-.portfolio-item:hover {
-    transform: translateY(-5px);
-    border-color: #d0d0d0;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-}
-
-.portfolio-item img {
+/* Lightbox с плавными анимациями */
+.lightbox {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    transition: transform 0.3s ease;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 10000;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.4s ease;
 }
 
-.portfolio-item:hover img {
-    transform: scale(1.08);
+.lightbox.active {
+    display: flex;
+    animation: lightboxFadeIn 0.4s ease-out forwards;
 }
 
-/* Video Grid */
-.video-grid {
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* Увеличил видео */
-    gap: 2rem;
+@keyframes lightboxFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
-.video-item {
-    background: #f8f9fa;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+.lightbox-content {
+    max-width: 90%;
+    max-height: 90%;
+    position: relative;
+    transform: scale(0.9);
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-.video-item video {
-    width: 100%;
-    height: auto;
-    display: block;
+.lightbox.active .lightbox-content {
+    transform: scale(1);
 }
 
-/* Мобильная адаптация для больших превьюшек */
+.lightbox-content img {
+    max-width: 100%;
+    max-height: 90vh;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+}
+
+.close-btn {
+    position: absolute;
+    top: 25px;
+    right: 35px;
+    color: white;
+    font-size: 45px;
+    font-weight: 300;
+    cursor: pointer;
+    z-index: 10001;
+    transition: all 0.3s ease;
+    opacity: 0.8;
+}
+
+.close-btn:hover {
+    opacity: 1;
+    transform: scale(1.1) rotate(90deg);
+}
+
+.nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: white;
+    font-size: 45px;
+    font-weight: 300;
+    cursor: pointer;
+    padding: 20px;
+    user-select: none;
+    z-index: 10001;
+    transition: all 0.3s ease;
+    opacity: 0.7;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(10px);
+}
+
+.nav-btn:hover {
+    opacity: 1;
+    background: rgba(255,255,255,0.2);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.prev-btn {
+    left: 30px;
+}
+
+.next-btn {
+    right: 30px;
+}
+
+/* Мобильная адаптация с анимациями */
 @media (max-width: 767px) {
     .portfolio-categories {
         padding: 2rem 1rem;
@@ -172,6 +461,7 @@
     
     .portfolio-folder {
         margin-bottom: 2rem;
+        border-radius: 12px;
     }
     
     .folder-header {
@@ -181,10 +471,13 @@
         padding: 2rem 1.5rem;
     }
     
-    /* На мобилке тоже увеличиваем превьюшки */
+    .folder-header:hover {
+        padding-left: 1.5rem;
+    }
+    
     .folder-preview {
         width: 100%;
-        height: 200px; /* Высокие превьюшки на мобилке */
+        height: 200px;
         max-width: 300px;
         margin: 0 auto;
     }
@@ -193,6 +486,10 @@
         flex-direction: column;
         gap: 1rem;
         width: 100%;
+    }
+    
+    .folder-header:hover .folder-info {
+        transform: translateX(0);
     }
     
     .folder-info h3 {
@@ -209,7 +506,7 @@
         margin-top: 1rem;
     }
     
-    .folder-content {
+    .folder-content.active {
         padding: 1.5rem;
     }
     
@@ -221,6 +518,25 @@
     .video-grid {
         grid-template-columns: 1fr;
         gap: 1.5rem;
+    }
+    
+    .close-btn {
+        top: 15px;
+        right: 20px;
+        font-size: 35px;
+    }
+    
+    .nav-btn {
+        font-size: 35px;
+        padding: 15px;
+    }
+    
+    .prev-btn {
+        left: 15px;
+    }
+    
+    .next-btn {
+        right: 15px;
     }
 }
 
@@ -235,22 +551,5 @@
     
     .folder-info h3 {
         font-size: 1.3rem;
-    }
-}
-
-/* Для очень больших экранов */
-@media (min-width: 1400px) {
-    .folder-preview {
-        width: 250px;
-        height: 180px;
-    }
-    
-    .folder-info h3 {
-        font-size: 2rem;
-    }
-    
-    .portfolio-grid {
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 2rem;
     }
 }
