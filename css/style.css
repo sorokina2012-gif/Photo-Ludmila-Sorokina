@@ -586,3 +586,47 @@ footer {
         grid-template-columns: repeat(2, 1fr);
     }
 }
+/* Статистика */
+.stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid #eaeaea;
+}
+
+.stat-item {
+    text-align: center;
+}
+
+.stat-number {
+    font-size: 2rem;
+    font-weight: 300;
+    color: #2c2c2c;
+    margin-bottom: 0.5rem;
+}
+
+.stat-text {
+    font-size: 0.9rem;
+    color: #666;
+    font-weight: 300;
+}
+
+/* Мобильная адаптация статистики */
+@media (max-width: 767px) {
+    .stats {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        margin-top: 2rem;
+        padding-top: 1.5rem;
+    }
+    
+    .stat-number {
+        font-size: 1.5rem;
+    }
+    
+    .stat-text {
+        font-size: 0.8rem;
+    }
+}
