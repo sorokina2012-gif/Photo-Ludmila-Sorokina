@@ -1735,3 +1735,12 @@ footer {
     max-height: 500px;
     overflow-y: auto;
 }
+/* Простой способ - показываем все фото при наведении на кнопку */
+.show-more-btn:hover ~ .portfolio-grid .portfolio-item.hidden {
+    display: block !important;
+}
+
+.show-more-btn:hover ~ .portfolio-grid {
+    max-height: none !important;
+    overflow-y: visible !important;
+}
