@@ -583,4 +583,22 @@
     </script>
 </body>
 </html>
+// Функция для кнопки "Показать еще"
+function showMorePhotos(category) {
+    const folder = document.getElementById(category);
+    const hiddenItems = folder.querySelectorAll('.portfolio-item.hidden');
+    const showMoreBtn = folder.querySelector('.show-more-btn');
+    
+    // Показываем все скрытые фото
+    hiddenItems.forEach(item => {
+        item.classList.remove('hidden');
+    });
+    
+    // Скрываем кнопку
+    showMoreBtn.style.display = 'none';
+    
+    // Убираем ограничение высоты
+    const grid = folder.querySelector('.portfolio-grid');
+    grid.style.maxHeight = 'none';
+}
 
