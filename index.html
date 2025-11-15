@@ -3,96 +3,107 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Людмила Сорокина - Фотограф</title>
+    <title>Людмила Сорокина | Фотограф</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <header>
-        <nav>
-            <div class="logo">Людмила Сорокина</div>
-            <ul class="nav-menu">
-                <li><a href="index.html" class="active">Главная</a></li>
-                <li><a href="portfolio.html">Портфолио</a></li>
-            </ul>
-        </nav>
-    </header>
+    <div class="container">
+        <header>
+            <nav>
+                <div class="logo">L.Sorokina</div>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="active">Главная</a></li>
+                    <li><a href="portfolio.html">Портфолио</a></li>
+                </ul>
+            </nav>
+        </header>
 
-    <main>
-        <section class="hero">
-            <div class="hero-content">
-                <div class="portrait">
-                    <img src="images/portrait.jpg" alt="Людмила Сорокина">
+        <main>
+            <section class="hero">
+                <div class="hero-content">
+                    <div class="portrait-wrapper">
+                        <img src="images/portrait.jpg" alt="Людмила Сорокина" class="portrait">
+                    </div>
+                    <div class="hero-text">
+                        <h1>Людмила Сорокина</h1>
+                        <p class="subtitle">Профессиональный фотограф</p>
+                        <p class="description">Создаю timeless-истории через объектив камеры</p>
+                    </div>
                 </div>
-                <div class="hero-text">
-                    <h1>Людмила Сорокина</h1>
-                    <p class="tagline">Профессиональный фотограф</p>
-                    <p class="description">Создаю эмоциональные и живые кадры, которые рассказывают вашу историю</p>
+            </section>
+
+            <section class="categories">
+                <h2>Направления</h2>
+                <div class="category-grid">
+                    <div class="category-card" onclick="location.href='portfolio.html#family'">
+                        <div class="category-image" style="background-image: url('images/family/family-1.jpg')"></div>
+                        <div class="category-info">
+                            <h3>Family</h3>
+                            <span>33 работы</span>
+                        </div>
+                    </div>
+                    
+                    <div class="category-card" onclick="location.href='portfolio.html#product'">
+                        <div class="category-image" style="background-image: url('images/product/product-1.jpg')"></div>
+                        <div class="category-info">
+                            <h3>Product</h3>
+                            <span>99 работ</span>
+                        </div>
+                    </div>
+                    
+                    <div class="category-card" onclick="location.href='portfolio.html#macro'">
+                        <div class="category-image" style="background-image: url('images/macro/macro-1.jpg')"></div>
+                        <div class="category-info">
+                            <h3>Macro</h3>
+                            <span>18 работ</span>
+                        </div>
+                    </div>
+                    
+                    <div class="category-card" onclick="location.href='portfolio.html#newborn'">
+                        <div class="category-image" style="background-image: url('images/newborn/newborn-1.jpg')"></div>
+                        <div class="category-info">
+                            <h3>Newborn</h3>
+                            <span>12 работ</span>
+                        </div>
+                    </div>
+                    
+                    <div class="category-card" onclick="location.href='portfolio.html#story'">
+                        <div class="category-image" style="background-image: url('images/story/story-1.jpg')"></div>
+                        <div class="category-info">
+                            <h3>Story</h3>
+                            <span>13 работ</span>
+                        </div>
+                    </div>
+                    
+                    <div class="category-card" onclick="location.href='portfolio.html#studio'">
+                        <div class="category-image" style="background-image: url('images/studio/studio-1.jpg')"></div>
+                        <div class="category-info">
+                            <h3>Studio</h3>
+                            <span>работы</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <div class="contact-section">
+                <h3>Для сотрудничества</h3>
+                <div class="contact-info">
+                    <p class="phone">+7 (985) 915-92-01</p>
+                    <div class="social-links">
+                        <a href="https://t.me/lsorokina_photo" class="social-link">
+                            <i class="fab fa-telegram-plane"></i>
+                        </a>
+                        <a href="https://wa.me/79859159201" class="social-link">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
-        </section>
-
-        <section class="categories">
-            <h2>Мои работы</h2>
-            <div class="category-grid">
-                <div class="category-card" onclick="location.href='portfolio.html#family'">
-                    <div class="category-image" style="background-image: url('images/family/family-1.jpg')"></div>
-                    <h3>Family</h3>
-                    <span>33 фото</span>
-                </div>
-                
-                <div class="category-card" onclick="location.href='portfolio.html#macro'">
-                    <div class="category-image" style="background-image: url('images/macro/macro-1.jpg')"></div>
-                    <h3>Macro</h3>
-                    <span>18 фото</span>
-                </div>
-                
-                <div class="category-card" onclick="location.href='portfolio.html#newborn'">
-                    <div class="category-image" style="background-image: url('images/newborn/newborn-1.jpg')"></div>
-                    <h3>Newborn</h3>
-                    <span>12 фото</span>
-                </div>
-                
-                <div class="category-card" onclick="location.href='portfolio.html#product'">
-                    <div class="category-image" style="background-image: url('images/product/product-1.jpg')"></div>
-                    <h3>Product</h3>
-                    <span>99 фото</span>
-                </div>
-                
-                <div class="category-card" onclick="location.href='portfolio.html#story'">
-                    <div class="category-image" style="background-image: url('images/story/story-1.jpg')"></div>
-                    <h3>Story</h3>
-                    <span>13 фото</span>
-                </div>
-                
-                <div class="category-card" onclick="location.href='portfolio.html#studio'">
-                    <div class="category-image" style="background-image: url('images/studio/studio-1.jpg')"></div>
-                    <h3>Studio</h3>
-                    <span>-- фото</span>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="contacts">
-            <h3>Свяжитесь со мной</h3>
-            <div class="contact-info">
-                <p class="phone">📞 +7 XXX XXX-XX-XX</p>
-                <div class="social-buttons">
-                    <a href="https://t.me/your_telegram" class="social-btn telegram">
-                        <i class="fab fa-telegram"></i>
-                    </a>
-                    <a href="https://wa.me/your_whatsapp" class="social-btn whatsapp">
-                        <i class="fab fa-whatsapp"></i>
-                    </a>
-                    <a href="https://vk.com/your_vk" class="social-btn vk">
-                        <i class="fab fa-vk"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <p class="copyright">&copy; 2025 Все права защищены.</p>
-    </footer>
+            <p class="copyright">&copy; 2024 Людмила Сорокина</p>
+        </footer>
+    </div>
 </body>
 </html>
