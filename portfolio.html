@@ -3,56 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Портфолио | Людмила Сорокина</title>
+    <title>Портфолио - Людмила Сорокина</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <!-- Навигация -->
-    <nav class="main-nav">
-        <div class="nav-container">
-            <div class="logo">
-                <span>Людмила Сорокина</span>
+    <div class="container">
+        <header>
+            <nav>
+                <div class="logo">L.Sorokina</div>
+                <div class="nav-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="portfolio.html" class="active">Портфолио</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <section class="portfolio-categories">
+                <h2>Портфолио</h2>
+                
+                <div class="portfolio-section" id="family">
+                    <h3>Family</h3>
+                    <div class="portfolio-grid">
+                        <!-- Добавь 33 фото family -->
+                        <div class="portfolio-item">
+                            <img src="images/family/family-1.jpg" alt="Family фото 1">
+                        </div>
+                        <!-- ... остальные family фото -->
+                    </div>
+                </div>
+                
+                <div class="portfolio-section" id="product">
+                    <h3>Product</h3>
+                    <div class="portfolio-grid">
+                        <!-- Добавь 99 фото product -->
+                        <div class="portfolio-item">
+                            <img src="images/product/product-1.jpg" alt="Product фото 1">
+                        </div>
+                        <!-- ... остальные product фото -->
+                    </div>
+                </div>
+                
+                <!-- Аналогично для других категорий -->
+                
+            </section>
+        </main>
+
+        <footer>
+            <div class="contact-section">
+                <h3>Для сотрудничества</h3>
+                <div class="contact-info">
+                    <p class="phone">+7 (985) 915-92-01</p>
+                    <div class="social-links">
+                        <a href="https://t.me/lsorokina_photo" class="social-link">
+                            <i class="fab fa-telegram-plane"></i>
+                        </a>
+                        <a href="https://wa.me/79859159201" class="social-link">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
             </div>
-            <div class="nav-links">
-                <a href="index.html">Главная</a>
-                <a href="portfolio.html" class="active">Портфолио</a>
-            </div>
-        </div>
-    </nav>
+            <p class="copyright">&copy; 2025 Людмила Сорокина. Все права защищены.</p>
+        </footer>
+    </div>
 
-    <!-- Герой секция портфолио -->
-    <section class="portfolio-hero">
-        <div class="portfolio-hero-content">
-            <h1 class="portfolio-hero-title">Мое портфолио</h1>
-            <p class="portfolio-hero-subtitle">Профессиональная фотография в разных жанрах</p>
-        </div>
-    </section>
-
-    <!-- Фильтры и галерея -->
-    <section class="portfolio-section">
-        <div class="portfolio-container">
-            <div class="portfolio-filters">
-                <button class="filter-btn active" data-filter="family">Семейные</button>
-                <button class="filter-btn" data-filter="product">Предметные</button>
-                <button class="filter-btn" data-filter="studio">Студийные</button>
-                <button class="filter-btn" data-filter="macro">Макро</button>
-                <button class="filter-btn" data-filter="newborn">Новорожденные</button>
-                <button class="filter-btn" data-filter="story">Истории</button>
-                <button class="filter-btn" data-filter="video">Видео</button>
-            </div>
-
-            <div class="portfolio-gallery"></div>
-        </div>
-    </section>
-
-    <!-- Футер -->
-    <footer class="main-footer">
-        <div class="footer-container">
-            <p>&copy; 2025 Людмила Сорокина. Все права защищены.</p>
-        </div>
-    </footer>
-
-    <script src="js/portfolio.js"></script>
+    <script>
+        // Мобильное меню
+        document.querySelector('.nav-toggle').addEventListener('click', function() {
+            document.querySelector('.nav-menu').classList.toggle('active');
+        });
+    </script>
 </body>
 </html>
