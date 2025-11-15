@@ -1678,3 +1678,51 @@ footer {
 #product .portfolio-grid .portfolio-item:nth-child(n+21) {
     display: none;
 }
+/* Убираем все подсказки "Листайте чтобы увидеть" */
+.scroll-hint p {
+    display: none !important;
+}
+
+/* Оставляем только кнопку */
+.scroll-hint {
+    text-align: center;
+    margin: 1rem 0 0.5rem;
+    padding: 0;
+}
+
+/* Кнопка "Показать еще" */
+.show-more-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1.5rem;
+    background: #2c2c2c;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 400;
+    transition: all 0.3s ease;
+    margin: 0 auto;
+}
+
+.show-more-btn:hover {
+    background: #000;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.show-more-btn i {
+    font-size: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.show-more-btn:hover i {
+    transform: translateX(3px);
+}
+
+/* Скрываем лишние фото */
+.portfolio-item.hidden {
+    display: none;
+}
