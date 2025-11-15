@@ -913,3 +913,94 @@ footer {
 @media (max-width: 767px) {
     /* Все мобильные стили остаются как были */
 }
+/* Исправление мобильной адаптации главной */
+@media (max-width: 767px) {
+    .container {
+        max-width: 100%;
+    }
+    
+    nav {
+        padding: 1rem 1.5rem;
+    }
+    
+    .logo {
+        font-size: 1.2rem;
+    }
+    
+    .nav-menu li a {
+        font-size: 1.1rem;
+        padding: 0.8rem 2rem;
+    }
+    
+    .hero {
+        padding: 6rem 1rem 2rem;
+    }
+    
+    .hero-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        text-align: center;
+    }
+    
+    .portrait {
+        height: 300px;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+    
+    .hero-text h1 {
+        font-size: 2.2rem;
+    }
+    
+    .subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .description {
+        font-size: 1rem;
+        margin: 0 auto;
+    }
+    
+    .stats {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        margin-top: 2rem;
+        padding-top: 2rem;
+    }
+    
+    .stat-number {
+        font-size: 2rem;
+    }
+    
+    .categories {
+        padding: 2rem 1rem;
+    }
+    
+    .categories h2 {
+        font-size: 1.8rem;
+        margin-bottom: 2rem;
+    }
+    
+    .category-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .category-image {
+        height: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-text h1 {
+        font-size: 1.8rem;
+    }
+    
+    .portrait {
+        height: 250px;
+    }
+    
+    .category-image {
+        height: 180px;
+    }
+}
