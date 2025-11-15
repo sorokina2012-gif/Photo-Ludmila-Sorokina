@@ -1,264 +1,58 @@
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Портфолио — Людмила Сорокина</title>
-
-<script src="https://cdn.tailwindcss.com"></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
-
-<style>
-body {
-  font-family: 'Inter', sans-serif;
-  background:#f5f5f5;
-  margin:0;
-  padding:0;
-}
-
-/* Верхнее меню смещено вправо */
-header {
-  display:flex;
-  justify-content:flex-end;
-  gap:2rem;
-  padding:1rem 3rem 1rem 1rem;
-  background:#ffffff;
-  box-shadow:0 2px 8px rgba(0,0,0,0.05);
-  position:sticky;
-  top:0;
-  z-index:100;
-}
-header a {
-  font-family:'Inter', sans-serif;
-  font-weight:600;
-  text-decoration:none;
-  color:#1f2937;
-  transition:0.3s;
-}
-header a.active {
-  color:#1f2937;
-  font-weight:900;
-  border-bottom:2px solid #1f2937;
-  padding-bottom:2px;
-}
-header a:hover {
-  color:#374151;
-}
-
-/* Вкладки портфолио */
-.nav {
-  display:flex;
-  justify-content:center;
-  gap:1.5rem;
-  margin-bottom:2rem;
-  flex-wrap:wrap;
-}
-.nav button {
-  font-family:'Inter', sans-serif;
-  font-weight:600;
-  background:#fff;
-  padding:0.5rem 1.5rem;
-  border-radius:1rem;
-  border:1px solid #1f2937;
-  cursor:pointer;
-  transition:0.3s;
-}
-.nav button.active,
-.nav button:hover {
-  background:#1f2937;
-  color:white;
-}
-
-/* Галерея с размытым фоном */
-.gallery-wrapper {
-  position: relative;
-  width: 100%;
-  min-height: 60vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  overflow:hidden;
-}
-.gallery-wrapper img.focus {
-  position: relative;
-  z-index:20;
-  max-width:80%;
-  max-height:70vh;
-  border-radius:1rem;
-  cursor:pointer;
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-.gallery-wrapper img.focus:hover {
-  transform: scale(1.05);
-  box-shadow:0 10px 20px rgba(0,0,0,0.2);
-}
-.gallery-wrapper img.bg-blur {
-  position:absolute;
-  top:50%;
-  left:50%;
-  width:110%;
-  height:auto;
-  transform:translate(-50%, -50%);
-  filter: blur(15px) brightness(0.6);
-  z-index:10;
-  transition: opacity 0.5s;
-}
-
-/* Стрелки */
-.arrow {
-  position:absolute;
-  top:50%;
-  transform:translateY(-50%);
-  font-size:2rem;
-  color:white;
-  background: rgba(0,0,0,0.4);
-  padding:0.5rem 1rem;
-  border-radius:50%;
-  cursor:pointer;
-  z-index:30;
-  user-select:none;
-  transition:0.3s;
-}
-.arrow:hover {
-  background: rgba(0,0,0,0.6);
-}
-.arrow.left { left:10px; }
-.arrow.right { right:10px; }
-
-/* Модальное окно */
-#modal {
-  display:none;
-  position:fixed;
-  top:0; left:0;
-  width:100%; height:100%;
-  background: rgba(0,0,0,0.85);
-  justify-content:center;
-  align-items:center;
-  z-index:50;
-}
-#modal img {
-  max-width:90%;
-  max-height:90%;
-  object-fit:contain;
-  border-radius:0.5rem;
-}
-
-/* Адаптив */
-@media (max-width:768px){
-  .gallery-wrapper img.focus { max-width:90%; max-height:50vh; }
-  header { gap:1rem; flex-wrap:wrap; padding:1rem 1rem 1rem 1rem; }
-  .arrow { font-size:1.5rem; padding:0.3rem 0.6rem; }
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Портфолио | Людмила Сорокина</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
+    <!-- Навигация -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <div class="logo">
+                <span>Людмила Сорокина</span>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Главная</a>
+                <a href="portfolio.html" class="active">Портфолио</a>
+            </div>
+        </div>
+    </nav>
 
-<header>
-  <a href="index.html">Главная</a>
-  <a href="portfolio.html" class="active">Портфолио</a>
-  <a href="about.html">Обо мне</a>
-  <a href="contacts.html">Контакты</a>
-</header>
+    <!-- Герой секция портфолио -->
+    <section class="portfolio-hero">
+        <div class="portfolio-hero-content">
+            <h1 class="portfolio-hero-title">Мое портфолио</h1>
+            <p class="portfolio-hero-subtitle">Профессиональная фотография в разных жанрах</p>
+        </div>
+    </section>
 
-<div class="nav">
-  <button class="active" data-category="commercial">Коммерция</button>
-  <button data-category="eventsFamily">Важные события</button>
-  <button data-category="all">Все фото</button>
-</div>
+    <!-- Фильтры и галерея -->
+    <section class="portfolio-section">
+        <div class="portfolio-container">
+            <div class="portfolio-filters">
+                <button class="filter-btn active" data-filter="family">Семейные</button>
+                <button class="filter-btn" data-filter="product">Предметные</button>
+                <button class="filter-btn" data-filter="studio">Студийные</button>
+                <button class="filter-btn" data-filter="macro">Макро</button>
+                <button class="filter-btn" data-filter="newborn">Новорожденные</button>
+                <button class="filter-btn" data-filter="story">Истории</button>
+                <button class="filter-btn" data-filter="video">Видео</button>
+            </div>
 
-<div class="gallery-wrapper" id="gallery">
-  <div class="arrow left">&#10094;</div>
-  <div class="arrow right">&#10095;</div>
-</div>
+            <div class="portfolio-gallery"></div>
+        </div>
+    </section>
 
-<!-- Модальное окно -->
-<div id="modal">
-  <img src="" alt="Фото">
-</div>
+    <!-- Футер -->
+    <footer class="main-footer">
+        <div class="footer-container">
+            <p>&copy; 2025 Людмила Сорокина. Все права защищены.</p>
+        </div>
+    </footer>
 
-<script>
-// Точные имена файлов из твоей папки images
-const images = {
-  commercial: ["commercial1.jpg","commercial2.jpg","commercial3.jpg","commercial4.jpg","commercial5.jpg","commercial6.jpg","commercial7.jpg","commercial8.jpg","commercial9.jpg","commercial10.jpg","commercial11.jpg","commercial12.jpg"],
-
-Ludmila, [13.11.2025 14:22]
-eventsFamily: ["events1.jpg","events2.jpg","events3.jpg","events4.jpg","events5.jpg","events6.jpg","family1.jpg","family2.jpg","family3.jpg","family4.jpg","family5.jpg","family6.jpg","family7.jpg","family8.jpg","family9.jpg"]
-};
-const allImages = [...images.commercial, ...images.eventsFamily];
-
-let currentCategory = 'commercial';
-let currentIndex = 0;
-let currentImgs = [...images[currentCategory]];
-
-// Элементы
-const gallery = document.getElementById('gallery');
-const modal = document.getElementById('modal');
-const modalImg = modal.querySelector('img');
-const leftArrow = document.querySelector('.arrow.left');
-const rightArrow = document.querySelector('.arrow.right');
-
-function updateGallery() {
-  gallery.querySelectorAll('img').forEach(img=>img.remove());
-  if(currentImgs.length===0) return;
-
-  const mainSrc = currentImgs[currentIndex];
-
-  // Главная фотография
-  const mainImg = document.createElement('img');
-  mainImg.src = "images/"+mainSrc;
-  mainImg.alt = mainSrc;
-  mainImg.classList.add('focus');
-  mainImg.addEventListener('click', ()=>{ modal.style.display='flex'; modalImg.src=mainImg.src; });
-  gallery.appendChild(mainImg);
-
-  // Размытый фон
-  currentImgs.forEach((imgSrc,i)=>{
-    if(i===currentIndex) return;
-    const bgImg = document.createElement('img');
-    bgImg.src = "images/"+imgSrc;
-    bgImg.alt = imgSrc;
-    bgImg.classList.add('bg-blur');
-    gallery.appendChild(bgImg);
-  });
-}
-
-// Стрелки
-leftArrow.addEventListener('click', ()=>{
-  currentIndex = (currentIndex-1+currentImgs.length)%currentImgs.length;
-  updateGallery();
-});
-rightArrow.addEventListener('click', ()=>{
-  currentIndex = (currentIndex+1)%currentImgs.length;
-  updateGallery();
-});
-
-// Модальное окно
-modal.addEventListener('click', ()=>{
-  modal.style.display = "none";
-  modalImg.src = "";
-});
-
-// Вкладки
-const buttons = document.querySelectorAll(".nav button");
-buttons.forEach(btn=>{
-  btn.addEventListener('click', ()=>{
-    buttons.forEach(b=>b.classList.remove("active"));
-    btn.classList.add("active");
-    currentCategory = btn.dataset.category;
-    if(currentCategory==='all'){
-      currentImgs = [...allImages].sort(()=>Math.random()-0.5);
-    } else {
-      currentImgs = [...images[currentCategory]];
-    }
-    currentIndex = 0;
-    updateGallery();
-  });
-});
-
-// Инициализация
-updateGallery();
-</script>
-
+    <script src="js/portfolio.js"></script>
 </body>
 </html>
