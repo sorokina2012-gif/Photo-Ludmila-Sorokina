@@ -150,83 +150,91 @@
 
                 <!-- Предметная съемка -->
                 <div class="portfolio-folder" id="product">
-                    <div class="folder-header" onclick="toggleFolder('product')">
-                        <div class="folder-preview" style="background-image: url('images/product/product-1.jpg')"></div>
-                        <div class="folder-info">
-                            <h3>Предметная съемка</h3>
-                            <span class="folder-count">99 работ</span>
-                            <i class="folder-arrow"></i>
-                        </div>
-                    </div>
-                    <div class="folder-content">
-                        <div class="photos-count">99 работ</div>
-                        <div class="portfolio-grid">
-                            <div class="portfolio-item" onclick="openLightbox('product', 1)">
-                                <img src="images/product/product-1.jpg" alt="Product фото 1" loading="lazy">
-                            </div>
-                            <div class="portfolio-item" onclick="openLightbox('product', 2)">
-                                <img src="images/product/product-2.jpg" alt="Product фото 2" loading="lazy">
-                            </div>
-                            <div class="portfolio-item" onclick="openLightbox('product', 3)">
-                                <img src="images/product/product-3.jpg" alt="Product фото 3" loading="lazy">
-                            </div>
-                            <div class="portfolio-item" onclick="openLightbox('product', 4)">
-                                <img src="images/product/product-4.jpg" alt="Product фото 4" loading="lazy">
-                            </div>
-                            <div class="portfolio-item" onclick="openLightbox('product', 5)">
-                                <img src="images/product/product-5.jpg" alt="Product фото 5" loading="lazy">
-                            </div>
-                            <div class="portfolio-item" onclick="openLightbox('product', 6)">
-                                <img src="images/product/product-6.jpg" alt="Product фото 6" loading="lazy">
-                            </div>
-                            <div class="portfolio-item" onclick="openLightbox('product', 7)">
-                                <img src="images/product/product-7.jpg" alt="Product фото 7" loading="lazy">
-                            </div>
-                            <div class="portfolio-item" onclick="openLightbox('product', 8)">
-                                <img src="images/product/product-8.jpg" alt="Product фото 8" loading="lazy">
-                            </div>
-                            <div class="portfolio-item" onclick="openLightbox('product', 9)">
-                                <img src="images/product/product-9.jpg" alt="Product фото 9" loading="lazy">
-                            </div>
-                            <div class="portfolio-item" onclick="openLightbox('product', 10)">
-                                <img src="images/product/product-10.jpg" alt="Product фото 10" loading="lazy">
-                            </div>
-                            <div class="portfolio-item" onclick="openLightbox('product', 11)">
-                                <img src="images/product/product-11.jpg" alt="Product фото 11" loading="lazy">
-                            </div>
-                            <div class="portfolio-item" onclick="openLightbox('product', 12)">
-                                <img src="images/product/product-12.jpg" alt="Product фото 12" loading="lazy">
-                            </div>
-                            <div class="portfolio-item" onclick="openLightbox('product', 13)">
-                                <img src="images/product/product-13.jpg" alt="Product фото 13" loading="lazy">
-                            </div>
-                            <div class="portfolio-item" onclick="openLightbox('product', 14)">
-                                <img src="images/product/product-14.jpg" alt="Product фото 14" loading="lazy">
-                            </div>
-                            <div class="portfolio-item" onclick="openLightbox('product', 15)">
-                                <img src="images/product/product-15.jpg" alt="Product фото 15" loading="lazy">
-                            </div>
-                            <div class="portfolio-item" onclick="openLightbox('product', 16)">
-                                <img src="images/product/product-16.jpg" alt="Product фото 16" loading="lazy">
-                            </div>
-                            <div class="portfolio-item" onclick="openLightbox('product', 17)">
-                                <img src="images/product/product-17.jpg" alt="Product фото 17" loading="lazy">
-                            </div>
-                            <div class="portfolio-item" onclick="openLightbox('product', 18)">
-                                <img src="images/product/product-18.jpg" alt="Product фото 18" loading="lazy">
-                            </div>
-                            <div class="portfolio-item" onclick="openLightbox('product', 19)">
-                                <img src="images/product/product-19.jpg" alt="Product фото 19" loading="lazy">
-                            </div>
-                            <div class="portfolio-item" onclick="openLightbox('product', 20)">
-                                <img src="images/product/product-20.jpg" alt="Product фото 20" loading="lazy">
-                            </div>
-                        </div>
-                        <div class="scroll-hint">
-                            <p>⬇️ Листайте чтобы увидеть все 99 работ ⬇️</p>
-                        </div>
-                    </div>
-                </div>
+    <div class="folder-header" onclick="toggleFolder('product')">
+        <div class="folder-preview" style="background-image: url('images/product/product-1.jpg')"></div>
+        <div class="folder-info">
+            <h3>Предметная съемка</h3>
+            <span class="folder-count">99 работ</span>
+            <i class="folder-arrow"></i>
+        </div>
+    </div>
+    <div class="folder-content">
+        <div class="photos-count">99 работ</div>
+        <div class="portfolio-grid">
+            <!-- Показываем первые 20 фото -->
+            <div class="portfolio-item" onclick="openLightbox('product', 1)">
+                <img src="images/product/product-1.jpg" alt="Product фото 1" loading="lazy">
+            </div>
+            <div class="portfolio-item" onclick="openLightbox('product', 2)">
+                <img src="images/product/product-2.jpg" alt="Product фото 2" loading="lazy">
+            </div>
+            <div class="portfolio-item" onclick="openLightbox('product', 3)">
+                <img src="images/product/product-3.jpg" alt="Product фото 3" loading="lazy">
+            </div>
+            <div class="portfolio-item" onclick="openLightbox('product', 4)">
+                <img src="images/product/product-4.jpg" alt="Product фото 4" loading="lazy">
+            </div>
+            <div class="portfolio-item" onclick="openLightbox('product', 5)">
+                <img src="images/product/product-5.jpg" alt="Product фото 5" loading="lazy">
+            </div>
+            <div class="portfolio-item" onclick="openLightbox('product', 6)">
+                <img src="images/product/product-6.jpg" alt="Product фото 6" loading="lazy">
+            </div>
+            <div class="portfolio-item" onclick="openLightbox('product', 7)">
+                <img src="images/product/product-7.jpg" alt="Product фото 7" loading="lazy">
+            </div>
+            <div class="portfolio-item" onclick="openLightbox('product', 8)">
+                <img src="images/product/product-8.jpg" alt="Product фото 8" loading="lazy">
+            </div>
+            <div class="portfolio-item" onclick="openLightbox('product', 9)">
+                <img src="images/product/product-9.jpg" alt="Product фото 9" loading="lazy">
+            </div>
+            <div class="portfolio-item" onclick="openLightbox('product', 10)">
+                <img src="images/product/product-10.jpg" alt="Product фото 10" loading="lazy">
+            </div>
+            <div class="portfolio-item" onclick="openLightbox('product', 11)">
+                <img src="images/product/product-11.jpg" alt="Product фото 11" loading="lazy">
+            </div>
+            <div class="portfolio-item" onclick="openLightbox('product', 12)">
+                <img src="images/product/product-12.jpg" alt="Product фото 12" loading="lazy">
+            </div>
+            <div class="portfolio-item" onclick="openLightbox('product', 13)">
+                <img src="images/product/product-13.jpg" alt="Product фото 13" loading="lazy">
+            </div>
+            <div class="portfolio-item" onclick="openLightbox('product', 14)">
+                <img src="images/product/product-14.jpg" alt="Product фото 14" loading="lazy">
+            </div>
+            <div class="portfolio-item" onclick="openLightbox('product', 15)">
+                <img src="images/product/product-15.jpg" alt="Product фото 15" loading="lazy">
+            </div>
+            <div class="portfolio-item" onclick="openLightbox('product', 16)">
+                <img src="images/product/product-16.jpg" alt="Product фото 16" loading="lazy">
+            </div>
+            <div class="portfolio-item" onclick="openLightbox('product', 17)">
+                <img src="images/product/product-17.jpg" alt="Product фото 17" loading="lazy">
+            </div>
+            <div class="portfolio-item" onclick="openLightbox('product', 18)">
+                <img src="images/product/product-18.jpg" alt="Product фото 18" loading="lazy">
+            </div>
+            <div class="portfolio-item" onclick="openLightbox('product', 19)">
+                <img src="images/product/product-19.jpg" alt="Product фото 19" loading="lazy">
+            </div>
+            <div class="portfolio-item" onclick="openLightbox('product', 20)">
+                <img src="images/product/product-20.jpg" alt="Product фото 20" loading="lazy">
+            </div>
+            <!-- Остальные 79 фото скрыты -->
+            <div class="portfolio-item hidden" onclick="openLightbox('product', 21)">
+                <img src="images/product/product-21.jpg" alt="Product фото 21" loading="lazy">
+            </div>
+            <!-- ... и так до 99 -->
+        </div>
+        <div class="scroll-hint">
+            <button class="show-more-btn" onclick="showMorePhotos('product')">
+                Показать еще 79 работ <i class="fas fa-arrow-right"></i>
+            </button>
+        </div>
+    </div>
+</div>
 
                 <!-- Макромир -->
                 <div class="portfolio-folder" id="macro">
@@ -575,3 +583,4 @@
     </script>
 </body>
 </html>
+
