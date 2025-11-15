@@ -1095,3 +1095,67 @@ footer {
         padding: 0.4rem 0.8rem;
     }
 }
+/* Исправление мобильного меню */
+@media (max-width: 767px) {
+    .nav-menu {
+        position: fixed;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: #ffffff;
+        flex-direction: column;
+        gap: 0;
+        padding: 1rem 0;
+        border-top: 1px solid #eaeaea;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        display: none;
+        z-index: 1000;
+    }
+    
+    .nav-menu.active {
+        display: flex;
+    }
+    
+    .nav-menu li {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .nav-menu li a {
+        display: block;
+        padding: 1rem 2rem;
+        font-size: 1.1rem;
+        border-bottom: 1px solid #f0f0f0;
+    }
+    
+    .nav-menu li:last-child a {
+        border-bottom: none;
+    }
+    
+    /* Убедимся что контент не перекрывается меню */
+    main {
+        margin-top: 0;
+    }
+}
+
+/* Улучшаем кнопку бургер-меню */
+.nav-toggle {
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.nav-toggle span {
+    transition: all 0.3s ease;
+}
+
+.nav-menu.active ~ .nav-toggle span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.nav-menu.active ~ .nav-toggle span:nth-child(2) {
+    opacity: 0;
+}
+
+.nav-menu.active ~ .nav-toggle span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px);
+}
