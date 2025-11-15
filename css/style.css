@@ -1726,3 +1726,12 @@ footer {
 .portfolio-item.hidden {
     display: none;
 }
+/* Просто убираем все подсказки и кнопки */
+.scroll-hint {
+    display: none;
+}
+
+.folder-content.active .portfolio-grid {
+    max-height: 500px;
+    overflow-y: auto;
+}
