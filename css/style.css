@@ -1887,3 +1887,704 @@ footer {
 .fallback-download-btn:hover {
     background: #6b5a43;
 }
+css/style.css
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: #ffffff;
+    color: #1a1a1a;
+    line-height: 1.6;
+}
+
+/* Навигация */
+.main-nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    z-index: 1000;
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo span {
+    font-family: 'Georgia', serif;
+    font-size: 24px;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 50px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #1a1a1a;
+    font-weight: 400;
+    font-size: 16px;
+    letter-spacing: 0.5px;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: #8B7355;
+}
+
+/* Герой секция */
+.hero-main {
+    height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 20px;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+.hero-content {
+    max-width: 800px;
+}
+
+.hero-title {
+    font-family: 'Georgia', serif;
+    font-size: 4rem;
+    font-weight: 300;
+    margin-bottom: 10px;
+    letter-spacing: 3px;
+}
+
+.hero-subtitle {
+    font-size: 1.4rem;
+    font-weight: 300;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+}
+
+.hero-description {
+    font-size: 1.1rem;
+    margin-bottom: 40px;
+    color: #666;
+    line-height: 1.8;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.cta-button {
+    padding: 16px 35px;
+    text-decoration: none;
+    border-radius: 0;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    display: inline-block;
+    text-align: center;
+    min-width: 200px;
+}
+
+.cta-button.primary {
+    background: #1a1a1a;
+    color: white;
+    border: 1px solid #1a1a1a;
+}
+
+.cta-button.primary:hover {
+    background: #8B7355;
+    border-color: #8B7355;
+    transform: translateY(-2px);
+}
+
+.cta-button.secondary {
+    background: transparent;
+    color: #1a1a1a;
+    border: 1px solid #1a1a1a;
+}
+
+.cta-button.secondary:hover {
+    background: #1a1a1a;
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Обо мне */
+.about-section {
+    padding: 120px 0;
+    background: #fafafa;
+}
+
+.about-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+}
+
+.photo-frame {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.photographer-photo {
+    width: 100%;
+    height: 600px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.about-text h2 {
+    font-family: 'Georgia', serif;
+    font-size: 3rem;
+    font-weight: 300;
+    margin-bottom: 30px;
+    letter-spacing: 2px;
+}
+
+.about-text p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #666;
+    margin-bottom: 40px;
+}
+
+.stats {
+    display: flex;
+    gap: 60px;
+}
+
+.stat {
+    text-align: center;
+}
+
+.number {
+    display: block;
+    font-family: 'Georgia', serif;
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: #1a1a1a;
+    margin-bottom: 5px;
+}
+
+.label {
+    font-size: 0.9rem;
+    color: #666;
+    letter-spacing: 1px;
+}
+
+/* Коллекции */
+.collections-section {
+    padding: 120px 0;
+}
+
+.collections-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+.collections-container h2 {
+    font-family: 'Georgia', serif;
+    font-size: 3rem;
+    font-weight: 300;
+    text-align: center;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+}
+
+.collections-subtitle {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 60px;
+}
+
+.collections-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.collection-card {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.collection-card:hover {
+    transform: translateY(-5px);
+}
+
+.collection-image {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.collection-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.collection-card:hover .collection-image img {
+    transform: scale(1.05);
+}
+
+.collection-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, transparent 40%, rgba(0, 0, 0, 0.8));
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 30px;
+    color: white;
+}
+
+.collection-overlay h3 {
+    font-family: 'Georgia', serif;
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+    font-weight: 400;
+}
+
+.collection-overlay p {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+/* Контакты */
+.contact-section {
+    padding: 100px 0;
+    background: #1a1a1a;
+    color: white;
+    text-align: center;
+}
+
+.contact-container h2 {
+    font-family: 'Georgia', serif;
+    font-size: 2.5rem;
+    font-weight: 300;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+}
+
+.contact-container p {
+    font-size: 1.1rem;
+    margin-bottom: 40px;
+    color: #ccc;
+}
+
+.contact-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.contact-btn {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 30px;
+    background: rgba(255, 255, 255, 0.05);
+    color: white;
+    text-decoration: none;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    min-width: 200px;
+    justify-content: center;
+}
+
+.contact-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+}
+
+/* Футер */
+.main-footer {
+    background: #0a0a0a;
+    color: white;
+    padding: 40px 0;
+    text-align: center;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .nav-container {
+        padding: 0 20px;
+    }
+
+    .nav-links {
+        gap: 30px;
+    }
+
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .cta-button {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .about-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .photographer-photo {
+        height: 400px;
+    }
+
+    .stats {
+        gap: 30px;
+    }
+
+    .collections-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .collection-image {
+        height: 300px;
+    }
+
+    .contact-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .contact-btn {
+        width: 100%;
+        max-width: 300px;
+    }
+}
+/* Портфолио */
+.portfolio-section {
+    padding: 140px 0 80px;
+    background: #fafafa;
+    min-height: 100vh;
+}
+
+.portfolio-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+.portfolio-section h1 {
+    font-family: 'Georgia', serif;
+    font-size: 3rem;
+    font-weight: 300;
+    text-align: center;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+}
+
+.portfolio-subtitle {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 60px;
+}
+
+/* Фильтры портфолио */
+.portfolio-filters {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.filter-btn {
+    padding: 12px 25px;
+    margin: 5px 8px;
+    border: 1px solid #ddd;
+    background: transparent;
+    color: #666;
+    cursor: pointer;
+    border-radius: 25px;
+    font-family: 'Arial', sans-serif;
+    font-size: 14px;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.filter-btn:hover {
+    border-color: #8B7355;
+    color: #8B7355;
+}
+
+.filter-btn.active {
+    background: #8B7355;
+    color: white;
+    border-color: #8B7355;
+}
+
+/* Галерея портфолио */
+.portfolio-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 25px;
+}
+
+.portfolio-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s ease;
+    background: white;
+}
+
+.portfolio-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.portfolio-image {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.portfolio-image img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    transition: all 0.6s ease;
+    display: block;
+}
+
+/* Важно: пропорциональное увеличение при наведении */
+.portfolio-item:hover .portfolio-image img {
+    transform: scale(1.1);
+    filter: brightness(1.05);
+}
+
+/* Адаптивность портфолио */
+@media (max-width: 768px) {
+    .portfolio-section {
+        padding: 120px 0 60px;
+    }
+    
+    .portfolio-container {
+        padding: 0 20px;
+    }
+    
+    .portfolio-section h1 {
+        font-size: 2.5rem;
+    }
+    
+    .portfolio-gallery {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 15px;
+    }
+    
+    .portfolio-image img {
+        height: 300px;
+    }
+    
+    .filter-btn {
+        padding: 10px 20px;
+        margin: 3px 5px;
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .portfolio-gallery {
+        grid-template-columns: 1fr;
+    }
+    
+    .portfolio-filters {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .filter-btn {
+        padding: 8px 16px;
+        margin: 2px 3px;
+        font-size: 11px;
+    }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    const gallery = document.querySelector('.portfolio-gallery');
+    const filterBtns = document.querySelectorAll('.filter-btn');
+
+    // Все фотографии
+    const portfolioData = {
+        family: Array.from({length: 33}, (_, i) => `images/family/family-${i+1}.jpg`),
+        product: Array.from({length: 99}, (_, i) => `images/product/product-${i+1}.jpg`),
+        studio: Array.from({length: 25}, (_, i) => `images/studio/studio-${i+1}.jpg`),
+        macro: Array.from({length: 18}, (_, i) => `images/macro/macro-${i+1}.jpg`),
+        newborn: Array.from({length: 12}, (_, i) => `images/newborn/newborn-${i+1}.jpg`),
+        story: Array.from({length: 13}, (_, i) => `images/story/story-${i+1}.jpg`),
+        video: [
+            {
+                type: 'video',
+                preview: 'images/video/портрет.jpg',
+                src: 'images/video/video1.avi',
+                title: 'Агнь победы значок'
+            },
+            {
+                type: 'video', 
+                preview: 'images/video/портрет.jpg',
+                src: 'images/video/video2.mp4',
+                title: 'Диффузер'
+            },
+            {
+                type: 'video',
+                preview: 'images/video/портрет.jpg', 
+                src: 'images/video/video3.mp4',
+                title: 'Кольцо на резиновое изделие'
+            },
+            {
+                type: 'video',
+                preview: 'images/video/портрет.jpg',
+                src: 'images/video/video4.mov', 
+                title: 'Лимонная кислота'
+            },
+            {
+                type: 'video',
+                preview: 'images/video/портрет.jpg',
+                src: 'images/video/video5.mov',
+                title: 'Помельники'
+            },
+            {
+                type: 'video',
+                preview: 'images/video/портрет.jpg',
+                src: 'images/video/video6.mp4',
+                title: 'Шприц кондитерский'
+            },
+            {
+                type: 'video',
+                preview: 'images/video/портрет.jpg',
+                src: 'images/video/video7.mov',
+                title: 'Щетка малая'
+            },
+            {
+                type: 'video',
+                preview: 'images/video/портрет.jpg',
+                src: 'images/video/video8.mov',
+                title: 'Щетка малая 2'
+            }
+        ]
+    };
+
+    function createGallery(category) {
+        gallery.innerHTML = '';
+        const items = portfolioData[category];
+        
+        if (!items || items.length === 0) {
+            gallery.innerHTML = '<p>Загружаем...</p>';
+            return;
+        }
+
+        items.forEach((itemData, index) => {
+            const item = document.createElement('div');
+            item.className = `portfolio-item ${category}`;
+            
+            const imageDiv = document.createElement('div');
+            imageDiv.className = 'portfolio-image';
+            
+            if (category === 'video') {
+                // Видео
+                const img = document.createElement('img');
+                img.src = itemData.preview;
+                img.alt = itemData.title;
+                
+                const playIcon = document.createElement('div');
+                playIcon.className = 'video-play-icon';
+                playIcon.innerHTML = '▶';
+                
+                imageDiv.appendChild(img);
+                imageDiv.appendChild(playIcon);
+                
+                item.addEventListener('click', function() {
+                    window.open(itemData.src, '_blank');
+                });
+                
+            } else {
+                // Фото
+                const img = document.createElement('img');
+                img.src = itemData;
+                img.alt = `${category} фотография ${index + 1}`;
+                
+                item.addEventListener('click', function() {
+                    window.open(itemData, '_blank');
+                });
+                
+                imageDiv.appendChild(img);
+            }
+            
+            item.appendChild(imageDiv);
+            gallery.appendChild(item);
+        });
+    }
+
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            filterBtns.forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+            const category = this.getAttribute('data-filter');
+            createGallery(category);
+        });
+    });
+
+    createGallery('family');
+});
+
