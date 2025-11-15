@@ -149,7 +149,8 @@
                 </div>
 
                 <!-- Предметная съемка -->
-                <div class="portfolio-folder" id="product">
+                <!-- Предметная съемка -->
+<div class="portfolio-folder" id="product">
     <div class="folder-header" onclick="toggleFolder('product')">
         <div class="folder-preview" style="background-image: url('images/product/product-1.jpg')"></div>
         <div class="folder-info">
@@ -161,7 +162,7 @@
     <div class="folder-content">
         <div class="photos-count">99 работ</div>
         <div class="portfolio-grid">
-            <!-- Показываем первые 20 фото -->
+            <!-- Первые 20 фото - видимые -->
             <div class="portfolio-item" onclick="openLightbox('product', 1)">
                 <img src="images/product/product-1.jpg" alt="Product фото 1" loading="lazy">
             </div>
@@ -222,11 +223,24 @@
             <div class="portfolio-item" onclick="openLightbox('product', 20)">
                 <img src="images/product/product-20.jpg" alt="Product фото 20" loading="lazy">
             </div>
-            <!-- Остальные 79 фото скрыты -->
+            
+            <!-- Остальные 79 фото - СКРЫТЫЕ (добавь класс hidden) -->
             <div class="portfolio-item hidden" onclick="openLightbox('product', 21)">
                 <img src="images/product/product-21.jpg" alt="Product фото 21" loading="lazy">
             </div>
-            <!-- ... и так до 99 -->
+            <div class="portfolio-item hidden" onclick="openLightbox('product', 22)">
+                <img src="images/product/product-22.jpg" alt="Product фото 22" loading="lazy">
+            </div>
+            <div class="portfolio-item hidden" onclick="openLightbox('product', 23)">
+                <img src="images/product/product-23.jpg" alt="Product фото 23" loading="lazy">
+            </div>
+            <div class="portfolio-item hidden" onclick="openLightbox('product', 24)">
+                <img src="images/product/product-24.jpg" alt="Product фото 24" loading="lazy">
+            </div>
+            <div class="portfolio-item hidden" onclick="openLightbox('product', 25)">
+                <img src="images/product/product-25.jpg" alt="Product фото 25" loading="lazy">
+            </div>
+            <!-- Добавь остальные фото до 99 с классом hidden -->
         </div>
         <div class="scroll-hint">
             <button class="show-more-btn" onclick="showMorePhotos('product')">
@@ -235,7 +249,6 @@
         </div>
     </div>
 </div>
-
                 <!-- Макромир -->
                 <div class="portfolio-folder" id="macro">
                     <div class="folder-header" onclick="toggleFolder('macro')">
@@ -601,4 +614,5 @@ function showMorePhotos(category) {
     const grid = folder.querySelector('.portfolio-grid');
     grid.style.maxHeight = 'none';
 }
+
 
