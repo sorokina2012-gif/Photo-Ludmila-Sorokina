@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
         ]
     };
 
-    // Создаем модальное окно для видео
+    // Создаем модальные окна
     const videoModal = document.createElement('div');
     videoModal.className = 'video-modal';
     videoModal.innerHTML = `
@@ -61,8 +61,28 @@ document.addEventListener('DOMContentLoaded', function() {
     `;
     document.body.appendChild(videoModal);
 
+    const photoModal = document.createElement('div');
+    photoModal.className = 'photo-modal';
+    photoModal.innerHTML = `
+        <div class="photo-modal-content">
+            <button class="photo-modal-close">&times;</button>
+            <div class="photo-modal-nav">
+                <button class="photo-modal-prev"><i class="fas fa-chevron-left"></i></button>
+                <button class="photo-modal-next"><i class="fas fa-chevron-right"></i></button>
+            </div>
+            <img src="" alt="">
+            <div class="photo-modal-counter"></div>
+        </div>
+    `;
+    document.body.appendChild(photoModal);
+
+    let currentCategory = 'family';
+    let currentPhotoIndex = 0;
+    let currentPhotos = [];
+
     function createGallery(category) {
         gallery.innerHTML = '';
+        currentCategory = category;
         const items = portfolioData[category];
         
         if (!items || items.length === 0) {
@@ -111,9 +131,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 img.alt = `${category} фотография ${index + 1}`;
                 img.loading = 'lazy';
                 
-                // Клик по фото - открытие в новой вкладке
+                // Клик по фото - открытие в модальном окне
                 item.addEventListener('click', function() {
-                    window.open(itemData, '_blank');
+                    currentPhotos = portfolioData[category];
+                    currentPhotoIndex = index;
+                    openPhotoModal();
                 });
                 
                 imageDiv.appendChild(img);
@@ -124,7 +146,32 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Закрытие модального окна
+    function openPhotoModal() {
+        const modalImg = photoModal.querySelector('img');
+        const modalCounter = photoModal.querySelector('.photo-modal-counter');
+        
+        modalImg.src = currentPhotos[currentPhotoIndex];
+        modalCounter.textContent = `${currentPhotoIndex + 1} / ${currentPhotos.length}`;
+        photoModal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closePhotoModal() {
+        photoModal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+
+    function showNextPhoto() {
+        currentPhotoIndex = (currentPhotoIndex + 1) % currentPhotos.length;
+        openPhotoModal();
+    }
+
+    function showPrevPhoto() {
+        currentPhotoIndex = (currentPhotoIndex - 1 + currentPhotos.length) % currentPhotos.length;
+        openPhotoModal();
+    }
+
+    // Закрытие модальных окон
     videoModal.querySelector('.video-modal-close').addEventListener('click', function() {
         videoModal.style.display = 'none';
         const video = videoModal.querySelector('video');
@@ -132,9 +179,36 @@ document.addEventListener('DOMContentLoaded', function() {
         video.src = '';
     });
 
-    // Закрытие по клику вне видео
+    photoModal.querySelector('.photo-modal-close').addEventListener('click', closePhotoModal);
+
+    // Навигация по фотографиям
+    photoModal.querySelector('.photo-modal-next').addEventListener('click', showNextPhoto);
+    photoModal.querySelector('.photo-modal-prev').addEventListener('click', showPrevPhoto);
+
+    // Закрытие по клику вне контента
     videoModal.addEventListener('click', function(e) {
         if (e.target === videoModal) {
+            videoModal.style.display = 'none';
+            const video = videoModal.querySelector('video');
+            video.pause();
+            video.src = '';
+        }
+    });
+
+    photoModal.addEventListener('click', function(e) {
+        if (e.target === photoModal) {
+            closePhotoModal();
+        }
+    });
+
+    // Навигация клавишами
+    document.addEventListener('keydown', function(e) {
+        if (photoModal.style.display === 'flex') {
+            if (e.key === 'Escape') closePhotoModal();
+            if (e.key === 'ArrowRight') showNextPhoto();
+            if (e.key === 'ArrowLeft') showPrevPhoto();
+        }
+        if (videoModal.style.display === 'flex' && e.key === 'Escape') {
             videoModal.style.display = 'none';
             const video = videoModal.querySelector('video');
             video.pause();
