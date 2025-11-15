@@ -28,43 +28,152 @@
             <section class="portfolio-categories">
                 <h2>Портфолио</h2>
                 
+                <!-- Family -->
                 <div class="portfolio-section" id="family">
                     <h3>Family</h3>
                     <div class="portfolio-grid">
-                        <!-- Добавь 33 фото family -->
-                        <div class="portfolio-item">
-                            <img src="images/family/family-1.jpg" alt="Family фото 1">
+                        <!-- 33 фото family -->
+                        <div class="portfolio-item" onclick="openLightbox('family', 1)">
+                            <img src="images/family/family-1.jpg" alt="Family фото 1" loading="lazy">
                         </div>
-                        <!-- ... остальные family фото -->
+                        <div class="portfolio-item" onclick="openLightbox('family', 2)">
+                            <img src="images/family/family-2.jpg" alt="Family фото 2" loading="lazy">
+                        </div>
+                        <!-- Добавь остальные 31 фото -->
                     </div>
                 </div>
                 
+                <!-- Product -->
                 <div class="portfolio-section" id="product">
                     <h3>Product</h3>
                     <div class="portfolio-grid">
-                        <!-- Добавь 99 фото product -->
-                        <div class="portfolio-item">
-                            <img src="images/product/product-1.jpg" alt="Product фото 1">
+                        <!-- 99 фото product -->
+                        <div class="portfolio-item" onclick="openLightbox('product', 1)">
+                            <img src="images/product/product-1.jpg" alt="Product фото 1" loading="lazy">
                         </div>
-                        <!-- ... остальные product фото -->
+                        <div class="portfolio-item" onclick="openLightbox('product', 2)">
+                            <img src="images/product/product-2.jpg" alt="Product фото 2" loading="lazy">
+                        </div>
+                        <!-- Добавь остальные 97 фото -->
                     </div>
                 </div>
                 
-                <!-- Аналогично для других категорий -->
+                <!-- Macro -->
+                <div class="portfolio-section" id="macro">
+                    <h3>Macro</h3>
+                    <div class="portfolio-grid">
+                        <!-- 18 фото macro -->
+                        <div class="portfolio-item" onclick="openLightbox('macro', 1)">
+                            <img src="images/macro/macro-1.jpg" alt="Macro фото 1" loading="lazy">
+                        </div>
+                        <div class="portfolio-item" onclick="openLightbox('macro', 2)">
+                            <img src="images/macro/macro-2.jpg" alt="Macro фото 2" loading="lazy">
+                        </div>
+                        <!-- Добавь остальные 16 фото -->
+                    </div>
+                </div>
                 
+                <!-- Newborn -->
+                <div class="portfolio-section" id="newborn">
+                    <h3>Newborn</h3>
+                    <div class="portfolio-grid">
+                        <!-- 12 фото newborn -->
+                        <div class="portfolio-item" onclick="openLightbox('newborn', 1)">
+                            <img src="images/newborn/newborn-1.jpg" alt="Newborn фото 1" loading="lazy">
+                        </div>
+                        <div class="portfolio-item" onclick="openLightbox('newborn', 2)">
+                            <img src="images/newborn/newborn-2.jpg" alt="Newborn фото 2" loading="lazy">
+                        </div>
+                        <!-- Добавь остальные 10 фото -->
+                    </div>
+                </div>
+                
+                <!-- Story -->
+                <div class="portfolio-section" id="story">
+                    <h3>Story</h3>
+                    <div class="portfolio-grid">
+                        <!-- 13 фото story -->
+                        <div class="portfolio-item" onclick="openLightbox('story', 1)">
+                            <img src="images/story/story-1.jpg" alt="Story фото 1" loading="lazy">
+                        </div>
+                        <div class="portfolio-item" onclick="openLightbox('story', 2)">
+                            <img src="images/story/story-2.jpg" alt="Story фото 2" loading="lazy">
+                        </div>
+                        <!-- Добавь остальные 11 фото -->
+                    </div>
+                </div>
+                
+                <!-- Studio -->
+                <div class="portfolio-section" id="studio">
+                    <h3>Studio</h3>
+                    <div class="portfolio-grid">
+                        <!-- Studio фото -->
+                        <div class="portfolio-item" onclick="openLightbox('studio', 1)">
+                            <img src="images/studio/studio-1.jpg" alt="Studio фото 1" loading="lazy">
+                        </div>
+                        <!-- Добавь остальные studio фото -->
+                    </div>
+                </div>
+                
+                <!-- Video -->
+                <div class="portfolio-section" id="video">
+                    <h3>Video</h3>
+                    <div class="portfolio-grid video-grid">
+                        <div class="video-item">
+                            <video controls>
+                                <source src="images/video/1.mp4" type="video/mp4">
+                                Ваш браузер не поддерживает видео.
+                            </video>
+                        </div>
+                        <div class="video-item">
+                            <video controls>
+                                <source src="images/video/2.mp4" type="video/mp4">
+                                Ваш браузер не поддерживает видео.
+                            </video>
+                        </div>
+                        <div class="video-item">
+                            <video controls>
+                                <source src="images/video/3.mp4" type="video/mp4">
+                                Ваш браузер не поддерживает видео.
+                            </video>
+                        </div>
+                        <div class="video-item">
+                            <video controls>
+                                <source src="images/video/4.mp4" type="video/mp4">
+                                Ваш браузер не поддерживает видео.
+                            </video>
+                        </div>
+                        <div class="video-item">
+                            <video controls>
+                                <source src="images/video/5.mp4" type="video/mp4">
+                                Ваш браузер не поддерживает видео.
+                            </video>
+                        </div>
+                    </div>
+                </div>
             </section>
         </main>
+
+        <!-- Lightbox -->
+        <div id="lightbox" class="lightbox">
+            <span class="close-btn" onclick="closeLightbox()">&times;</span>
+            <span class="nav-btn prev-btn" onclick="changeImage(-1)">&#10094;</span>
+            <span class="nav-btn next-btn" onclick="changeImage(1)">&#10095;</span>
+            <div class="lightbox-content">
+                <img id="lightbox-image" src="" alt="">
+            </div>
+        </div>
 
         <footer>
             <div class="contact-section">
                 <h3>Для сотрудничества</h3>
                 <div class="contact-info">
-                    <p class="phone">+7 (985) 915-92-01</p>
+                    <p class="phone">+7 (925) 709-10-83</p>
                     <div class="social-links">
-                        <a href="https://t.me/lsorokina_photo" class="social-link">
+                        <a href="https://t.me/Ludmila_Sorokina" class="social-link">
                             <i class="fab fa-telegram-plane"></i>
                         </a>
-                        <a href="https://wa.me/79859159201" class="social-link">
+                        <a href="https://wa.me/79257091083" class="social-link">
                             <i class="fab fa-whatsapp"></i>
                         </a>
                     </div>
@@ -78,6 +187,58 @@
         // Мобильное меню
         document.querySelector('.nav-toggle').addEventListener('click', function() {
             document.querySelector('.nav-menu').classList.toggle('active');
+        });
+
+        // Lightbox
+        let currentCategory = '';
+        let currentIndex = 0;
+
+        function openLightbox(category, index) {
+            currentCategory = category;
+            currentIndex = index;
+            document.getElementById('lightbox-image').src = `images/${category}/${category}-${index}.jpg`;
+            document.getElementById('lightbox').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        function changeImage(direction) {
+            // Здесь нужно определить максимальное количество фото в категории
+            const maxImages = {
+                'family': 33,
+                'product': 99,
+                'macro': 18,
+                'newborn': 12,
+                'story': 13,
+                'studio': 10 // Замени на реальное количество
+            };
+
+            currentIndex += direction;
+            
+            if (currentIndex < 1) currentIndex = maxImages[currentCategory];
+            if (currentIndex > maxImages[currentCategory]) currentIndex = 1;
+            
+            document.getElementById('lightbox-image').src = `images/${currentCategory}/${currentCategory}-${currentIndex}.jpg`;
+        }
+
+        // Закрытие lightbox по клику вне изображения
+        document.getElementById('lightbox').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeLightbox();
+            }
+        });
+
+        // Управление клавиатурой
+        document.addEventListener('keydown', function(e) {
+            if (document.getElementById('lightbox').style.display === 'flex') {
+                if (e.key === 'Escape') closeLightbox();
+                if (e.key === 'ArrowLeft') changeImage(-1);
+                if (e.key === 'ArrowRight') changeImage(1);
+            }
         });
     </script>
 </body>
