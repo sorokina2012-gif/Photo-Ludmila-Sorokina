@@ -1,881 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap');
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Helvetica Neue', Arial, sans-serif;
-    line-height: 1.6;
-    color: #2c2c2c;
-    background: #ffffff;
-    font-weight: 300;
-    overflow-x: hidden;
-}
-
-.container {
-    max-width: 1400px;
-    margin: 0 auto;
-    background: #ffffff;
-    min-height: 100vh;
-}
-
-/* Навигация */
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1.5rem 2rem;
-    background: #ffffff;
-    border-bottom: 1px solid #eaeaea;
-    position: relative;
-}
-
-.logo {
-    font-size: 1.4rem;
-    font-weight: 300;
-    letter-spacing: 2px;
-    color: #2c2c2c;
-}
-
-.nav-toggle {
-    display: none;
-    flex-direction: column;
-    cursor: pointer;
-    gap: 4px;
-}
-
-.nav-toggle span {
-    width: 25px;
-    height: 2px;
-    background: #2c2c2c;
-    transition: 0.3s;
-}
-
-.nav-menu {
-    display: flex;
-    list-style: none;
-    gap: 3rem;
-}
-
-.nav-menu li a {
-    text-decoration: none;
-    color: #666;
-    font-weight: 300;
-    font-size: 0.9rem;
-    letter-spacing: 1px;
-    transition: color 0.3s ease;
-    position: relative;
-}
-
-.nav-menu li a.active {
-    color: #2c2c2c;
-}
-
-.nav-menu li a.active::after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 100%;
-    height: 1px;
-    background: #2c2c2c;
-}
-
-.nav-menu li a:hover {
-    color: #2c2c2c;
-}
-
-/* Герой секция */
-.hero {
-    padding: 4rem 2rem;
-    background: #f8f9fa;
-}
-
-.hero-content {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 3rem;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-    text-align: center;
-}
-
-.portrait-wrapper {
-    position: relative;
-    max-width: 400px;
-    margin: 0 auto;
-}
-
-.portrait {
-    width: 100%;
-    height: 400px;
-    object-fit: cover;
-    filter: grayscale(0.1);
-    border-radius: 2px;
-}
-
-.hero-text h1 {
-    font-size: 2.5rem;
-    font-weight: 300;
-    margin-bottom: 1rem;
-    color: #2c2c2c;
-    letter-spacing: -0.5px;
-}
-
-.subtitle {
-    font-size: 1.1rem;
-    color: #666;
-    margin-bottom: 1.5rem;
-    font-weight: 300;
-    letter-spacing: 2px;
-}
-
-.description {
-    font-size: 1.1rem;
-    color: #888;
-    line-height: 1.8;
-    font-weight: 300;
-    max-width: 400px;
-    margin: 0 auto;
-}
-
-/* Категории */
-.categories {
-    padding: 4rem 2rem;
-    background: #ffffff;
-}
-
-.categories h2 {
-    font-size: 2rem;
-    font-weight: 300;
-    color: #2c2c2c;
-    text-align: center;
-    margin-bottom: 3rem;
-    letter-spacing: 3px;
-}
-
-.category-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.category-card {
-    background: #f8f9fa;
-    border: 1px solid #eaeaea;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-}
-
-.category-card:hover {
-    transform: translateY(-5px);
-    border-color: #d0d0d0;
-}
-
-.category-image {
-    height: 200px;
-    background-size: cover;
-    background-position: center;
-    transition: transform 0.3s ease;
-}
-
-.category-card:hover .category-image {
-    transform: scale(1.05);
-}
-
-.category-info {
-    padding: 1.5rem;
-}
-
-.category-info h3 {
-    font-size: 1.1rem;
-    font-weight: 400;
-    margin-bottom: 0.5rem;
-    color: #2c2c2c;
-}
-
-.category-info span {
-    font-size: 0.9rem;
-    color: #888;
-    font-weight: 300;
-}
-
-/* Футер */
-footer {
-    background: #f8f9fa;
-    padding: 3rem 2rem 2rem;
-    border-top: 1px solid #eaeaea;
-}
-
-.contact-section {
-    max-width: 1200px;
-    margin: 0 auto;
-    text-align: center;
-}
-
-.contact-section h3 {
-    font-size: 1rem;
-    font-weight: 400;
-    color: #666;
-    margin-bottom: 1.5rem;
-    letter-spacing: 2px;
-}
-
-.phone {
-    font-size: 1.2rem;
-    color: #2c2c2c;
-    margin-bottom: 1.5rem;
-    font-weight: 300;
-    letter-spacing: 1px;
-}
-
-.social-links {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    margin-bottom: 2rem;
-}
-
-.social-link {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 45px;
-    height: 45px;
-    border: 1px solid #d0d0d0;
-    border-radius: 50%;
-    color: #666;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    font-size: 1.1rem;
-}
-
-.social-link:hover {
-    background: #2c2c2c;
-    color: #ffffff;
-    border-color: #2c2c2c;
-}
-
-.copyright {
-    text-align: center;
-    color: #888;
-    font-size: 0.8rem;
-    font-weight: 300;
-    letter-spacing: 1px;
-}
-
-/* Мобильная адаптация */
-@media (min-width: 768px) {
-    .hero-content {
-        grid-template-columns: 400px 1fr;
-        text-align: left;
-        gap: 4rem;
-    }
-    
-    .portrait {
-        height: 500px;
-    }
-    
-    .hero-text h1 {
-        font-size: 3.5rem;
-    }
-    
-    .description {
-        margin: 0;
-    }
-    
-    .categories {
-        padding: 6rem 3rem;
-    }
-    
-    .category-grid {
-        gap: 2rem;
-    }
-    
-    .category-image {
-        height: 250px;
-    }
-    
-    nav {
-        padding: 2rem 3rem;
-    }
-}
-
-@media (max-width: 767px) {
-    .nav-toggle {
-        display: flex;
-    }
-    
-    .nav-menu {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background: #ffffff;
-        flex-direction: column;
-        gap: 0;
-        padding: 1rem 0;
-        border-top: 1px solid #eaeaea;
-        display: none;
-    }
-    
-    .nav-menu.active {
-        display: flex;
-    }
-    
-    .nav-menu li {
-        width: 100%;
-        text-align: center;
-    }
-    
-    .nav-menu li a {
-        display: block;
-        padding: 1rem 2rem;
-    }
-    
-    .hero {
-        padding: 2rem 1rem;
-    }
-    
-    .hero-text h1 {
-        font-size: 2rem;
-    }
-    
-    .portrait {
-        height: 300px;
-    }
-    
-    .categories {
-        padding: 3rem 1rem;
-    }
-    
-    .categories h2 {
-        font-size: 1.5rem;
-        margin-bottom: 2rem;
-    }
-    
-    .category-grid {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-    }
-    
-    footer {
-        padding: 2rem 1rem 1rem;
-    }
-    
-    .phone {
-        font-size: 1.1rem;
-    }
-}
-
-@media (max-width: 480px) {
-    nav {
-        padding: 1rem;
-    }
-    
-    .logo {
-        font-size: 1.2rem;
-    }
-    
-    .hero-text h1 {
-        font-size: 1.8rem;
-    }
-    
-    .subtitle {
-        font-size: 1rem;
-    }
-    
-    .description {
-        font-size: 1rem;
-    }
-    
-    .portrait {
-        height: 250px;
-    }
-}
-/* Портфолио */
-.portfolio-categories {
-    padding: 4rem 2rem;
-    background: #ffffff;
-}
-
-.portfolio-categories h2 {
-    font-size: 2rem;
-    font-weight: 300;
-    color: #2c2c2c;
-    text-align: center;
-    margin-bottom: 3rem;
-    letter-spacing: 3px;
-}
-
-.portfolio-section {
-    margin-bottom: 4rem;
-}
-
-.portfolio-section h3 {
-    font-size: 1.5rem;
-    font-weight: 400;
-    color: #2c2c2c;
-    margin-bottom: 2rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 1px solid #eaeaea;
-}
-
-.portfolio-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1rem;
-}
-
-.portfolio-item {
-    background: #f8f9fa;
-    border: 1px solid #eaeaea;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    overflow: hidden;
-    aspect-ratio: 1;
-}
-
-.portfolio-item:hover {
-    transform: scale(1.02);
-    border-color: #d0d0d0;
-}
-
-.portfolio-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.3s ease;
-}
-
-.portfolio-item:hover img {
-    transform: scale(1.05);
-}
-
-/* Video Grid */
-.video-grid {
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-}
-
-.video-item video {
-    width: 100%;
-    height: auto;
-    border-radius: 2px;
-}
-
-/* Lightbox */
-.lightbox {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.9);
-    z-index: 10000;
-    justify-content: center;
-    align-items: center;
-}
-
-.lightbox-content {
-    max-width: 90%;
-    max-height: 90%;
-    position: relative;
-}
-
-.lightbox-content img {
-    max-width: 100%;
-    max-height: 90vh;
-    object-fit: contain;
-}
-
-.close-btn {
-    position: absolute;
-    top: 20px;
-    right: 30px;
-    color: white;
-    font-size: 40px;
-    font-weight: bold;
-    cursor: pointer;
-    z-index: 10001;
-}
-
-.nav-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    color: white;
-    font-size: 40px;
-    font-weight: bold;
-    cursor: pointer;
-    padding: 16px;
-    user-select: none;
-    z-index: 10001;
-}
-
-.prev-btn {
-    left: 20px;
-}
-
-.next-btn {
-    right: 20px;
-}
-
-.close-btn:hover,
-.nav-btn:hover {
-    color: #ccc;
-}
-
-/* Мобильная адаптация портфолио */
-@media (max-width: 767px) {
-    .portfolio-categories {
-        padding: 2rem 1rem;
-    }
-    
-    .portfolio-categories h2 {
-        font-size: 1.5rem;
-        margin-bottom: 2rem;
-    }
-    
-    .portfolio-section {
-        margin-bottom: 3rem;
-    }
-    
-    .portfolio-section h3 {
-        font-size: 1.3rem;
-        margin-bottom: 1.5rem;
-    }
-    
-    .portfolio-grid {
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-        gap: 0.5rem;
-    }
-    
-    .video-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .close-btn {
-        top: 10px;
-        right: 15px;
-        font-size: 30px;
-    }
-    
-    .nav-btn {
-        font-size: 30px;
-        padding: 10px;
-    }
-    
-    .prev-btn {
-        left: 10px;
-    }
-    
-    .next-btn {
-        right: 10px;
-    }
-}
-
-@media (max-width: 480px) {
-    .portfolio-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-/* Статистика */
-.stats {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    margin-top: 3rem;
-    padding-top: 2rem;
-    border-top: 1px solid #eaeaea;
-}
-
-.stat-item {
-    text-align: center;
-}
-
-.stat-number {
-    font-size: 2rem;
-    font-weight: 300;
-    color: #2c2c2c;
-    margin-bottom: 0.5rem;
-}
-
-.stat-text {
-    font-size: 0.9rem;
-    color: #666;
-    font-weight: 300;
-}
-
-/* Мобильная адаптация статистики */
-@media (max-width: 767px) {
-    .stats {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-        margin-top: 2rem;
-        padding-top: 1.5rem;
-    }
-    
-    .stat-number {
-        font-size: 1.5rem;
-    }
-    
-    .stat-text {
-        font-size: 0.8rem;
-    }
-}
-/* Шрифты */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Inter', sans-serif;
-    line-height: 1.6;
-    color: #2c2c2c;
-    background: #ffffff;
-    font-weight: 300;
-    overflow-x: hidden;
-}
-
-h1, h2, h3, .logo {
-    font-family: 'Playfair Display', serif;
-    font-weight: 500;
-}
-
-.container {
-    max-width: 1400px;
-    margin: 0 auto;
-    background: #ffffff;
-    min-height: 100vh;
-}
-
-/* Навигация - увеличенные кнопки */
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 2rem 3rem;
-    background: #ffffff;
-    border-bottom: 1px solid #eaeaea;
-    position: relative;
-}
-
-.logo {
-    font-size: 1.6rem;
-    font-weight: 500;
-    letter-spacing: 2px;
-    color: #2c2c2c;
-}
-
-.nav-toggle {
-    display: none;
-    flex-direction: column;
-    cursor: pointer;
-    gap: 4px;
-}
-
-.nav-toggle span {
-    width: 25px;
-    height: 2px;
-    background: #2c2c2c;
-    transition: 0.3s;
-}
-
-.nav-menu {
-    display: flex;
-    list-style: none;
-    gap: 3rem;
-}
-
-.nav-menu li a {
-    text-decoration: none;
-    color: #666;
-    font-weight: 400;
-    font-size: 1.1rem; /* Увеличил шрифт */
-    letter-spacing: 1px;
-    transition: color 0.3s ease;
-    position: relative;
-    padding: 0.5rem 1rem;
-}
-
-.nav-menu li a.active {
-    color: #2c2c2c;
-}
-
-.nav-menu li a.active::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 1rem;
-    width: calc(100% - 2rem);
-    height: 2px;
-    background: #2c2c2c;
-}
-
-.nav-menu li a:hover {
-    color: #2c2c2c;
-}
-
-/* Герой секция */
-.hero {
-    padding: 6rem 3rem;
-    background: #f8f9fa;
-}
-
-.hero-content {
-    display: grid;
-    grid-template-columns: 400px 1fr;
-    gap: 4rem;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.portrait-wrapper {
-    position: relative;
-}
-
-.portrait {
-    width: 100%;
-    height: 500px;
-    object-fit: cover;
-    filter: grayscale(0.1);
-    border-radius: 2px;
-}
-
-.hero-text h1 {
-    font-size: 3.5rem;
-    font-weight: 500;
-    margin-bottom: 1rem;
-    color: #2c2c2c;
-    letter-spacing: -0.5px;
-}
-
-.subtitle {
-    font-size: 1.3rem;
-    color: #666;
-    margin-bottom: 2rem;
-    font-weight: 300;
-    letter-spacing: 2px;
-}
-
-.description {
-    font-size: 1.2rem;
-    color: #888;
-    line-height: 1.8;
-    font-weight: 300;
-    max-width: 400px;
-}
-
-/* Статистика */
-.stats {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 3rem;
-    margin-top: 3rem;
-    padding-top: 3rem;
-    border-top: 1px solid #eaeaea;
-}
-
-.stat-item {
-    text-align: center;
-}
-
-.stat-number {
-    font-size: 2.5rem;
-    font-weight: 300;
-    color: #2c2c2c;
-    margin-bottom: 0.5rem;
-    font-family: 'Playfair Display', serif;
-}
-
-.stat-text {
-    font-size: 0.9rem;
-    color: #666;
-    font-weight: 300;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-/* Категории */
-.categories {
-    padding: 6rem 3rem;
-    background: #ffffff;
-}
-
-.categories h2 {
-    font-size: 2.5rem;
-    font-weight: 500;
-    color: #2c2c2c;
-    text-align: center;
-    margin-bottom: 4rem;
-    letter-spacing: 2px;
-}
-
-.category-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.category-card {
-    background: #f8f9fa;
-    border: 1px solid #eaeaea;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-    text-decoration: none;
-    color: inherit;
-}
-
-.category-card:hover {
-    transform: translateY(-5px);
-    border-color: #d0d0d0;
-}
-
-.category-image {
-    height: 250px;
-    background-size: cover;
-    background-position: center;
-    transition: transform 0.3s ease;
-}
-
-.category-card:hover .category-image {
-    transform: scale(1.05);
-}
-
-.category-info {
-    padding: 2rem;
-}
-
-.category-info h3 {
-    font-size: 1.3rem;
-    font-weight: 500;
-    margin-bottom: 0.5rem;
-    color: #2c2c2c;
-    font-family: 'Playfair Display', serif;
-}
-
-.category-info span {
-    font-size: 0.9rem;
-    color: #888;
-    font-weight: 300;
-}
-
-/* Портфолио - папки */
+/* Портфолио - папки (ИСПРАВЛЕННЫЙ РАЗМЕР) */
 .portfolio-categories {
     padding: 4rem 3rem;
     background: #ffffff;
@@ -891,33 +14,41 @@ nav {
 }
 
 .portfolio-folder {
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
     border: 1px solid #eaeaea;
-    border-radius: 8px;
+    border-radius: 12px;
     overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.portfolio-folder:hover {
+    border-color: #d0d0d0;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
 
 .folder-header {
     display: flex;
     align-items: center;
-    padding: 2rem;
+    padding: 2.5rem;
     background: #f8f9fa;
     cursor: pointer;
     transition: background 0.3s ease;
-    gap: 2rem;
+    gap: 2.5rem;
 }
 
 .folder-header:hover {
     background: #f0f0f0;
 }
 
+/* УВЕЛИЧИВАЕМ ПРЕВЬЮШКИ */
 .folder-preview {
-    width: 120px;
-    height: 120px;
+    width: 200px; /* Было 120px */
+    height: 150px; /* Было 120px - делаем прямоугольными */
     background-size: cover;
     background-position: center;
-    border-radius: 4px;
+    border-radius: 8px;
     flex-shrink: 0;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
 .folder-info {
@@ -928,7 +59,7 @@ nav {
 }
 
 .folder-info h3 {
-    font-size: 1.5rem;
+    font-size: 1.8rem; /* Увеличил шрифт */
     font-weight: 500;
     color: #2c2c2c;
     font-family: 'Playfair Display', serif;
@@ -936,16 +67,20 @@ nav {
 }
 
 .folder-count {
-    font-size: 1rem;
-    color: #888;
-    font-weight: 300;
+    font-size: 1.1rem; /* Увеличил шрифт */
+    color: #666;
+    font-weight: 400;
+    background: #ffffff;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    border: 1px solid #eaeaea;
 }
 
 .folder-arrow {
-    width: 20px;
-    height: 20px;
-    border-right: 2px solid #2c2c2c;
-    border-bottom: 2px solid #2c2c2c;
+    width: 24px; /* Увеличил стрелку */
+    height: 24px;
+    border-right: 3px solid #2c2c2c;
+    border-bottom: 3px solid #2c2c2c;
     transform: rotate(45deg);
     transition: transform 0.3s ease;
     margin-left: 2rem;
@@ -957,18 +92,25 @@ nav {
 
 .folder-content {
     display: none;
-    padding: 2rem;
+    padding: 3rem; /* Увеличил отступы */
     background: #ffffff;
+    border-top: 1px solid #eaeaea;
 }
 
 .folder-content.active {
     display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
 .portfolio-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Увеличил минимальный размер */
+    gap: 1.5rem; /* Увеличил отступы */
 }
 
 .portfolio-item {
@@ -977,12 +119,14 @@ nav {
     cursor: pointer;
     transition: all 0.3s ease;
     overflow: hidden;
-    aspect-ratio: 1;
+    aspect-ratio: 4/3; /* Соотношение сторон как у превьюшек */
+    border-radius: 8px;
 }
 
 .portfolio-item:hover {
-    transform: scale(1.02);
+    transform: translateY(-5px);
     border-color: #d0d0d0;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
 }
 
 .portfolio-item img {
@@ -993,232 +137,30 @@ nav {
 }
 
 .portfolio-item:hover img {
-    transform: scale(1.05);
+    transform: scale(1.08);
 }
 
 /* Video Grid */
 .video-grid {
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* Увеличил видео */
+    gap: 2rem;
+}
+
+.video-item {
+    background: #f8f9fa;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
 .video-item video {
     width: 100%;
     height: auto;
-    border-radius: 4px;
+    display: block;
 }
 
-/* Lightbox */
-.lightbox {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.95);
-    z-index: 10000;
-    justify-content: center;
-    align-items: center;
-}
-
-.lightbox-content {
-    max-width: 90%;
-    max-height: 90%;
-    position: relative;
-}
-
-.lightbox-content img {
-    max-width: 100%;
-    max-height: 90vh;
-    object-fit: contain;
-}
-
-.close-btn {
-    position: absolute;
-    top: 20px;
-    right: 30px;
-    color: white;
-    font-size: 40px;
-    font-weight: bold;
-    cursor: pointer;
-    z-index: 10001;
-}
-
-.nav-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    color: white;
-    font-size: 40px;
-    font-weight: bold;
-    cursor: pointer;
-    padding: 16px;
-    user-select: none;
-    z-index: 10001;
-}
-
-.prev-btn {
-    left: 20px;
-}
-
-.next-btn {
-    right: 20px;
-}
-
-.close-btn:hover,
-.nav-btn:hover {
-    color: #ccc;
-}
-
-/* Футер */
-footer {
-    background: #f8f9fa;
-    padding: 4rem 3rem 2rem;
-    border-top: 1px solid #eaeaea;
-}
-
-.contact-section {
-    max-width: 1200px;
-    margin: 0 auto;
-    text-align: center;
-}
-
-.contact-section h3 {
-    font-size: 1.1rem;
-    font-weight: 400;
-    color: #666;
-    margin-bottom: 2rem;
-    letter-spacing: 2px;
-}
-
-.phone {
-    font-size: 1.3rem;
-    color: #2c2c2c;
-    margin-bottom: 2rem;
-    font-weight: 400;
-    letter-spacing: 1px;
-}
-
-.social-links {
-    display: flex;
-    justify-content: center;
-    gap: 1.5rem;
-    margin-bottom: 3rem;
-}
-
-.social-link {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 50px;
-    height: 50px;
-    border: 1px solid #d0d0d0;
-    border-radius: 50%;
-    color: #666;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    font-size: 1.2rem;
-}
-
-.social-link:hover {
-    background: #2c2c2c;
-    color: #ffffff;
-    border-color: #2c2c2c;
-}
-
-.copyright {
-    text-align: center;
-    color: #888;
-    font-size: 0.9rem;
-    font-weight: 300;
-    letter-spacing: 1px;
-}
-
-/* Мобильная адаптация */
+/* Мобильная адаптация для больших превьюшек */
 @media (max-width: 767px) {
-    nav {
-        padding: 1.5rem;
-    }
-    
-    .nav-toggle {
-        display: flex;
-    }
-    
-    .nav-menu {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background: #ffffff;
-        flex-direction: column;
-        gap: 0;
-        padding: 1rem 0;
-        border-top: 1px solid #eaeaea;
-        display: none;
-    }
-    
-    .nav-menu.active {
-        display: flex;
-    }
-    
-    .nav-menu li {
-        width: 100%;
-        text-align: center;
-    }
-    
-    .nav-menu li a {
-        display: block;
-        padding: 1rem 2rem;
-        font-size: 1.2rem;
-    }
-    
-    .hero {
-        padding: 2rem 1rem;
-    }
-    
-    .hero-content {
-        grid-template-columns: 1fr;
-        text-align: center;
-        gap: 2rem;
-    }
-    
-    .portrait {
-        height: 300px;
-    }
-    
-    .hero-text h1 {
-        font-size: 2.5rem;
-    }
-    
-    .description {
-        margin: 0 auto;
-    }
-    
-    .stats {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-        margin-top: 2rem;
-        padding-top: 2rem;
-    }
-    
-    .stat-number {
-        font-size: 2rem;
-    }
-    
-    .categories {
-        padding: 3rem 1rem;
-    }
-    
-    .categories h2 {
-        font-size: 2rem;
-        margin-bottom: 2rem;
-    }
-    
-    .category-grid {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-    }
-    
     .portfolio-categories {
         padding: 2rem 1rem;
     }
@@ -1228,61 +170,57 @@ footer {
         margin-bottom: 2rem;
     }
     
+    .portfolio-folder {
+        margin-bottom: 2rem;
+    }
+    
     .folder-header {
         flex-direction: column;
         text-align: center;
-        gap: 1rem;
-        padding: 1.5rem;
+        gap: 1.5rem;
+        padding: 2rem 1.5rem;
     }
     
+    /* На мобилке тоже увеличиваем превьюшки */
     .folder-preview {
-        width: 100px;
-        height: 100px;
+        width: 100%;
+        height: 200px; /* Высокие превьюшки на мобилке */
+        max-width: 300px;
+        margin: 0 auto;
     }
     
     .folder-info {
         flex-direction: column;
         gap: 1rem;
+        width: 100%;
+    }
+    
+    .folder-info h3 {
+        font-size: 1.5rem;
+        text-align: center;
+    }
+    
+    .folder-count {
+        font-size: 1rem;
     }
     
     .folder-arrow {
         margin-left: 0;
+        margin-top: 1rem;
     }
     
     .folder-content {
-        padding: 1rem;
+        padding: 1.5rem;
     }
     
     .portfolio-grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: 0.5rem;
+        gap: 1rem;
     }
     
     .video-grid {
         grid-template-columns: 1fr;
-    }
-    
-    footer {
-        padding: 2rem 1rem 1rem;
-    }
-    
-    .close-btn {
-        top: 10px;
-        right: 15px;
-        font-size: 30px;
-    }
-    
-    .nav-btn {
-        font-size: 30px;
-        padding: 10px;
-    }
-    
-    .prev-btn {
-        left: 10px;
-    }
-    
-    .next-btn {
-        right: 10px;
+        gap: 1.5rem;
     }
 }
 
@@ -1291,20 +229,28 @@ footer {
         grid-template-columns: 1fr;
     }
     
-    .hero-text h1 {
-        font-size: 2rem;
+    .folder-preview {
+        height: 180px;
     }
     
-    .subtitle {
-        font-size: 1.1rem;
-    }
-    
-    .description {
-        font-size: 1rem;
-    }
-    
-    .portrait {
-        height: 250px;
+    .folder-info h3 {
+        font-size: 1.3rem;
     }
 }
 
+/* Для очень больших экранов */
+@media (min-width: 1400px) {
+    .folder-preview {
+        width: 250px;
+        height: 180px;
+    }
+    
+    .folder-info h3 {
+        font-size: 2rem;
+    }
+    
+    .portfolio-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+    }
+}
