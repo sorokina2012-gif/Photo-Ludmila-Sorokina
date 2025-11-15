@@ -6,6 +6,7 @@
     <title>Портфолио - Людмила Сорокина</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
@@ -28,344 +29,168 @@
             <section class="portfolio-categories">
                 <h2>Портфолио</h2>
                 
-                <!-- Family - 33 фото -->
-                <div class="portfolio-section" id="family">
-                    <h3>Family (33 фото)</h3>
-                    <div class="portfolio-grid">
-                        <!-- Генерируем 33 фото -->
-                        <div class="portfolio-item" onclick="openLightbox('family', 1)">
-                            <img src="images/family/family-1.jpg" alt="Family фото 1" loading="lazy">
+                <!-- Семейные истории -->
+                <div class="portfolio-folder" id="family">
+                    <div class="folder-header" onclick="toggleFolder('family')">
+                        <div class="folder-preview" style="background-image: url('images/family/family-1.jpg')"></div>
+                        <div class="folder-info">
+                            <h3>Семейные истории</h3>
+                            <span class="folder-count">33 фотографии</span>
+                            <i class="folder-arrow"></i>
                         </div>
-                        <div class="portfolio-item" onclick="openLightbox('family', 2)">
-                            <img src="images/family/family-2.jpg" alt="Family фото 2" loading="lazy">
-                        </div>
-                        <div class="portfolio-item" onclick="openLightbox('family', 3)">
-                            <img src="images/family/family-3.jpg" alt="Family фото 3" loading="lazy">
-                        </div>
-                        <div class="portfolio-item" onclick="openLightbox('family', 4)">
-                            <img src="images/family/family-4.jpg" alt="Family фото 4" loading="lazy">
-                        </div>
-                        <div class="portfolio-item" onclick="openLightbox('family', 5)">
-                            <img src="images/family/family-5.jpg" alt="Family фото 5" loading="lazy">
-                        </div>
-                        <div class="portfolio-item" onclick="openLightbox('family', 6)">
-                            <img src="images/family/family-6.jpg" alt="Family фото 6" loading="lazy">
-                        </div>
-                        <div class="portfolio-item" onclick="openLightbox('family', 7)">
-                            <img src="images/family/family-7.jpg" alt="Family фото 7" loading="lazy">
-                        </div>
-                        <div class="portfolio-item" onclick="openLightbox('family', 8)">
-                            <img src="images/family/family-8.jpg" alt="Family фото 8" loading="lazy">
-                        </div>
-                        <div class="portfolio-item" onclick="openLightbox('family', 9)">
-                            <img src="images/family/family-9.jpg" alt="Family фото 9" loading="lazy">
-                        </div>
-                        <div class="portfolio-item" onclick="openLightbox('family', 10)">
-                            <img src="images/family/family-10.jpg" alt="Family фото 10" loading="lazy">
-                        </div>
-                        <div class="portfolio-item" onclick="openLightbox('family', 11)">
-                            <img src="images/family/family-11.jpg" alt="Family фото 11" loading="lazy">
-                        </div>
-                        <div class="portfolio-item" onclick="openLightbox('family', 12)">
-                            <img src="images/family/family-12.jpg" alt="Family фото 12" loading="lazy">
-                        </div>
-                        <div class="portfolio-item" onclick="openLightbox('family', 13)">
-                            <img src="images/family/family-13.jpg" alt="Family фото 13" loading="lazy">
-                        </div>
-                        <div class="portfolio-item" onclick="openLightbox('family', 14)">
-                            <img src="images/family/family-14.jpg" alt="Family фото 14" loading="lazy">
-                        </div>
-                        <div class="portfolio-item" onclick="openLightbox('family', 15)">
-                            <img src="images/family/family-15.jpg" alt="Family фото 15" loading="lazy">
-                        </div>
-                        <div class="portfolio-item" onclick="openLightbox('family', 16)">
-                            <img src="images/family/family-16.jpg" alt="Family фото 16" loading="lazy">
-                        </div>
-                        <div class="portfolio-item" onclick="openLightbox('family', 17)">
-                            <img src="images/family/family-17.jpg" alt="Family фото 17" loading="lazy">
-                        </div>
-                        <div class="portfolio-item" onclick="openLightbox('family', 18)">
-                            <img src="images/family/family-18.jpg" alt="Family фото 18" loading="lazy">
-                        </div>
-                        <div class="portfolio-item" onclick="openLightbox('family', 19)">
-                            <img src="images/family/family-19.jpg" alt="Family фото 19" loading="lazy">
-                        </div>
-                        <div class="portfolio-item" onclick="openLightbox('family', 20)">
-                            <img src="images/family/family-20.jpg" alt="Family фото 20" loading="lazy">
-                        </div>
-                        <div class="portfolio-item" onclick="openLightbox('family', 21)">
-                            <img src="images/family/family-21.jpg" alt="Family фото 21" loading="lazy">
-                        </div>
-                        <div class="portfolio-item" onclick="openLightbox('family', 22)">
-                            <img src="images/family/family-22.jpg" alt="Family фото 22" loading="lazy">
-                        </div>
-                        <div class="portfolio-item" onclick="openLightbox('family', 23)">
-                            <img src="images/family/family-23.jpg" alt="Family фото 23" loading="lazy">
-                        </div>
-                        <div class="portfolio-item" onclick="openLightbox('family', 24)">
-                            <img src="images/family/family-24.jpg" alt="Family фото 24" loading="lazy">
-                        </div>
-                        <div class="portfolio-item" onclick="openLightbox('family', 25)">
-                            <img src="images/family/family-25.jpg" alt="Family фото 25" loading="lazy">
-                        </div>
-                        <div class="portfolio-item" onclick="openLightbox('family', 26)">
-                            <img src="images/family/family-26.jpg" alt="Family фото 26" loading="lazy">
-                        </div>
-                        <div class="portfolio-item" onclick="openLightbox('family', 27)">
-                            <img src="images/family/family-27.jpg" alt="Family фото 27" loading="lazy">
-                        </div>
-                        <div class="portfolio-item" onclick="openLightbox('family', 28)">
-                            <img src="images/family/family-28.jpg" alt="Family фото 28" loading="lazy">
-                        </div>
-                        <div class="portfolio-item" onclick="openLightbox('family', 29)">
-                            <img src="images/family/family-29.jpg" alt="Family фото 29" loading="lazy">
-                        </div>
-                        <div class="portfolio-item" onclick="openLightbox('family', 30)">
-                            <img src="images/family/family-30.jpg" alt="Family фото 30" loading="lazy">
-                        </div>
-                        <div class="portfolio-item" onclick="openLightbox('family', 31)">
-                            <img src="images/family/family-31.jpg" alt="Family фото 31" loading="lazy">
-                        </div>
-                        <div class="portfolio-item" onclick="openLightbox('family', 32)">
-                            <img src="images/family/family-32.jpg" alt="Family фото 32" loading="lazy">
-                        </div>
-                        <div class="portfolio-item" onclick="openLightbox('family', 33)">
-                            <img src="images/family/family-33.jpg" alt="Family фото 33" loading="lazy">
+                    </div>
+                    <div class="folder-content">
+                        <div class="portfolio-grid">
+                            <!-- 33 фото family -->
+                            <div class="portfolio-item" onclick="openLightbox('family', 1)">
+                                <img src="images/family/family-1.jpg" alt="Family фото 1" loading="lazy">
+                            </div>
+                            <div class="portfolio-item" onclick="openLightbox('family', 2)">
+                                <img src="images/family/family-2.jpg" alt="Family фото 2" loading="lazy">
+                            </div>
+                            <!-- ... остальные 31 фото -->
                         </div>
                     </div>
                 </div>
-                
-                <!-- Product - 99 фото -->
-                <div class="portfolio-section" id="product">
-                    <h3>Product (99 фото)</h3>
-                    <div class="portfolio-grid">
-                        <!-- Генерируем 99 фото (показаны первые 12 для примера) -->
-                        <div class="portfolio-item" onclick="openLightbox('product', 1)">
-                            <img src="images/product/product-1.jpg" alt="Product фото 1" loading="lazy">
+
+                <!-- Предметная съемка -->
+                <div class="portfolio-folder" id="product">
+                    <div class="folder-header" onclick="toggleFolder('product')">
+                        <div class="folder-preview" style="background-image: url('images/product/product-1.jpg')"></div>
+                        <div class="folder-info">
+                            <h3>Предметная съемка</h3>
+                            <span class="folder-count">99 работ</span>
+                            <i class="folder-arrow"></i>
                         </div>
-                        <div class="portfolio-item" onclick="openLightbox('product', 2)">
-                            <img src="images/product/product-2.jpg" alt="Product фото 2" loading="lazy">
-                        </div>
-                        <div class="portfolio-item" onclick="openLightbox('product', 3)">
-                            <img src="images/product/product-3.jpg" alt="Product фото 3" loading="lazy">
-                        </div>
-                        <div class="portfolio-item" onclick="openLightbox('product', 4)">
-                            <img src="images/product/product-4.jpg" alt="Product фото 4" loading="lazy">
-                        </div>
-                        <div class="portfolio-item" onclick="openLightbox('product', 5)">
-                            <img src="images/product/product-5.jpg" alt="Product фото 5" loading="lazy">
-                        </div>
-                        <div class="portfolio-item" onclick="openLightbox('product', 6)">
-                            <img src="images/product/product-6.jpg" alt="Product фото 6" loading="lazy">
-                        </div>
-                        <div class="portfolio-item" onclick="openLightbox('product', 7)">
-                            <img src="images/product/product-7.jpg" alt="Product фото 7" loading="lazy">
-                        </div>
-                        <div class="portfolio-item" onclick="openLightbox('product', 8)">
-                            <img src="images/product/product-8.jpg" alt="Product фото 8" loading="lazy">
-                        </div>
-                        <div class="portfolio-item" onclick="openLightbox('product', 9)">
-                            <img src="images/product/product-9.jpg" alt="Product фото 9" loading="lazy">
-                        </div>
-                        <div class="portfolio-item" onclick="openLightbox('product', 10)">
-                            <img src="images/product/product-10.jpg" alt="Product фото 10" loading="lazy">
-                        </div>
-                        <div class="portfolio-item" onclick="openLightbox('product', 11)">
-                            <img src="images/product/product-11.jpg" alt="Product фото 11" loading="lazy">
-                        </div>
-                        <div class="portfolio-item" onclick="openLightbox('product', 12)">
-                            <img src="images/product/product-12.jpg" alt="Product фото 12" loading="lazy">
-                        </div>
-                        <!-- Добавь остальные 87 фото по аналогии -->
                     </div>
-                </div>
-                
-                <!-- Macro - 18 фото -->
-                <div class="portfolio-section" id="macro">
-                    <h3>Macro (18 фото)</h3>
-                    <div class="portfolio-grid">
-                        <!-- Генерируем 18 фото -->
-                        <div class="portfolio-item" onclick="openLightbox('macro', 1)">
-                            <img src="images/macro/macro-1.jpg" alt="Macro фото 1" loading="lazy">
-                        </div>
-                        <div class="portfolio-item" onclick="openLightbox('macro', 2)">
-                            <img src="images/macro/macro-2.jpg" alt="Macro фото 2" loading="lazy">
-                        </div>
-                        <div class="portfolio-item" onclick="openLightbox('macro', 3)">
-                            <img src="images/macro/macro-3.jpg" alt="Macro фото 3" loading="lazy">
-                        </div>
-                        <div class="portfolio-item" onclick="openLightbox('macro', 4)">
-                            <img src="images/macro/macro-4.jpg" alt="Macro фото 4" loading="lazy">
-                        </div>
-                        <div class="portfolio-item" onclick="openLightbox('macro', 5)">
-                            <img src="images/macro/macro-5.jpg" alt="Macro фото 5" loading="lazy">
-                        </div>
-                        <div class="portfolio-item" onclick="openLightbox('macro', 6)">
-                            <img src="images/macro/macro-6.jpg" alt="Macro фото 6" loading="lazy">
-                        </div>
-                        <div class="portfolio-item" onclick="openLightbox('macro', 7)">
-                            <img src="images/macro/macro-7.jpg" alt="Macro фото 7" loading="lazy">
-                        </div>
-                        <div class="portfolio-item" onclick="openLightbox('macro', 8)">
-                            <img src="images/macro/macro-8.jpg" alt="Macro фото 8" loading="lazy">
-                        </div>
-                        <div class="portfolio-item" onclick="openLightbox('macro', 9)">
-                            <img src="images/macro/macro-9.jpg" alt="Macro фото 9" loading="lazy">
-                        </div>
-                        <div class="portfolio-item" onclick="openLightbox('macro', 10)">
-                            <img src="images/macro/macro-10.jpg" alt="Macro фото 10" loading="lazy">
-                        </div>
-                        <div class="portfolio-item" onclick="openLightbox('macro', 11)">
-                            <img src="images/macro/macro-11.jpg" alt="Macro фото 11" loading="lazy">
-                        </div>
-                        <div class="portfolio-item" onclick="openLightbox('macro', 12)">
-                            <img src="images/macro/macro-12.jpg" alt="Macro фото 12" loading="lazy">
-                        </div>
-                        <div class="portfolio-item" onclick="openLightbox('macro', 13)">
-                            <img src="images/macro/macro-13.jpg" alt="Macro фото 13" loading="lazy">
-                        </div>
-                        <div class="portfolio-item" onclick="openLightbox('macro', 14)">
-                            <img src="images/macro/macro-14.jpg" alt="Macro фото 14" loading="lazy">
-                        </div>
-                        <div class="portfolio-item" onclick="openLightbox('macro', 15)">
-                            <img src="images/macro/macro-15.jpg" alt="Macro фото 15" loading="lazy">
-                        </div>
-                        <div class="portfolio-item" onclick="openLightbox('macro', 16)">
-                            <img src="images/macro/macro-16.jpg" alt="Macro фото 16" loading="lazy">
-                        </div>
-                        <div class="portfolio-item" onclick="openLightbox('macro', 17)">
-                            <img src="images/macro/macro-17.jpg" alt="Macro фото 17" loading="lazy">
-                        </div>
-                        <div class="portfolio-item" onclick="openLightbox('macro', 18)">
-                            <img src="images/macro/macro-18.jpg" alt="Macro фото 18" loading="lazy">
+                    <div class="folder-content">
+                        <div class="portfolio-grid">
+                            <!-- 99 фото product -->
+                            <div class="portfolio-item" onclick="openLightbox('product', 1)">
+                                <img src="images/product/product-1.jpg" alt="Product фото 1" loading="lazy">
+                            </div>
+                            <div class="portfolio-item" onclick="openLightbox('product', 2)">
+                                <img src="images/product/product-2.jpg" alt="Product фото 2" loading="lazy">
+                            </div>
+                            <!-- ... остальные 97 фото -->
                         </div>
                     </div>
                 </div>
-                
-                <!-- Newborn - 12 фото -->
-                <div class="portfolio-section" id="newborn">
-                    <h3>Newborn (12 фото)</h3>
-                    <div class="portfolio-grid">
-                        <!-- Генерируем 12 фото -->
-                        <div class="portfolio-item" onclick="openLightbox('newborn', 1)">
-                            <img src="images/newborn/newborn-1.jpg" alt="Newborn фото 1" loading="lazy">
+
+                <!-- Макромир -->
+                <div class="portfolio-folder" id="macro">
+                    <div class="folder-header" onclick="toggleFolder('macro')">
+                        <div class="folder-preview" style="background-image: url('images/macro/macro-1.jpg')"></div>
+                        <div class="folder-info">
+                            <h3>Макромир</h3>
+                            <span class="folder-count">18 деталей</span>
+                            <i class="folder-arrow"></i>
                         </div>
-                        <div class="portfolio-item" onclick="openLightbox('newborn', 2)">
-                            <img src="images/newborn/newborn-2.jpg" alt="Newborn фото 2" loading="lazy">
-                        </div>
-                        <div class="portfolio-item" onclick="openLightbox('newborn', 3)">
-                            <img src="images/newborn/newborn-3.jpg" alt="Newborn фото 3" loading="lazy">
-                        </div>
-                        <div class="portfolio-item" onclick="openLightbox('newborn', 4)">
-                            <img src="images/newborn/newborn-4.jpg" alt="Newborn фото 4" loading="lazy">
-                        </div>
-                        <div class="portfolio-item" onclick="openLightbox('newborn', 5)">
-                            <img src="images/newborn/newborn-5.jpg" alt="Newborn фото 5" loading="lazy">
-                        </div>
-                        <div class="portfolio-item" onclick="openLightbox('newborn', 6)">
-                            <img src="images/newborn/newborn-6.jpg" alt="Newborn фото 6" loading="lazy">
-                        </div>
-                        <div class="portfolio-item" onclick="openLightbox('newborn', 7)">
-                            <img src="images/newborn/newborn-7.jpg" alt="Newborn фото 7" loading="lazy">
-                        </div>
-                        <div class="portfolio-item" onclick="openLightbox('newborn', 8)">
-                            <img src="images/newborn/newborn-8.jpg" alt="Newborn фото 8" loading="lazy">
-                        </div>
-                        <div class="portfolio-item" onclick="openLightbox('newborn', 9)">
-                            <img src="images/newborn/newborn-9.jpg" alt="Newborn фото 9" loading="lazy">
-                        </div>
-                        <div class="portfolio-item" onclick="openLightbox('newborn', 10)">
-                            <img src="images/newborn/newborn-10.jpg" alt="Newborn фото 10" loading="lazy">
-                        </div>
-                        <div class="portfolio-item" onclick="openLightbox('newborn', 11)">
-                            <img src="images/newborn/newborn-11.jpg" alt="Newborn фото 11" loading="lazy">
-                        </div>
-                        <div class="portfolio-item" onclick="openLightbox('newborn', 12)">
-                            <img src="images/newborn/newborn-12.jpg" alt="Newborn фото 12" loading="lazy">
+                    </div>
+                    <div class="folder-content">
+                        <div class="portfolio-grid">
+                            <!-- 18 фото macro -->
+                            <div class="portfolio-item" onclick="openLightbox('macro', 1)">
+                                <img src="images/macro/macro-1.jpg" alt="Macro фото 1" loading="lazy">
+                            </div>
+                            <div class="portfolio-item" onclick="openLightbox('macro', 2)">
+                                <img src="images/macro/macro-2.jpg" alt="Macro фото 2" loading="lazy">
+                            </div>
+                            <!-- ... остальные 16 фото -->
                         </div>
                     </div>
                 </div>
-                
-                <!-- Story - 13 фото -->
-                <div class="portfolio-section" id="story">
-                    <h3>Story (13 фото)</h3>
-                    <div class="portfolio-grid">
-                        <!-- Генерируем 13 фото -->
-                        <div class="portfolio-item" onclick="openLightbox('story', 1)">
-                            <img src="images/story/story-1.jpg" alt="Story фото 1" loading="lazy">
+
+                <!-- Первые мгновения -->
+                <div class="portfolio-folder" id="newborn">
+                    <div class="folder-header" onclick="toggleFolder('newborn')">
+                        <div class="folder-preview" style="background-image: url('images/newborn/newborn-1.jpg')"></div>
+                        <div class="folder-info">
+                            <h3>Первые мгновения</h3>
+                            <span class="folder-count">12 историй</span>
+                            <i class="folder-arrow"></i>
                         </div>
-                        <div class="portfolio-item" onclick="openLightbox('story', 2)">
-                            <img src="images/story/story-2.jpg" alt="Story фото 2" loading="lazy">
-                        </div>
-                        <div class="portfolio-item" onclick="openLightbox('story', 3)">
-                            <img src="images/story/story-3.jpg" alt="Story фото 3" loading="lazy">
-                        </div>
-                        <div class="portfolio-item" onclick="openLightbox('story', 4)">
-                            <img src="images/story/story-4.jpg" alt="Story фото 4" loading="lazy">
-                        </div>
-                        <div class="portfolio-item" onclick="openLightbox('story', 5)">
-                            <img src="images/story/story-5.jpg" alt="Story фото 5" loading="lazy">
-                        </div>
-                        <div class="portfolio-item" onclick="openLightbox('story', 6)">
-                            <img src="images/story/story-6.jpg" alt="Story фото 6" loading="lazy">
-                        </div>
-                        <div class="portfolio-item" onclick="openLightbox('story', 7)">
-                            <img src="images/story/story-7.jpg" alt="Story фото 7" loading="lazy">
-                        </div>
-                        <div class="portfolio-item" onclick="openLightbox('story', 8)">
-                            <img src="images/story/story-8.jpg" alt="Story фото 8" loading="lazy">
-                        </div>
-                        <div class="portfolio-item" onclick="openLightbox('story', 9)">
-                            <img src="images/story/story-9.jpg" alt="Story фото 9" loading="lazy">
-                        </div>
-                        <div class="portfolio-item" onclick="openLightbox('story', 10)">
-                            <img src="images/story/story-10.jpg" alt="Story фото 10" loading="lazy">
-                        </div>
-                        <div class="portfolio-item" onclick="openLightbox('story', 11)">
-                            <img src="images/story/story-11.jpg" alt="Story фото 11" loading="lazy">
-                        </div>
-                        <div class="portfolio-item" onclick="openLightbox('story', 12)">
-                            <img src="images/story/story-12.jpg" alt="Story фото 12" loading="lazy">
-                        </div>
-                        <div class="portfolio-item" onclick="openLightbox('story', 13)">
-                            <img src="images/story/story-13.jpg" alt="Story фото 13" loading="lazy">
+                    </div>
+                    <div class="folder-content">
+                        <div class="portfolio-grid">
+                            <!-- 12 фото newborn -->
+                            <div class="portfolio-item" onclick="openLightbox('newborn', 1)">
+                                <img src="images/newborn/newborn-1.jpg" alt="Newborn фото 1" loading="lazy">
+                            </div>
+                            <div class="portfolio-item" onclick="openLightbox('newborn', 2)">
+                                <img src="images/newborn/newborn-2.jpg" alt="Newborn фото 2" loading="lazy">
+                            </div>
+                            <!-- ... остальные 10 фото -->
                         </div>
                     </div>
                 </div>
-                
-                <!-- Video -->
-                <div class="portfolio-section" id="video">
-                    <h3>Video (5 видео)</h3>
-                    <div class="portfolio-grid video-grid">
-                        <div class="video-item">
-                            <video controls poster="images/video/1-poster.jpg">
-                                <source src="images/video/1.mp4" type="video/mp4">
-                                Ваш браузер не поддерживает видео.
-                            </video>
+
+                <!-- Визуальные нарративы -->
+                <div class="portfolio-folder" id="story">
+                    <div class="folder-header" onclick="toggleFolder('story')">
+                        <div class="folder-preview" style="background-image: url('images/story/story-1.jpg')"></div>
+                        <div class="folder-info">
+                            <h3>Визуальные нарративы</h3>
+                            <span class="folder-count">13 проектов</span>
+                            <i class="folder-arrow"></i>
                         </div>
-                        <div class="video-item">
-                            <video controls poster="images/video/2-poster.jpg">
-                                <source src="images/video/2.mp4" type="video/mp4">
-                                Ваш браузер не поддерживает видео.
-                            </video>
+                    </div>
+                    <div class="folder-content">
+                        <div class="portfolio-grid">
+                            <!-- 13 фото story -->
+                            <div class="portfolio-item" onclick="openLightbox('story', 1)">
+                                <img src="images/story/story-1.jpg" alt="Story фото 1" loading="lazy">
+                            </div>
+                            <div class="portfolio-item" onclick="openLightbox('story', 2)">
+                                <img src="images/story/story-2.jpg" alt="Story фото 2" loading="lazy">
+                            </div>
+                            <!-- ... остальные 11 фото -->
                         </div>
-                        <div class="video-item">
-                            <video controls poster="images/video/3-poster.jpg">
-                                <source src="images/video/3.mp4" type="video/mp4">
-                                Ваш браузер не поддерживает видео.
-                            </video>
+                    </div>
+                </div>
+
+                <!-- Движение в кадре -->
+                <div class="portfolio-folder" id="video">
+                    <div class="folder-header" onclick="toggleFolder('video')">
+                        <div class="folder-preview" style="background-image: url('images/video/1-poster.jpg')"></div>
+                        <div class="folder-info">
+                            <h3>Движение в кадре</h3>
+                            <span class="folder-count">5 видео</span>
+                            <i class="folder-arrow"></i>
                         </div>
-                        <div class="video-item">
-                            <video controls poster="images/video/4-poster.jpg">
-                                <source src="images/video/4.mp4" type="video/mp4">
-                                Ваш браузер не поддерживает видео.
-                            </video>
-                        </div>
-                        <div class="video-item">
-                            <video controls poster="images/video/5-poster.jpg">
-                                <source src="images/video/5.mp4" type="video/mp4">
-                                Ваш браузер не поддерживает видео.
-                            </video>
+                    </div>
+                    <div class="folder-content">
+                        <div class="portfolio-grid video-grid">
+                            <div class="video-item">
+                                <video controls poster="images/video/1-poster.jpg">
+                                    <source src="images/video/1.mp4" type="video/mp4">
+                                    Ваш браузер не поддерживает видео.
+                                </video>
+                            </div>
+                            <div class="video-item">
+                                <video controls poster="images/video/2-poster.jpg">
+                                    <source src="images/video/2.mp4" type="video/mp4">
+                                    Ваш браузер не поддерживает видео.
+                                </video>
+                            </div>
+                            <div class="video-item">
+                                <video controls poster="images/video/3-poster.jpg">
+                                    <source src="images/video/3.mp4" type="video/mp4">
+                                    Ваш браузер не поддерживает видео.
+                                </video>
+                            </div>
+                            <div class="video-item">
+                                <video controls poster="images/video/4-poster.jpg">
+                                    <source src="images/video/4.mp4" type="video/mp4">
+                                    Ваш браузер не поддерживает видео.
+                                </video>
+                            </div>
+                            <div class="video-item">
+                                <video controls poster="images/video/5-poster.jpg">
+                                    <source src="images/video/5.mp4" type="video/mp4">
+                                    Ваш браузер не поддерживает видео.
+                                </video>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -407,18 +232,26 @@
             document.querySelector('.nav-menu').classList.toggle('active');
         });
 
+        // Папки портфолио
+        function toggleFolder(folderId) {
+            const folder = document.getElementById(folderId);
+            const content = folder.querySelector('.folder-content');
+            const arrow = folder.querySelector('.folder-arrow');
+            
+            content.classList.toggle('active');
+            arrow.classList.toggle('active');
+        }
+
         // Lightbox
         let currentCategory = '';
         let currentIndex = 0;
 
-        // Количество фото в каждой категории
         const maxImages = {
             'family': 33,
             'product': 99,
             'macro': 18,
             'newborn': 12,
-            'story': 13,
-            'studio': 1
+            'story': 13
         };
 
         function openLightbox(category, index) {
@@ -456,6 +289,15 @@
                 if (e.key === 'Escape') closeLightbox();
                 if (e.key === 'ArrowLeft') changeImage(-1);
                 if (e.key === 'ArrowRight') changeImage(1);
+            }
+        });
+
+        // Открываем папку из хеша URL
+        window.addEventListener('load', function() {
+            const hash = window.location.hash.substring(1);
+            if (hash && document.getElementById(hash)) {
+                toggleFolder(hash);
+                document.getElementById(hash).scrollIntoView({ behavior: 'smooth' });
             }
         });
     </script>
