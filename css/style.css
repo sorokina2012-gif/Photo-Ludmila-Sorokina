@@ -1592,3 +1592,89 @@ footer {
 .portfolio-item:hover img {
     transform: scale(1.1);
 }
+/* Убираем фиолетовый и делаем кнопку */
+.scroll-hint {
+    text-align: center;
+    margin: 1.5rem 0 0.5rem;
+    padding: 0;
+    background: none;
+    border-radius: 0;
+    color: inherit;
+    box-shadow: none;
+    position: relative;
+    overflow: visible;
+}
+
+.scroll-hint::before {
+    display: none;
+}
+
+.scroll-hint p {
+    color: #666;
+    font-size: 0.9rem;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-weight: 400;
+}
+
+/* Кнопка "Показать еще" */
+.show-more-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1.5rem;
+    background: #2c2c2c;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 400;
+    transition: all 0.3s ease;
+    margin: 1rem auto;
+    text-decoration: none;
+}
+
+.show-more-btn:hover {
+    background: #000;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.show-more-btn i {
+    font-size: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.show-more-btn:hover i {
+    transform: translateX(3px);
+}
+
+/* Полоса прокрутки в серых тонах */
+.folder-content.active .portfolio-grid::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #888, #666);
+    border-radius: 8px;
+    border: 2px solid #f1f1f1;
+}
+
+.folder-content.active .portfolio-grid::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #666, #555);
+}
+
+/* Скрываем лишние фото и показываем кнопку */
+.portfolio-item.hidden {
+    display: none;
+}
+
+.folder-content.active .portfolio-grid {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+/* Для Product показываем только 20 фото из 99 */
+#product .portfolio-grid .portfolio-item:nth-child(n+21) {
+    display: none;
+}
