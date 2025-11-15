@@ -2587,4 +2587,320 @@ document.addEventListener('DOMContentLoaded', function() {
 
     createGallery('family');
 });
+/* Улучшенная адаптивность для мобильных */
+@media (max-width: 1024px) {
+    .nav-container {
+        padding: 0 30px;
+    }
+    
+    .hero-title {
+        font-size: 3rem;
+    }
+    
+    .about-container {
+        gap: 50px;
+    }
+    
+    .collections-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 25px;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-container {
+        padding: 0 20px;
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .nav-links {
+        gap: 30px;
+    }
+    
+    .hero-main {
+        height: auto;
+        min-height: 100vh;
+        padding: 100px 20px 60px;
+    }
+    
+    .hero-title {
+        font-size: 2.2rem;
+        letter-spacing: 2px;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .cta-button {
+        width: 100%;
+        max-width: 280px;
+        padding: 14px 25px;
+    }
+    
+    .about-section {
+        padding: 80px 0;
+    }
+    
+    .about-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        padding: 0 20px;
+    }
+    
+    .photographer-photo {
+        height: 400px;
+    }
+    
+    .about-text h2 {
+        font-size: 2.2rem;
+        text-align: center;
+    }
+    
+    .stats {
+        gap: 30px;
+        justify-content: center;
+    }
+    
+    .number {
+        font-size: 2rem;
+    }
+    
+    .collections-section {
+        padding: 80px 0;
+    }
+    
+    .collections-container {
+        padding: 0 20px;
+    }
+    
+    .collections-container h2 {
+        font-size: 2.2rem;
+    }
+    
+    .collection-image {
+        height: 300px;
+    }
+    
+    .contact-section {
+        padding: 80px 0;
+    }
+    
+    .contact-container h2 {
+        font-size: 2rem;
+    }
+    
+    .contact-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .contact-btn {
+        width: 100%;
+        max-width: 280px;
+        padding: 14px 25px;
+    }
+    
+    /* Адаптивность портфолио */
+    .portfolio-hero {
+        height: auto;
+        min-height: 50vh;
+        padding: 100px 20px 60px;
+    }
+    
+    .portfolio-hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .portfolio-section {
+        padding: 60px 0;
+    }
+    
+    .portfolio-container {
+        padding: 0 20px;
+    }
+    
+    .portfolio-gallery {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 20px;
+    }
+    
+    .portfolio-image img {
+        height: 300px;
+    }
+    
+    .filter-btn {
+        padding: 12px 20px;
+        margin: 5px;
+        font-size: 14px;
+    }
+    
+    .video-play-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 18px;
+    }
+    
+    .video-title {
+        padding: 15px;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-links {
+        gap: 20px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .nav-links a {
+        font-size: 14px;
+    }
+    
+    .logo span {
+        font-size: 20px;
+    }
+    
+    .hero-title {
+        font-size: 1.8rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+    
+    .hero-description {
+        font-size: 0.95rem;
+    }
+    
+    .about-text h2 {
+        font-size: 1.8rem;
+    }
+    
+    .about-text p {
+        font-size: 1rem;
+    }
+    
+    .stats {
+        gap: 20px;
+    }
+    
+    .number {
+        font-size: 1.8rem;
+    }
+    
+    .label {
+        font-size: 0.8rem;
+    }
+    
+    .collections-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .collection-image {
+        height: 250px;
+    }
+    
+    .portfolio-hero-title {
+        font-size: 2rem;
+    }
+    
+    .portfolio-hero-subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .portfolio-gallery {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .portfolio-image img {
+        height: 250px;
+    }
+    
+    .portfolio-filters {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 5px;
+    }
+    
+    .filter-btn {
+        padding: 10px 16px;
+        margin: 2px;
+        font-size: 12px;
+        flex: 1;
+        min-width: 100px;
+        max-width: 120px;
+    }
+    
+    /* Модальные окна на мобильных */
+    .photo-modal-prev,
+    .photo-modal-next {
+        width: 40px;
+        height: 40px;
+        font-size: 14px;
+    }
+    
+    .photo-modal-close {
+        top: -35px;
+        font-size: 25px;
+    }
+    
+    .photo-modal-counter {
+        font-size: 14px;
+        bottom: -30px;
+    }
+    
+    .video-modal-close {
+        top: -40px;
+        font-size: 25px;
+    }
+}
+
+/* Особые стили для очень маленьких экранов */
+@media (max-width: 360px) {
+    .hero-title {
+        font-size: 1.6rem;
+    }
+    
+    .portfolio-hero-title {
+        font-size: 1.8rem;
+    }
+    
+    .filter-btn {
+        padding: 8px 12px;
+        font-size: 11px;
+        min-width: 90px;
+    }
+    
+    .portfolio-image img {
+        height: 200px;
+    }
+    
+    .collection-image {
+        height: 200px;
+    }
+}
+
+/* Превью для видео (заглушки) */
+.video-preview-placeholder {
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #8B7355;
+    font-family: 'Georgia', serif;
+    font-size: 1.1rem;
+    text-align: center;
+    padding: 20px;
+}
 
